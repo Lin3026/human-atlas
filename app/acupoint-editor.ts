@@ -147,6 +147,19 @@ export function createAcupointEditor(
   surfaceLineGroup.name = 'CV2-CV8-surface-guide-not-full-meridian';
   scene.add(surfaceLineGroup);
 
+  // 经络连线：把同一条经脉的穴位按顺序连接
+  const meridianLineGroup = new T.Group();
+  meridianLineGroup.name = 'meridian-connection-lines';
+  scene.add(meridianLineGroup);
+  let meridianLinesVisible = true;
+
+  const MERIDIAN_COLORS: Record<string, string> = {
+    LU: '#E8E8E8', LI: '#D4A574', ST: '#E8C84A', SP: '#A0522D',
+    HT: '#DC143C', SI: '#F0A0A0', BL: '#4169E1', KI: '#6A5ACD',
+    PC: '#B22222', TE: '#DDA0DD', GB: '#2E8B57', LR: '#3CB371',
+    GV: '#DAA520', CV: '#708090'
+  };
+
   const surfaceLineMaterial = new T.LineBasicMaterial({
     color:'#bc5037',
     transparent:true,
@@ -233,18 +246,82 @@ export function createAcupointEditor(
     surfaceLineGroup.updateMatrixWorld(true);
   }
 
+  function clearMeridianLines() {
+    for (const child of [...meridianLineGroup.children]) {
+      if (child instanceof T.Line) child.geometry.dispose();
+    }
+    meridianLineGroup.clear();
+  }
+
+  function rebuildMeridianLines() {
+    clearMeridianLines();
+    meridianLineGroup.visible = available && meridianLinesVisible && markerGroup.visible;
+    if (!meridianLineGroup.visible) return;
+
+    // 按经脉分组
+    const byMeridian: Record<string, string[]> = {};
+    for (const code of Object.keys(points)) {
+      const m = code.replace(/[0-9]/g, '');
+      if (!byMeridian[m]) byMeridian[m] = [];
+      byMeridian[m].push(code);
+    }
+
+        // 只显示当前选中经脉的连线
+    for (const [meridian, codes] of Object.entries(byMeridian)) {
+      if (meridian !== activeMeridian) continue;
+      if (codes.length < 2) continue;
+      // 按数字排序
+      codes.sort((a, b) => {
+        const na = parseInt(a.replace(/[^0-9]/g, ''));
+        const nb = parseInt(b.replace(/[^0-9]/g, ''));
+        return na - nb;
+      });
+
+      const color = MERIDIAN_COLORS[meridian] || '#888888';
+      const material = new T.LineDashedMaterial({
+        color: new T.Color(color),
+        transparent: true,
+        opacity: 0.9,
+        dashSize: 0.015,
+        gapSize: 0.008,
+        linewidth: 2
+      });
+
+      const positions: number[] = [];
+      for (const code of codes) {
+        const p = points[code];
+        if (p) {
+          positions.push(p.position[0], p.position[1], p.position[2]);
+        }
+      }
+      if (positions.length >= 6) {
+        const geometry = new T.BufferGeometry();
+        geometry.setAttribute('position', new T.Float32BufferAttribute(positions, 3));
+        const line = new T.Line(geometry, material);
+        line.computeLineDistances();
+        line.userData.meridian = meridian;
+        meridianLineGroup.add(line);
+      }
+    }
+    meridianLineGroup.updateMatrixWorld(true);
+  }
+
   const pickable: T.Mesh[] = [];
   let labelsVisible = true;
   const labelResources: {
     texture: T.CanvasTexture;
     material: T.SpriteMaterial;
     sprite: T.Sprite;
+    line: T.Line;
+    lineMaterial: T.LineBasicMaterial;
   }[] = [];
 
   function clearLabelResources() {
     for (const item of labelResources) {
       item.texture.dispose();
       item.material.dispose();
+      item.line.geometry.dispose();
+      item.lineMaterial.dispose();
     }
     labelResources.length = 0;
   }
@@ -289,17 +366,99 @@ export function createAcupointEditor(
 
     const sprite = new T.Sprite(material);
 
-    // 标签是显示注释，不是穴位坐标。
-    // 与红点错开，避免挡住皮肤上的实际标记。
+        // 标签是显示注释，不是穴位坐标。
+    // 根据穴位在身体的位置智能选择标签方向，避免重叠。
     sprite.position.copy(position);
-    sprite.position.x += .047;
-    sprite.position.z += .008;
+    
+    // 细分区域判断
+    const isHeadTop = position.y > 1.62 && Math.abs(position.z) < 0.06;  // 头顶正中线
+    const isHeadFront = position.y > 1.55 && position.z > 0.06;  // 头前面
+    const isHeadBack = position.y > 1.55 && position.z < -0.06;  // 头后面
+    const isHeadSide = position.y > 1.50 && Math.abs(position.x) > 0.06;  // 头侧面
+    const isFootBottom = position.y < 0.12;  // 脚底
+    const isFootTop = position.y >= 0.12 && position.y < 0.20;  // 脚背
+    const isFront = position.z > 0.04;  // 身体前面
+    const isBack = position.z < -0.04;  // 身体后面
+    const isLeftSide = position.x > 0.10;  // 身体左侧
+    const isRightSide = position.x < -0.10;  // 身体右侧
+    
+    if (isHeadTop) {
+      // 头顶正中线：标签向上，并根据前后位置微调
+      sprite.position.y += 0.07;
+      sprite.position.z += position.z > 0 ? 0.02 : -0.02;
+    } else if (isHeadFront) {
+      // 头前面：标签向前上方
+      sprite.position.z += 0.08;
+      sprite.position.y += 0.03;
+      sprite.position.x += position.x > 0 ? 0.02 : -0.02;
+    } else if (isHeadBack) {
+      // 头后面：标签向后上方
+      sprite.position.z -= 0.08;
+      sprite.position.y += 0.03;
+      sprite.position.x += position.x > 0 ? 0.02 : -0.02;
+    } else if (isHeadSide) {
+      // 头侧面：标签向侧面
+      if (position.x > 0) {
+        sprite.position.x += 0.09;
+      } else {
+        sprite.position.x -= 0.09;
+      }
+      sprite.position.y += 0.02;
+    } else if (isFootBottom) {
+      // 脚底：标签向下
+      sprite.position.y -= 0.07;
+      sprite.position.x += position.x > 0 ? 0.02 : -0.02;
+    } else if (isFootTop) {
+      // 脚背：标签向前
+      sprite.position.z += 0.07;
+      sprite.position.x += position.x > 0 ? 0.02 : -0.02;
+    } else if (isFront && !isLeftSide && !isRightSide) {
+      // 身体前面正中线：标签向前
+      sprite.position.z += 0.09;
+      sprite.position.x += 0.02;
+    } else if (isBack && !isLeftSide && !isRightSide) {
+      // 身体后面正中线：标签向后
+      sprite.position.z -= 0.09;
+      sprite.position.x += 0.02;
+    } else if (isLeftSide) {
+      // 身体左侧：标签向左
+      sprite.position.x += 0.09;
+      if (isFront) sprite.position.z += 0.02;
+      if (isBack) sprite.position.z -= 0.02;
+    } else if (isRightSide) {
+      // 身体右侧：标签向右
+      sprite.position.x -= 0.09;
+      if (isFront) sprite.position.z += 0.02;
+      if (isBack) sprite.position.z -= 0.02;
+    } else {
+      // 默认：根据前后决定Z方向，X轻微偏移
+      sprite.position.x += 0.05;
+      sprite.position.z += position.z >= 0 ? 0.07 : -0.07;
+    }
+    
     sprite.scale.set(.074, .013875, 1);
     sprite.visible = labelsVisible;
     sprite.renderOrder = 12;
 
+    // 引导线：从穴位红点到标签框
+    const lineGeometry = new T.BufferGeometry().setFromPoints([
+      position.clone(),
+      sprite.position.clone()
+    ]);
+    const lineMaterial = new T.LineBasicMaterial({
+      color: code === selected ? '#cf861c' : '#b84b3a',
+      transparent: true,
+      opacity: .65,
+      depthTest: true,
+      depthWrite: false
+    });
+    const line = new T.Line(lineGeometry, lineMaterial);
+    line.visible = labelsVisible;
+    line.renderOrder = 11;
+
+    markerGroup.add(line);
     markerGroup.add(sprite);
-    labelResources.push({texture, material, sprite});
+    labelResources.push({texture, material, sprite, line, lineMaterial});
   }
 
   const style = document.createElement('style');
@@ -355,6 +514,7 @@ export function createAcupointEditor(
     '<div class="ae-list" data-role="list"></div>',
     '<div class="ae-card" data-role="info"></div>',
     '<button data-action="adjust">在皮肤上标注／调整当前穴位</button>',
+    '<button data-action="save" style="background:#286c57;color:white;font-weight:bold">💾 保存标注（自动+手动备份）</button>',
     '<button data-action="export">导出标注JSON</button>',
     '<button data-action="undo">撤销上次修改</button>',
     '<h3>显示与数据管理</h3>',
@@ -362,7 +522,7 @@ export function createAcupointEditor(
     '<button data-action="delete-point">删除当前穴位</button>',
     '<button data-action="clear-navel">清除脐中基准</button>',
     '<button data-action="clear-pubic">清除耻骨基准</button>',
-    '<button data-action="restore-seed">恢复项目内置七穴</button>',
+    '<button data-action="restore-seed">恢复项目内置全部穴位（264穴）</button>',
     '<p class="ae-message" data-role="message" role="status"></p>',
     '<p class="ae-small">红点：穴位草稿；金点：当前穴位；旁侧文字框仅为穴名标签；',
     '蓝绿点：尚未生成穴位时的基准。旋转不会误记为点击。</p>',
@@ -451,13 +611,14 @@ export function createAcupointEditor(
       nextAnchors[key] = JSON.parse(JSON.stringify(value));
     }
 
-    for (const definition of ABDOMINAL_DEFINITIONS) {
-      const value = saved.points[definition.code];
-      if (!validSurface(value)) throw new Error('项目穴位数据无效。');
-      nextPoints[definition.code] = {
-        ...JSON.parse(JSON.stringify(value)),
-        status: 'pending-review'
-      };
+    for (const item of ACUPOINT_CATALOG) {
+      const value = saved.points[item.code];
+      if (value && validSurface(value)) {
+        nextPoints[item.code] = {
+          ...JSON.parse(JSON.stringify(value)),
+          status: 'pending-review'
+        };
+      }
     }
 
     anchors = nextAnchors;
@@ -628,6 +789,7 @@ export function createAcupointEditor(
 
     markerGroup.updateMatrixWorld(true);
     rebuildSurfaceLine();
+    rebuildMeridianLines();
     refreshInfo();
     dirty = true;
   }
@@ -826,6 +988,7 @@ export function createAcupointEditor(
           : '七穴贴肤辅助线：关';
         button.setAttribute('aria-pressed',String(surfaceLineVisible));
         rebuildSurfaceLine();
+    rebuildMeridianLines();
         dirty = true;
         return;
       }
@@ -919,6 +1082,13 @@ export function createAcupointEditor(
         } else {
           armed = selected;
           message('调整 ' + selected + '：点击该穴在皮肤上的新位置。');
+        }
+      } else if (action === 'save') {
+        if (persist()) {
+          exportData();
+          message('✅ 已保存到浏览器本地，并下载了JSON备份文件。');
+        } else {
+          message('保存失败，请使用导出JSON备份。');
         }
       } else if (action === 'export') {
         exportData();
@@ -1017,6 +1187,7 @@ export function createAcupointEditor(
         available = next;
         markerGroup.visible = next;
         rebuildSurfaceLine();
+    rebuildMeridianLines();
         if (!next) armed = null;
         element('status').textContent = next
           ? '皮肤拾取可用。先选择基准按钮，再点击皮肤。'
@@ -1040,6 +1211,8 @@ export function createAcupointEditor(
       clearSurfaceLine();
       scene.remove(surfaceLineGroup);
       surfaceLineMaterial.dispose();
+      clearMeridianLines();
+      scene.remove(meridianLineGroup);
       panel.remove();
       style.remove();
       scene.remove(markerGroup);

@@ -1,0 +1,326 @@
+{
+  "schema": 1,
+  "modelKey": "[\"BodyParts3D 4.0\",\"FJ2810\",22902,134232,[[-0.33411900000000005,1.3877787807814457e-17,-0.1452476],[0.332825,1.7194711999999999,0.146783]]]",
+  "standard": "GB/T 12346—2021",
+  "points": {
+    "GV17": {
+      "position": [
+        0.027829499915242195,
+        1.5858612060546875,
+        -0.10187233984470367
+      ],
+      "displayNormal": [
+        -0.46005394465369154,
+        0.481132460571922,
+        0.746231816121898
+      ],
+      "faceIndex": 25487,
+      "vertexIndices": [
+        13344,
+        13336,
+        13345
+      ],
+      "barycentric": [
+        1,
+        0,
+        0
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV18": {
+      "position": [
+        0.025427499786019325,
+        1.6661191665049278,
+        -0.1102278009057045
+      ],
+      "displayNormal": [
+        0.3015954673566629,
+        0.41555164143869305,
+        -0.8581124677846863
+      ],
+      "faceIndex": 26184,
+      "vertexIndices": [
+        12637,
+        13712,
+        12638
+      ],
+      "barycentric": [
+        0.24866610075948736,
+        0.38339078523947334,
+        0.3679431140010393
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV19": {
+      "position": [
+        0.02993590012192726,
+        1.711321234703064,
+        -0.049923598766326904
+      ],
+      "displayNormal": [
+        0.2884104818216291,
+        0.9539700536686415,
+        -0.08222244632011906
+      ],
+      "faceIndex": 26040,
+      "vertexIndices": [
+        13637,
+        13312,
+        13287
+      ],
+      "barycentric": [
+        1,
+        0,
+        0
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV20": {
+      "position": [
+        0.009059440344572067,
+        1.719081163406372,
+        -0.017242100089788437
+      ],
+      "displayNormal": [
+        0.03594744017474518,
+        0.9985046873573971,
+        0.041184595059197186
+      ],
+      "faceIndex": 23238,
+      "vertexIndices": [
+        12170,
+        11370,
+        12157
+      ],
+      "barycentric": [
+        1,
+        0,
+        0
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV21": {
+      "position": [
+        -0.027404099702835083,
+        1.710406692311251,
+        0.01370800007134676
+      ],
+      "displayNormal": [
+        -0.4337061747080007,
+        0.8794459799807124,
+        0.19614719553416443
+      ],
+      "faceIndex": 18762,
+      "vertexIndices": [
+        9890,
+        9502,
+        9499
+      ],
+      "barycentric": [
+        0.6650503171481322,
+        0.0019498336532372698,
+        0.33299984919863046
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV22": {
+      "position": [
+        -0.029852600768208504,
+        1.693829509475145,
+        0.046007998287677765
+      ],
+      "displayNormal": [
+        -0.3745575423526941,
+        0.729092076038778,
+        0.572827541345713
+      ],
+      "faceIndex": 19394,
+      "vertexIndices": [
+        9850,
+        9454,
+        9829
+      ],
+      "barycentric": [
+        0.19589490534939713,
+        0.7065026138357953,
+        0.0976024808148076
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV23": {
+      "position": [
+        0.028349800035357475,
+        1.6638231525124916,
+        0.06904900074005127
+      ],
+      "displayNormal": [
+        0.3763891381546391,
+        0.36171284674864557,
+        0.8529331938529529
+      ],
+      "faceIndex": 25028,
+      "vertexIndices": [
+        13086,
+        13087,
+        12433
+      ],
+      "barycentric": [
+        0.7519797984477462,
+        0.07053649349737377,
+        0.17748370805488003
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV24": {
+      "position": [
+        -0.019255299121141434,
+        1.645811543215816,
+        0.07975199818611145
+      ],
+      "displayNormal": [
+        -0.25222448671031034,
+        0.21192942464327746,
+        0.9441762162192446
+      ],
+      "faceIndex": 19132,
+      "vertexIndices": [
+        9669,
+        9680,
+        8990
+      ],
+      "barycentric": [
+        0.24512201568498082,
+        0.7168584332422013,
+        0.03801955107281783
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV29": {
+      "position": [
+        0.001,
+        1.605,
+        0.08559353048408058
+      ],
+      "displayNormal": [
+        -0.17487722544401932,
+        0.4642977885284875,
+        0.8682427768709381
+      ],
+      "faceIndex": 22142,
+      "vertexIndices": [
+        11589,
+        11610,
+        11209
+      ],
+      "barycentric": [
+        0.2008302542298267,
+        0.6873969104471411,
+        0.11177283532303213
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV25": {
+      "position": [
+        0.001,
+        1.566,
+        0.10505836713775996
+      ],
+      "displayNormal": [
+        0.014667593712812756,
+        0.07835527699499018,
+        0.9968175922713816
+      ],
+      "faceIndex": 21986,
+      "vertexIndices": [
+        11533,
+        11535,
+        11155
+      ],
+      "barycentric": [
+        0.6514874513227507,
+        0.07180823125349335,
+        0.27670431742375595
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV26": {
+      "position": [
+        0.001,
+        1.54,
+        0.09056049837388164
+      ],
+      "displayNormal": [
+        -0.004398343911368134,
+        -0.5596875156734729,
+        0.8286920654682858
+      ],
+      "faceIndex": 22125,
+      "vertexIndices": [
+        10851,
+        11218,
+        11581
+      ],
+      "barycentric": [
+        0.11412341076550536,
+        0.0839129419101382,
+        0.8019636473243564
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    },
+    "GV27": {
+      "position": [
+        0.001,
+        1.52,
+        0.08298983640822188
+      ],
+      "displayNormal": [
+        -0.002043217854669758,
+        -0.07879721736424496,
+        0.9968885714042721
+      ],
+      "faceIndex": 22174,
+      "vertexIndices": [
+        11239,
+        11623,
+        10882
+      ],
+      "barycentric": [
+        0.08556851709908253,
+        0.7976584291147395,
+        0.11677305378617796
+      ],
+      "meshId": "FJ2810",
+      "method": "head-landmark-projection",
+      "status": "pending-review"
+    }
+  },
+  "exportedAt": "2026-09-09T11:58:58.129Z",
+  "algorithm": {
+    "region": "GV17-GV27,GV29 督脉头部面部",
+    "method": "skull-landmark-nearest-vertex + front-raycast",
+    "limitation": "GV28龈交在口腔内未标注；头部穴位为估算，需人工核验"
+  },
+  "count": 12
+}
