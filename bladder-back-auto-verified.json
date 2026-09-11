@@ -1,0 +1,1776 @@
+{
+  "schema": 1,
+  "modelKey": "BodyParts3D_4-0_man",
+  "standard": "GB/T 12346—2021",
+  "anchors": {},
+  "points": {
+    "BL11": {
+      "position": [
+        0.039,
+        1.425,
+        -0.1228813898118438
+      ],
+      "displayNormal": [
+        -0.22003208501645885,
+        0.34843473804578246,
+        -0.9111416546763058
+      ],
+      "faceIndex": 26198,
+      "vertexIndices": [
+        13001,
+        12630,
+        13368
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL12": {
+      "position": [
+        0.039,
+        1.405,
+        -0.128250831367956
+      ],
+      "displayNormal": [
+        -0.1982960095471158,
+        0.2470667812163472,
+        -0.9484918018713099
+      ],
+      "faceIndex": 28254,
+      "vertexIndices": [
+        14836,
+        13377,
+        13368
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL13": {
+      "position": [
+        0.039,
+        1.38,
+        -0.13198620381841214
+      ],
+      "displayNormal": [
+        -0.39067341849172116,
+        0.11901238185646774,
+        -0.9128035566587386
+      ],
+      "faceIndex": 28269,
+      "vertexIndices": [
+        14063,
+        13377,
+        14845
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL14": {
+      "position": [
+        0.039,
+        1.356,
+        -0.13514642164752683
+      ],
+      "displayNormal": [
+        -0.4435911441914087,
+        0.12087144947076454,
+        -0.8880410967392183
+      ],
+      "faceIndex": 27561,
+      "vertexIndices": [
+        14063,
+        14451,
+        12643
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL15": {
+      "position": [
+        0.039,
+        1.318,
+        -0.13830812316030358
+      ],
+      "displayNormal": [
+        -0.3447122372158876,
+        -0.044502763310631695,
+        -0.9376529089014418
+      ],
+      "faceIndex": 28282,
+      "vertexIndices": [
+        14068,
+        13740,
+        13007
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL16": {
+      "position": [
+        0.039,
+        1.287,
+        -0.1334759574562141
+      ],
+      "displayNormal": [
+        -0.3098423277212916,
+        -0.16145013002401412,
+        -0.9369800357891735
+      ],
+      "faceIndex": 26861,
+      "vertexIndices": [
+        14055,
+        12272,
+        13740
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL17": {
+      "position": [
+        0.039,
+        1.257,
+        -0.129345435717799
+      ],
+      "displayNormal": [
+        -0.37127361472241516,
+        -0.06222600098270095,
+        -0.9264360894377185
+      ],
+      "faceIndex": 27543,
+      "vertexIndices": [
+        12998,
+        14055,
+        14440
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL18": {
+      "position": [
+        0.039,
+        1.205,
+        -0.12272207864839935
+      ],
+      "displayNormal": [
+        -0.23999627909135837,
+        -0.1973146474559562,
+        -0.9505097137439651
+      ],
+      "faceIndex": 27531,
+      "vertexIndices": [
+        14436,
+        14437,
+        13720
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL19": {
+      "position": [
+        0.039,
+        1.178,
+        -0.11620695757424813
+      ],
+      "displayNormal": [
+        -0.26972863395191854,
+        -0.2561213438978648,
+        -0.9282501393624369
+      ],
+      "faceIndex": 27495,
+      "vertexIndices": [
+        14415,
+        14044,
+        13720
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL20": {
+      "position": [
+        0.039,
+        1.154,
+        -0.11056115069890224
+      ],
+      "displayNormal": [
+        -0.1854264968568826,
+        -0.20984134896965675,
+        -0.9599914700277181
+      ],
+      "faceIndex": 27484,
+      "vertexIndices": [
+        13360,
+        14415,
+        14414
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL21": {
+      "position": [
+        0.039,
+        1.128,
+        -0.10678095075777791
+      ],
+      "displayNormal": [
+        -0.03882090737683094,
+        -0.1281662872065372,
+        -0.9909926033902225
+      ],
+      "faceIndex": 26171,
+      "vertexIndices": [
+        12233,
+        12620,
+        13356
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL22": {
+      "position": [
+        0.039,
+        1.093,
+        -0.1011050132461941
+      ],
+      "displayNormal": [
+        0.09267774424646126,
+        -0.19572339793980037,
+        -0.9762700380633866
+      ],
+      "faceIndex": 29977,
+      "vertexIndices": [
+        14813,
+        14033,
+        15129
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL23": {
+      "position": [
+        0.039,
+        1.07,
+        -0.0972801465293021
+      ],
+      "displayNormal": [
+        0.10921580236461131,
+        -0.09818141838036845,
+        -0.9891573775687433
+      ],
+      "faceIndex": 26802,
+      "vertexIndices": [
+        14032,
+        13350,
+        13355
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL24": {
+      "position": [
+        0.039,
+        1.046,
+        -0.09652592311326497
+      ],
+      "displayNormal": [
+        0.0004130700425620871,
+        -0.0038033531138013427,
+        -0.9999926819123387
+      ],
+      "faceIndex": 26159,
+      "vertexIndices": [
+        12618,
+        13350,
+        13705
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL25": {
+      "position": [
+        0.039,
+        1.017,
+        -0.10133156420125909
+      ],
+      "displayNormal": [
+        0.07329439292869064,
+        0.17986775080621936,
+        -0.9809564333777145
+      ],
+      "faceIndex": 27456,
+      "vertexIndices": [
+        14401,
+        13708,
+        13705
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL26": {
+      "position": [
+        0.039,
+        0.983,
+        -0.11316166883258959
+      ],
+      "displayNormal": [
+        -0.04033637777476252,
+        0.5063802103975303,
+        -0.8613663907686232
+      ],
+      "faceIndex": 27492,
+      "vertexIndices": [
+        13719,
+        14412,
+        14043
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL27": {
+      "position": [
+        0.039,
+        0.95,
+        -0.13135566063673826
+      ],
+      "displayNormal": [
+        -0.0594269285690752,
+        0.38889759673107804,
+        -0.9193623330426572
+      ],
+      "faceIndex": 28247,
+      "vertexIndices": [
+        13739,
+        14059,
+        14449
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL28": {
+      "position": [
+        0.039,
+        0.93,
+        -0.1378621753202294
+      ],
+      "displayNormal": [
+        -0.028868280179608775,
+        0.20503023682563754,
+        -0.9783298137063465
+      ],
+      "faceIndex": 28263,
+      "vertexIndices": [
+        14448,
+        14843,
+        13745
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL29": {
+      "position": [
+        0.039,
+        0.91,
+        -0.14139182393112917
+      ],
+      "displayNormal": [
+        -0.025078157214511593,
+        0.12289438108773043,
+        -0.9921028460435881
+      ],
+      "faceIndex": 28278,
+      "vertexIndices": [
+        14849,
+        14071,
+        14072
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL30": {
+      "position": [
+        0.039,
+        0.89,
+        -0.1413385623182869
+      ],
+      "displayNormal": [
+        -0.08551415386467773,
+        -0.15194736956378688,
+        -0.98468234795362
+      ],
+      "faceIndex": 28276,
+      "vertexIndices": [
+        14069,
+        14070,
+        14452
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL41": {
+      "position": [
+        0.078,
+        1.405,
+        -0.13296004181538473
+      ],
+      "displayNormal": [
+        0.061100363207332614,
+        0.3176153804349467,
+        -0.946249024161767
+      ],
+      "faceIndex": 31851,
+      "vertexIndices": [
+        15146,
+        16580,
+        15955
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL42": {
+      "position": [
+        0.078,
+        1.38,
+        -0.13825196334824597
+      ],
+      "displayNormal": [
+        0.04391248893860904,
+        0.17505240433125835,
+        -0.9835793557477008
+      ],
+      "faceIndex": 31475,
+      "vertexIndices": [
+        15957,
+        15956,
+        16387
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL43": {
+      "position": [
+        0.078,
+        1.356,
+        -0.1425233601393635
+      ],
+      "displayNormal": [
+        0.04391248893860904,
+        0.17505240433125835,
+        -0.9835793557477008
+      ],
+      "faceIndex": 31475,
+      "vertexIndices": [
+        15957,
+        15956,
+        16387
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL44": {
+      "position": [
+        0.078,
+        1.318,
+        -0.14373259409488834
+      ],
+      "displayNormal": [
+        0.07527159274527223,
+        -0.077101449621405,
+        -0.9941778280528427
+      ],
+      "faceIndex": 31472,
+      "vertexIndices": [
+        16388,
+        15728,
+        16191
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL45": {
+      "position": [
+        0.078,
+        1.287,
+        -0.13991102808213327
+      ],
+      "displayNormal": [
+        -0.056887765270361726,
+        -0.1651976577827603,
+        -0.9846184621596501
+      ],
+      "faceIndex": 31034,
+      "vertexIndices": [
+        16188,
+        15425,
+        15433
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL46": {
+      "position": [
+        0.078,
+        1.257,
+        -0.13369120462571366
+      ],
+      "displayNormal": [
+        0.06382038077986843,
+        -0.2529441110135503,
+        -0.9653736249249185
+      ],
+      "faceIndex": 31848,
+      "vertexIndices": [
+        15716,
+        16583,
+        15418
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL47": {
+      "position": [
+        0.078,
+        1.205,
+        -0.11930283439139797
+      ],
+      "displayNormal": [
+        0.27879614475033115,
+        -0.23926197127752974,
+        -0.9300679645986862
+      ],
+      "faceIndex": 31010,
+      "vertexIndices": [
+        15417,
+        16174,
+        15411
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL48": {
+      "position": [
+        0.078,
+        1.178,
+        -0.11238181852430097
+      ],
+      "displayNormal": [
+        0.3297761515517326,
+        -0.2213832218858998,
+        -0.9177347977139949
+      ],
+      "faceIndex": 31444,
+      "vertexIndices": [
+        16169,
+        15705,
+        16375
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL49": {
+      "position": [
+        0.078,
+        1.154,
+        -0.10698154757904388
+      ],
+      "displayNormal": [
+        0.40145248952490764,
+        -0.1905892828714069,
+        -0.8958301311681903
+      ],
+      "faceIndex": 31439,
+      "vertexIndices": [
+        16368,
+        16161,
+        16169
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL50": {
+      "position": [
+        0.078,
+        1.128,
+        -0.10009398085978802
+      ],
+      "displayNormal": [
+        0.4503072314872519,
+        -0.24124979882644954,
+        -0.8596638481618756
+      ],
+      "faceIndex": 31424,
+      "vertexIndices": [
+        15930,
+        16161,
+        16367
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL51": {
+      "position": [
+        0.078,
+        1.093,
+        -0.09184815787813824
+      ],
+      "displayNormal": [
+        0.5730861791855257,
+        -0.17571745491311144,
+        -0.8004346364728318
+      ],
+      "faceIndex": 31760,
+      "vertexIndices": [
+        16153,
+        15930,
+        16538
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL52": {
+      "position": [
+        0.078,
+        1.07,
+        -0.08770730163989542
+      ],
+      "displayNormal": [
+        0.4660458270951999,
+        -0.1138454973890996,
+        -0.8774055446436269
+      ],
+      "faceIndex": 31402,
+      "vertexIndices": [
+        15922,
+        16153,
+        16352
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL53": {
+      "position": [
+        0.078,
+        0.93,
+        -0.1320711040064001
+      ],
+      "displayNormal": [
+        0.3554242096286004,
+        0.1996652803210872,
+        -0.9131305531216151
+      ],
+      "faceIndex": 31462,
+      "vertexIndices": [
+        16385,
+        15953,
+        16181
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL54": {
+      "position": [
+        0.078,
+        0.89,
+        -0.13571681743497943
+      ],
+      "displayNormal": [
+        0.3073413082153946,
+        -0.052143806662228814,
+        -0.9501696394282559
+      ],
+      "faceIndex": 31028,
+      "vertexIndices": [
+        16185,
+        15718,
+        16186
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL11-R": {
+      "position": [
+        -0.039,
+        1.425,
+        -0.12251356104373189
+      ],
+      "displayNormal": [
+        0.17101319906465431,
+        0.35614938466028906,
+        -0.9186468862145946
+      ],
+      "faceIndex": 17062,
+      "vertexIndices": [
+        8559,
+        8947,
+        7664
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL12-R": {
+      "position": [
+        -0.039,
+        1.405,
+        -0.12773778257658427
+      ],
+      "displayNormal": [
+        0.27369928163025364,
+        0.18187966533451597,
+        -0.9444620111856736
+      ],
+      "faceIndex": 17728,
+      "vertexIndices": [
+        8953,
+        7936,
+        8562
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL13-R": {
+      "position": [
+        -0.039,
+        1.38,
+        -0.13164059283991447
+      ],
+      "displayNormal": [
+        0.32024165357043655,
+        0.12013326123883379,
+        -0.9396878645925969
+      ],
+      "faceIndex": 17071,
+      "vertexIndices": [
+        8953,
+        8565,
+        7936
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL14-R": {
+      "position": [
+        -0.039,
+        1.356,
+        -0.13442819329328093
+      ],
+      "displayNormal": [
+        0.49070457029787373,
+        0.1261860038492285,
+        -0.8621404277270273
+      ],
+      "faceIndex": 19055,
+      "vertexIndices": [
+        10018,
+        8958,
+        8565
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL15-R": {
+      "position": [
+        -0.039,
+        1.318,
+        -0.137480686060593
+      ],
+      "displayNormal": [
+        0.38670721273483166,
+        -0.06522423896883568,
+        -0.9198931080673416
+      ],
+      "faceIndex": 18352,
+      "vertexIndices": [
+        8569,
+        8961,
+        9630
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL16-R": {
+      "position": [
+        -0.039,
+        1.287,
+        -0.13306539358603348
+      ],
+      "displayNormal": [
+        0.2923846433913706,
+        -0.1745063909569809,
+        -0.9402439788821146
+      ],
+      "faceIndex": 19051,
+      "vertexIndices": [
+        10015,
+        8248,
+        8569
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL17-R": {
+      "position": [
+        -0.039,
+        1.257,
+        -0.12852880468381278
+      ],
+      "displayNormal": [
+        0.3574961920584556,
+        -0.06999791158440888,
+        -0.9312876918748176
+      ],
+      "faceIndex": 18334,
+      "vertexIndices": [
+        8561,
+        8564,
+        9622
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL18-R": {
+      "position": [
+        -0.039,
+        1.205,
+        -0.12216898081187876
+      ],
+      "displayNormal": [
+        0.316505453620091,
+        -0.20835986332452094,
+        -0.925424478379585
+      ],
+      "faceIndex": 17701,
+      "vertexIndices": [
+        9282,
+        8942,
+        8945
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL19-R": {
+      "position": [
+        -0.039,
+        1.178,
+        -0.11584503469818956
+      ],
+      "displayNormal": [
+        0.3209513360779438,
+        -0.22223870835842424,
+        -0.9206520495697395
+      ],
+      "faceIndex": 18312,
+      "vertexIndices": [
+        9282,
+        9280,
+        8942
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL20-R": {
+      "position": [
+        -0.039,
+        1.154,
+        -0.11044818530047071
+      ],
+      "displayNormal": [
+        0.1504973419795384,
+        -0.19173360323299546,
+        -0.9698395617051235
+      ],
+      "faceIndex": 17035,
+      "vertexIndices": [
+        8553,
+        8929,
+        8551
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL21-R": {
+      "position": [
+        -0.039,
+        1.128,
+        -0.1067152117849286
+      ],
+      "displayNormal": [
+        0.038855429215457725,
+        -0.12084122943906328,
+        -0.9919111113845527
+      ],
+      "faceIndex": 17680,
+      "vertexIndices": [
+        8923,
+        8234,
+        9269
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL22-R": {
+      "position": [
+        -0.039,
+        1.093,
+        -0.10121905510157253
+      ],
+      "displayNormal": [
+        -0.08481291808013526,
+        -0.19268612539500363,
+        -0.9775882701868885
+      ],
+      "faceIndex": 16322,
+      "vertexIndices": [
+        7907,
+        8230,
+        8541
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL23-R": {
+      "position": [
+        -0.039,
+        1.07,
+        -0.09775081792009224
+      ],
+      "displayNormal": [
+        -0.11824994502332484,
+        -0.14348487934557883,
+        -0.9825624865122652
+      ],
+      "faceIndex": 17005,
+      "vertexIndices": [
+        7907,
+        8541,
+        8534
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL24-R": {
+      "position": [
+        -0.039,
+        1.046,
+        -0.09657511975620407
+      ],
+      "displayNormal": [
+        -0.15321997401339527,
+        0.17561209531153918,
+        -0.9724628689793895
+      ],
+      "faceIndex": 17015,
+      "vertexIndices": [
+        8922,
+        7624,
+        8533
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL25-R": {
+      "position": [
+        -0.039,
+        1.017,
+        -0.10174042438361729
+      ],
+      "displayNormal": [
+        0.023956651394516512,
+        0.17362789178547147,
+        -0.9845199002803825
+      ],
+      "faceIndex": 18283,
+      "vertexIndices": [
+        9600,
+        8922,
+        8533
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL26-R": {
+      "position": [
+        -0.039,
+        0.983,
+        -0.11299334081837803
+      ],
+      "displayNormal": [
+        0.1248853037264225,
+        0.4989704784745813,
+        -0.8575733919169873
+      ],
+      "faceIndex": 18300,
+      "vertexIndices": [
+        9277,
+        8927,
+        9268
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL27-R": {
+      "position": [
+        -0.039,
+        0.95,
+        -0.13117983667850908
+      ],
+      "displayNormal": [
+        0.1328806758421261,
+        0.3691588903453817,
+        -0.9198176121746671
+      ],
+      "faceIndex": 17727,
+      "vertexIndices": [
+        8943,
+        9293,
+        8950
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL28-R": {
+      "position": [
+        -0.039,
+        0.93,
+        -0.13776248949750258
+      ],
+      "displayNormal": [
+        0.06778385082391039,
+        0.25369813278328296,
+        -0.9649054912216831
+      ],
+      "faceIndex": 17736,
+      "vertexIndices": [
+        8955,
+        8568,
+        7934
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL29-R": {
+      "position": [
+        -0.039,
+        0.91,
+        -0.1412439997840193
+      ],
+      "displayNormal": [
+        0.19702031057496436,
+        0.08364831202443988,
+        -0.9768244249180128
+      ],
+      "faceIndex": 18361,
+      "vertexIndices": [
+        9303,
+        8567,
+        9299
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL30-R": {
+      "position": [
+        -0.039,
+        0.89,
+        -0.14094512372527415
+      ],
+      "displayNormal": [
+        0.08479745894680546,
+        -0.1018861819508287,
+        -0.9911753613178887
+      ],
+      "faceIndex": 17745,
+      "vertexIndices": [
+        8251,
+        9303,
+        9302
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL41-R": {
+      "position": [
+        -0.078,
+        1.405,
+        -0.1331335484388908
+      ],
+      "displayNormal": [
+        -0.00018656766361284028,
+        0.3342225714094301,
+        -0.9424941580471337
+      ],
+      "faceIndex": 14069,
+      "vertexIndices": [
+        5861,
+        6704,
+        7378
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL42-R": {
+      "position": [
+        -0.078,
+        1.38,
+        -0.13815903089213616
+      ],
+      "displayNormal": [
+        -0.05285650501169341,
+        0.18183702535730298,
+        -0.9819070659116148
+      ],
+      "faceIndex": 13575,
+      "vertexIndices": [
+        4857,
+        7116,
+        6345
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL43-R": {
+      "position": [
+        -0.078,
+        1.356,
+        -0.1426035335951731
+      ],
+      "displayNormal": [
+        -0.05285650501169341,
+        0.18183702535730298,
+        -0.9819070659116148
+      ],
+      "faceIndex": 13575,
+      "vertexIndices": [
+        4857,
+        7116,
+        6345
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL44-R": {
+      "position": [
+        -0.078,
+        1.318,
+        -0.14394943181241296
+      ],
+      "displayNormal": [
+        -0.05398329404973879,
+        -0.11506549504907393,
+        -0.9918899817079769
+      ],
+      "faceIndex": 13574,
+      "vertexIndices": [
+        7115,
+        6342,
+        6705
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL45-R": {
+      "position": [
+        -0.078,
+        1.287,
+        -0.13993264641981917
+      ],
+      "displayNormal": [
+        -0.01157341502142715,
+        -0.13995991133311173,
+        -0.9900895309437269
+      ],
+      "faceIndex": 13572,
+      "vertexIndices": [
+        6878,
+        6342,
+        7115
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL46-R": {
+      "position": [
+        -0.078,
+        1.257,
+        -0.13373395877183925
+      ],
+      "displayNormal": [
+        -0.11051834461029497,
+        -0.23256797090503833,
+        -0.9662804118959016
+      ],
+      "faceIndex": 14055,
+      "vertexIndices": [
+        7370,
+        6874,
+        6878
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL47-R": {
+      "position": [
+        -0.078,
+        1.205,
+        -0.12008059664164382
+      ],
+      "displayNormal": [
+        -0.23389402639492962,
+        -0.23237516023062152,
+        -0.9440844079448409
+      ],
+      "faceIndex": 15109,
+      "vertexIndices": [
+        7366,
+        6691,
+        7652
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL48-R": {
+      "position": [
+        -0.078,
+        1.178,
+        -0.11285904452403193
+      ],
+      "displayNormal": [
+        -0.3367751945172112,
+        -0.24860710469246305,
+        -0.9081723271793328
+      ],
+      "faceIndex": 14039,
+      "vertexIndices": [
+        7366,
+        6511,
+        6691
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL49-R": {
+      "position": [
+        -0.078,
+        1.154,
+        -0.10740084959560896
+      ],
+      "displayNormal": [
+        -0.27488962466938643,
+        -0.11677068501310942,
+        -0.954358581126975
+      ],
+      "faceIndex": 14033,
+      "vertexIndices": [
+        7361,
+        6511,
+        7363
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL50-R": {
+      "position": [
+        -0.078,
+        1.128,
+        -0.10072009542227403
+      ],
+      "displayNormal": [
+        -0.41965918303848526,
+        -0.25083879438175183,
+        -0.8723336914991765
+      ],
+      "faceIndex": 13525,
+      "vertexIndices": [
+        6681,
+        7078,
+        6841
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL51-R": {
+      "position": [
+        -0.078,
+        1.093,
+        -0.09269044551115323
+      ],
+      "displayNormal": [
+        -0.4233773094379359,
+        -0.19725875457517142,
+        -0.8842175284377407
+      ],
+      "faceIndex": 13502,
+      "vertexIndices": [
+        6836,
+        6841,
+        7078
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL52-R": {
+      "position": [
+        -0.078,
+        1.07,
+        -0.08839844746305937
+      ],
+      "displayNormal": [
+        -0.5780788223730641,
+        -0.10642942424029603,
+        -0.8090102921345625
+      ],
+      "faceIndex": 13483,
+      "vertexIndices": [
+        6827,
+        6661,
+        6836
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL53-R": {
+      "position": [
+        -0.078,
+        0.93,
+        -0.13255007134119035
+      ],
+      "displayNormal": [
+        -0.3369060820677323,
+        0.1997947039647416,
+        -0.9200958472536499
+      ],
+      "faceIndex": 13570,
+      "vertexIndices": [
+        6701,
+        6872,
+        7114
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL54-R": {
+      "position": [
+        -0.078,
+        0.89,
+        -0.1361441880758566
+      ],
+      "displayNormal": [
+        -0.3216606568290324,
+        -0.13824160298413496,
+        -0.9367089628335433
+      ],
+      "faceIndex": 14061,
+      "vertexIndices": [
+        7110,
+        6698,
+        7112
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    }
+  }
+}

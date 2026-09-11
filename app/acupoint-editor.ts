@@ -2,6 +2,8 @@
 import {ACUPOINT_CATALOG,MERIDIAN_CATALOG} from './acupoint-catalog';
 // acupoint-display-upgrade-v1
 import {PROJECT_ACUPOINT_SEED} from './acupoint-seed';
+// acupoint-locations-v1 (从APK提取并核对的穴位定位描述)
+import {ACUPOINT_LOCATIONS, TRADITIONAL_LOCATIONS, ACUPOINT_INDICATIONS} from './acupoint-locations';
 
 import * as T from 'three';
 import type {Atlas} from './anatomy';
@@ -72,7 +74,19 @@ const ABDOMINAL_DEFINITIONS: PointDefinition[] = [
 
 const DEFINITIONS: PointDefinition[] = ACUPOINT_CATALOG.map(item => {
   const existing = ABDOMINAL_DEFINITIONS.find(p => p.code === item.code);
-  return existing ?? {
+  if (existing) return existing;
+  // 使用从APK提取并核对的穴位定位描述
+  const location = ACUPOINT_LOCATIONS[item.code];
+  if (location) {
+    return {
+      code: item.code,
+      name: item.name,
+      clause: item.clause,
+      downCun: -1,
+      text: location
+    };
+  }
+  return {
     code: item.code,
     name: item.name,
     clause: item.clause,
@@ -340,11 +354,11 @@ export function createAcupointEditor(
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     context.strokeStyle = code === selected ? '#cf861c' : '#b84b3a';
-    context.lineWidth = 5;
+    context.lineWidth = 3;
     context.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
 
     context.fillStyle = '#263e37';
-    context.font = '600 42px "Microsoft YaHei", sans-serif';
+    context.font = '600 28px "Microsoft YaHei", sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(
@@ -421,13 +435,39 @@ export function createAcupointEditor(
       sprite.position.z -= 0.09;
       sprite.position.x += 0.02;
     } else if (isLeftSide) {
-      // 身体左侧：标签向左
-      sprite.position.x += 0.09;
+      // 身体左侧：智能分布避免重叠
+      // 膀胱经第一侧线（旁开1.5寸，X<0.06）向左
+      // 膀胱经第二侧线（旁开3寸，X>=0.06）向右
+      const isFirstLine = Math.abs(position.x) < 0.06;
+      if (isFirstLine) {
+        sprite.position.x += 0.08;
+      } else {
+        sprite.position.x -= 0.06;
+      }
+      // 上下交错：根据Y坐标的奇偶性微调Y
+      const yIndex = Math.floor(position.y * 100);
+      if (yIndex % 2 === 0) {
+        sprite.position.y += 0.015;
+      } else {
+        sprite.position.y -= 0.015;
+      }
       if (isFront) sprite.position.z += 0.02;
       if (isBack) sprite.position.z -= 0.02;
     } else if (isRightSide) {
-      // 身体右侧：标签向右
-      sprite.position.x -= 0.09;
+      // 身体右侧：智能分布避免重叠
+      const isFirstLine = Math.abs(position.x) < 0.06;
+      if (isFirstLine) {
+        sprite.position.x -= 0.08;
+      } else {
+        sprite.position.x += 0.06;
+      }
+      // 上下交错
+      const yIndex = Math.floor(position.y * 100);
+      if (yIndex % 2 === 0) {
+        sprite.position.y += 0.015;
+      } else {
+        sprite.position.y -= 0.015;
+      }
       if (isFront) sprite.position.z += 0.02;
       if (isBack) sprite.position.z -= 0.02;
     } else {
@@ -436,7 +476,7 @@ export function createAcupointEditor(
       sprite.position.z += position.z >= 0 ? 0.07 : -0.07;
     }
     
-    sprite.scale.set(.074, .013875, 1);
+    sprite.scale.set(.055, .01375, 1);
     sprite.visible = labelsVisible;
     sprite.renderOrder = 12;
 
@@ -522,7 +562,7 @@ export function createAcupointEditor(
     '<button data-action="delete-point">删除当前穴位</button>',
     '<button data-action="clear-navel">清除脐中基准</button>',
     '<button data-action="clear-pubic">清除耻骨基准</button>',
-    '<button data-action="restore-seed">恢复项目内置全部穴位（264穴）</button>',
+    '<button data-action="restore-seed">恢复项目内置全部穴位（497穴）</button>',
     '<p class="ae-message" data-role="message" role="status"></p>',
     '<p class="ae-small">红点：穴位草稿；金点：当前穴位；旁侧文字框仅为穴名标签；',
     '蓝绿点：尚未生成穴位时的基准。旋转不会误记为点击。</p>',
@@ -627,7 +667,7 @@ export function createAcupointEditor(
 
   try {
     loadProjectSeed();
-    message('已载入项目内置七穴，三维状态仍为待复核。');
+    message('已载入项目内置全部穴位，三维状态仍为待复核。');
   } catch (error) {
     message(error instanceof Error ? error.message : String(error));
   }
@@ -637,8 +677,7 @@ export function createAcupointEditor(
     if (raw) {
       const saved = JSON.parse(raw) as SavedData;
       if (saved.schema === 1 && saved.modelKey === modelKey) {
-        anchors = {};
-        points = {};
+        // 合并到seed数据上，不覆盖
         for (const key of ['navel', 'pubic'] as AnchorKey[]) {
           const value = saved.anchors?.[key];
           if (validSurface(value)) anchors[key] = value;

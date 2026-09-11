@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "modelKey": "BodyParts3D_4-0_man",
+  "standard": "GB/T 12346—2021",
+  "anchors": {},
+  "points": {
+    "BL1": {
+      "position": [
+        0.01958860084414482,
+        1.580321192741394,
+        0.07974500209093094
+      ],
+      "displayNormal": [
+        0.6001464888454848,
+        0.4518570513016144,
+        0.6600543229468673
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        12717,
+        12717,
+        12717
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "vertex-snap",
+      "status": "auto-verified"
+    },
+    "BL2": {
+      "position": [
+        0.03170369938015938,
+        1.6162612438201904,
+        0.0744289979338646
+      ],
+      "displayNormal": [
+        -0.12839136936552017,
+        0.6224555192724387,
+        -0.772057252723777
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        13068,
+        13068,
+        13068
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "vertex-snap",
+      "status": "auto-verified"
+    },
+    "BL3": {
+      "position": [
+        0.028810899704694748,
+        1.6476812362670898,
+        0.07523699849843979
+      ],
+      "displayNormal": [
+        0.42774742881557665,
+        0.2977996154667806,
+        0.8534501174962614
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        13071,
+        13071,
+        13071
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "vertex-snap",
+      "status": "auto-verified"
+    },
+    "BL4": {
+      "position": [
+        0.04809439927339554,
+        1.650611162185669,
+        0.059532999992370605
+      ],
+      "displayNormal": [
+        0.6960661641285439,
+        0.2562334055604724,
+        0.6707052827539903
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        14486,
+        14486,
+        14486
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "vertex-snap",
+      "status": "auto-verified"
+    },
+    "BL5": {
+      "position": [
+        0.05540439859032631,
+        1.6524312496185303,
+        0.04936299845576286
+      ],
+      "displayNormal": [
+        0.8512222663045137,
+        0.20896023438215278,
+        0.4814294869838557
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        14900,
+        14900,
+        14900
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "vertex-snap",
+      "status": "auto-verified"
+    }
+  }
+}

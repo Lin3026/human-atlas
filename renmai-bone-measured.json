@@ -1,0 +1,632 @@
+{
+  "schema": 1,
+  "modelKey": "BodyParts3D_4-0_man",
+  "standard": "GB/T 12346—2021",
+  "anchors": {},
+  "points": {
+    "CV7": {
+      "position": [
+        0,
+        1.0088199999999998,
+        0.10329464263177958
+      ],
+      "displayNormal": [
+        0.01651336407243859,
+        -0.02973190891167673,
+        0.9994214938650653
+      ],
+      "faceIndex": 22751,
+      "vertexIndices": [
+        10419,
+        11527,
+        9657
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV6": {
+      "position": [
+        0,
+        0.9936299999999999,
+        0.10269357901906498
+      ],
+      "displayNormal": [
+        0.02171536626579793,
+        -0.07034300213509234,
+        0.9972864708390287
+      ],
+      "faceIndex": 23514,
+      "vertexIndices": [
+        12316,
+        10419,
+        11144
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV5": {
+      "position": [
+        0,
+        0.97844,
+        0.10151121931762909
+      ],
+      "displayNormal": [
+        -0.019317871217286207,
+        -0.09791144056758502,
+        0.9950076229143235
+      ],
+      "faceIndex": 21179,
+      "vertexIndices": [
+        11144,
+        10419,
+        10047
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV4": {
+      "position": [
+        0,
+        0.9480599999999999,
+        0.09624274790977581
+      ],
+      "displayNormal": [
+        0.1410109796122354,
+        -0.18774443310655536,
+        0.9720431736637503
+      ],
+      "faceIndex": 22783,
+      "vertexIndices": [
+        11932,
+        11546,
+        10825
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV3": {
+      "position": [
+        0,
+        0.9176799999999999,
+        0.09031258445330761
+      ],
+      "displayNormal": [
+        0.02488392708889494,
+        -0.20131124301288453,
+        0.9792111996955722
+      ],
+      "faceIndex": 22054,
+      "vertexIndices": [
+        11215,
+        11571,
+        10824
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV2": {
+      "position": [
+        -0.0029,
+        0.8873,
+        0.0801
+      ],
+      "displayNormal": [
+        0,
+        0,
+        1
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        0,
+        0,
+        0
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "user-benchmark",
+      "status": "verified"
+    },
+    "CV8": {
+      "position": [
+        -0.006,
+        1.0392,
+        0.0984
+      ],
+      "displayNormal": [
+        0,
+        0,
+        1
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        0,
+        0,
+        0
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "user-benchmark",
+      "status": "verified"
+    },
+    "CV9": {
+      "position": [
+        0,
+        1.0621749999999999,
+        0.1047983324618559
+      ],
+      "displayNormal": [
+        0.001776903795863551,
+        -0.28911007226404273,
+        0.9572942122087545
+      ],
+      "faceIndex": 21973,
+      "vertexIndices": [
+        11181,
+        11148,
+        10038
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV10": {
+      "position": [
+        0,
+        1.08515,
+        0.1096738670686933
+      ],
+      "displayNormal": [
+        -0.0064604768401985485,
+        -0.14009132197041727,
+        0.9901175100701826
+      ],
+      "faceIndex": 21942,
+      "vertexIndices": [
+        9321,
+        10039,
+        11507
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV11": {
+      "position": [
+        0,
+        1.108125,
+        0.11264933877633225
+      ],
+      "displayNormal": [
+        -0.0055613627882409025,
+        -0.11626720872382436,
+        0.9932024000270581
+      ],
+      "faceIndex": 21943,
+      "vertexIndices": [
+        9321,
+        11128,
+        10032
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV12": {
+      "position": [
+        0,
+        1.1311,
+        0.11512413345397504
+      ],
+      "displayNormal": [
+        -0.005242879543419654,
+        -0.06303652127466354,
+        0.9979974494955796
+      ],
+      "faceIndex": 21143,
+      "vertexIndices": [
+        10032,
+        11128,
+        10033
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV13": {
+      "position": [
+        0,
+        1.154075,
+        0.11606293431411607
+      ],
+      "displayNormal": [
+        -0.019618386184563144,
+        -0.04868902413731551,
+        0.9986212985171452
+      ],
+      "faceIndex": 21931,
+      "vertexIndices": [
+        11128,
+        11500,
+        10410
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV14": {
+      "position": [
+        0,
+        1.17705,
+        0.1159851609966051
+      ],
+      "displayNormal": [
+        0.03509118190169019,
+        -0.006095427563662756,
+        0.9993655260792013
+      ],
+      "faceIndex": 21145,
+      "vertexIndices": [
+        10410,
+        11129,
+        9636
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV15": {
+      "position": [
+        -0.001,
+        1.223,
+        0.1156
+      ],
+      "displayNormal": [
+        0,
+        0,
+        1
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        0,
+        0,
+        0
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "user-benchmark",
+      "status": "verified"
+    },
+    "CV16": {
+      "position": [
+        0,
+        1.24462,
+        0.11183363911736602
+      ],
+      "displayNormal": [
+        -0.02242752758796677,
+        -0.026805562549837278,
+        0.9993890472797257
+      ],
+      "faceIndex": 21951,
+      "vertexIndices": [
+        11132,
+        11510,
+        11130
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV17": {
+      "position": [
+        0.0003,
+        1.2795,
+        0.1125
+      ],
+      "displayNormal": [
+        0,
+        0,
+        1
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        0,
+        0,
+        0
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "user-benchmark",
+      "status": "verified"
+    },
+    "CV18": {
+      "position": [
+        0,
+        1.31438,
+        0.10449127178294054
+      ],
+      "displayNormal": [
+        -0.08573099479325784,
+        0.4606705299503529,
+        0.8834211110037042
+      ],
+      "faceIndex": 21980,
+      "vertexIndices": [
+        11137,
+        11529,
+        11151
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV19": {
+      "position": [
+        0,
+        1.3492600000000001,
+        0.08953948459170412
+      ],
+      "displayNormal": [
+        0.017342986828429514,
+        0.23896136772952584,
+        0.9708741862572635
+      ],
+      "faceIndex": 22113,
+      "vertexIndices": [
+        11202,
+        11580,
+        11203
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV20": {
+      "position": [
+        0,
+        1.3841400000000001,
+        0.06942184046942007
+      ],
+      "displayNormal": [
+        -0.0668630410700353,
+        0.5649116302536444,
+        0.8224379513027329
+      ],
+      "faceIndex": 22244,
+      "vertexIndices": [
+        11615,
+        11656,
+        10568
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV21": {
+      "position": [
+        0,
+        1.40594,
+        0.04931558238940584
+      ],
+      "displayNormal": [
+        -0.06503043297749796,
+        0.6898633396974273,
+        0.7210129092660349
+      ],
+      "faceIndex": 22315,
+      "vertexIndices": [
+        11694,
+        11304,
+        11675
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV22": {
+      "position": [
+        0.003,
+        1.4192,
+        0.0371
+      ],
+      "displayNormal": [
+        0,
+        0,
+        1
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        0,
+        0,
+        0
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "user-benchmark",
+      "status": "verified"
+    },
+    "CV23": {
+      "position": [
+        0,
+        1.48,
+        0.03355617344125411
+      ],
+      "displayNormal": [
+        0.06903531443926574,
+        -0.5790739445009808,
+        0.8123469038288669
+      ],
+      "faceIndex": 22349,
+      "vertexIndices": [
+        11701,
+        11324,
+        11325
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV24": {
+      "position": [
+        0,
+        1.56,
+        0.10163089128701085
+      ],
+      "displayNormal": [
+        -0.2593177119374128,
+        -0.4876443496147632,
+        0.8336409974109598
+      ],
+      "faceIndex": 21982,
+      "vertexIndices": [
+        11531,
+        11530,
+        11153
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV1": {
+      "position": [
+        0,
+        0.85,
+        0.08727210971165959
+      ],
+      "displayNormal": [
+        -0.018589504338641618,
+        0.5684334419219735,
+        0.8225192109812282
+      ],
+      "faceIndex": 22105,
+      "vertexIndices": [
+        11196,
+        11594,
+        10848
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    }
+  }
+}

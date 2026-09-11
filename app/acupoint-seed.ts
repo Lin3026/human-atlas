@@ -56,87 +56,87 @@ export const PROJECT_ACUPOINT_SEED = {
   "points": {
     "CV2": {
       "position": [
-        -0.002911589945061979,
-        0.8872593626984384,
-        0.0800832413101007
+        -0.0029,
+        0.8873,
+        0.0801
       ],
       "displayNormal": [
-        -0.028965011185448482,
-        -0.36489408581300586,
-        0.9305983743085509
+        0,
+        0,
+        1
       ],
-      "faceIndex": 21428,
+      "faceIndex": 0,
       "vertexIndices": [
-        10068,
-        10523,
-        11263
+        0,
+        0,
+        0
       ],
       "barycentric": [
-        0.4373890167624852,
-        0.5088836830004256,
-        0.05372730023708918
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "manual-surface-pick",
-      "status": "pending-review"
+      "method": "user-benchmark",
+      "status": "verified"
     },
     "CV3": {
       "position": [
-        -0.0035313511392713326,
-        0.9176533059072233,
-        0.09019800631532832
+        0,
+        0.9176799999999999,
+        0.09031258445330761
       ],
       "displayNormal": [
-        -0.05299595705728497,
-        -0.24317703626910744,
-        0.9685330957520014
+        0.02488392708889494,
+        -0.20131124301288453,
+        0.9792111996955722
       ],
-      "faceIndex": 21322,
+      "faceIndex": 22054,
       "vertexIndices": [
-        10491,
         11215,
+        11571,
         10824
       ],
       "barycentric": [
-        0.3335925240929122,
-        0.10345494058470485,
-        0.562952535322383
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV4": {
       "position": [
-        -0.004151112333480686,
-        0.9480472491160081,
-        0.09593049221487349
+        0,
+        0.9480599999999999,
+        0.09624274790977581
       ],
       "displayNormal": [
-        -0.11399247865115165,
-        -0.12563996680120026,
-        0.9855051057976109
+        0.1410109796122354,
+        -0.18774443310655536,
+        0.9720431736637503
       ],
-      "faceIndex": 21217,
+      "faceIndex": 22783,
       "vertexIndices": [
-        10825,
-        10799,
-        10046
+        11932,
+        11546,
+        10825
       ],
       "barycentric": [
-        0.5825150431569234,
-        0.24645017502573552,
-        0.17103478181734108
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV5": {
       "position": [
-        -0.004770873527690039,
-        0.9784411923247931,
-        0.10141871110357725
+        0,
+        0.97844,
+        0.10151121931762909
       ],
       "displayNormal": [
         -0.019317871217286207,
@@ -150,19 +150,19 @@ export const PROJECT_ACUPOINT_SEED = {
         10047
       ],
       "barycentric": [
-        0.5036546032035991,
-        0.009865775704231838,
-        0.486479621092169
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV6": {
       "position": [
-        -0.005080754124794716,
-        0.9936381639291855,
-        0.10280478549308963
+        0,
+        0.9936299999999999,
+        0.10269357901906498
       ],
       "displayNormal": [
         0.02171536626579793,
@@ -176,24 +176,24 @@ export const PROJECT_ACUPOINT_SEED = {
         11144
       ],
       "barycentric": [
-        0.05702829122193931,
-        0.773386796425266,
-        0.16958491235279471
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV7": {
       "position": [
-        -0.005390634721899393,
-        1.0088351355335778,
-        0.10338416194129924
+        0,
+        1.0088199999999998,
+        0.10329464263177958
       ],
       "displayNormal": [
-        0.016513364072438592,
-        -0.029731908911676735,
-        0.9994214938650655
+        0.01651336407243859,
+        -0.02973190891167673,
+        0.9994214938650653
       ],
       "faceIndex": 22751,
       "vertexIndices": [
@@ -202,97 +202,97 @@ export const PROJECT_ACUPOINT_SEED = {
         9657
       ],
       "barycentric": [
-        0.4031311730889267,
-        0.3176169475420158,
-        0.27925187936905754
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV8": {
       "position": [
-        -0.006010395916108746,
-        1.0392290787423628,
-        0.09837127455781508
+        -0.006,
+        1.0392,
+        0.0984
       ],
       "displayNormal": [
-        0.4957717945158092,
-        -0.27636365489384784,
-        0.8233064180584821
+        0,
+        0,
+        1
       ],
-      "faceIndex": 21236,
+      "faceIndex": 0,
       "vertexIndices": [
-        11177,
-        11176,
-        11147
+        0,
+        0,
+        0
       ],
       "barycentric": [
-        0.7563416219248045,
-        0.22061018761475254,
-        0.02304819046044295
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "manual-surface-pick",
-      "status": "pending-review"
+      "method": "user-benchmark",
+      "status": "verified"
     },
     "CV9": {
       "position": [
-        -0.005289564242820046,
-        1.0654790787423627,
-        0.10576730296853043
+        0,
+        1.0621749999999999,
+        0.1047983324618559
       ],
       "displayNormal": [
-        0.02632549109074859,
-        -0.2102479907601384,
-        0.9772935848045642
+        0.001776903795863551,
+        -0.28911007226404273,
+        0.9572942122087545
       ],
-      "faceIndex": 21185,
+      "faceIndex": 21973,
       "vertexIndices": [
-        10039,
-        10038,
-        11148
+        11181,
+        11148,
+        10038
       ],
       "barycentric": [
-        0.031027174595991358,
-        0.6636840247152033,
-        0.3052888006888054
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV10": {
       "position": [
-        -0.004568732569531346,
-        1.0917290787423628,
-        0.1106306945652954
+        0,
+        1.08515,
+        0.1096738670686933
       ],
       "displayNormal": [
-        0.07396374128014145,
-        -0.15661697098086474,
-        0.984886028622918
+        -0.0064604768401985485,
+        -0.14009132197041727,
+        0.9901175100701826
       ],
-      "faceIndex": 19089,
+      "faceIndex": 21942,
       "vertexIndices": [
-        8978,
+        9321,
         10039,
-        9321
+        11507
       ],
       "barycentric": [
-        0.026078911714093878,
-        0.26377566901660304,
-        0.7101454192693031
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV11": {
       "position": [
-        -0.0038479008962426474,
-        1.117979078742363,
-        0.1137813403271053
+        0,
+        1.108125,
+        0.11264933877633225
       ],
       "displayNormal": [
         -0.0055613627882409025,
@@ -306,45 +306,71 @@ export const PROJECT_ACUPOINT_SEED = {
         10032
       ],
       "barycentric": [
-        0.3036451886093714,
-        0.17244309305589198,
-        0.5239117183347366
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV12": {
       "position": [
-        -0.0031270692229539475,
-        1.1442290787423628,
-        0.1156516519732505
+        0,
+        1.1311,
+        0.11512413345397504
       ],
       "displayNormal": [
-        0.015887764998383704,
-        -0.03212433077780243,
-        0.9993575968067859
+        -0.005242879543419654,
+        -0.06303652127466354,
+        0.9979974494955796
       ],
-      "faceIndex": 21144,
+      "faceIndex": 21143,
       "vertexIndices": [
+        10032,
         11128,
-        10410,
         10033
       ],
       "barycentric": [
-        0.15102238302648158,
-        0.49474162480693346,
-        0.3542359921665849
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV13": {
       "position": [
-        -0.0024062375496652477,
-        1.1704790787423627,
-        0.11602957432070254
+        0,
+        1.154075,
+        0.11606293431411607
+      ],
+      "displayNormal": [
+        -0.019618386184563144,
+        -0.04868902413731551,
+        0.9986212985171452
+      ],
+      "faceIndex": 21931,
+      "vertexIndices": [
+        11128,
+        11500,
+        10410
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV14": {
+      "position": [
+        0,
+        1.17705,
+        0.1159851609966051
       ],
       "displayNormal": [
         0.03509118190169019,
@@ -358,175 +384,149 @@ export const PROJECT_ACUPOINT_SEED = {
         9636
       ],
       "barycentric": [
-        0.47716448119469085,
-        0.37834368590554496,
-        0.14449183289976425
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
-    },
-    "CV14": {
-      "position": [
-        -0.0016854058763765487,
-        1.1967290787423628,
-        0.11668418524808871
-      ],
-      "displayNormal": [
-        0.04494658893625325,
-        -0.05855300294301467,
-        0.9972719538768504
-      ],
-      "faceIndex": 21937,
-      "vertexIndices": [
-        10034,
-        11129,
-        11504
-      ],
-      "barycentric": [
-        0.4415251397986395,
-        0.5520368923488835,
-        0.006437967852476925
-      ],
-      "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV15": {
       "position": [
-        -0.0009645742030878479,
-        1.222979078742363,
-        0.1156305270734484
+        -0.001,
+        1.223,
+        0.1156
       ],
       "displayNormal": [
-        -0.03995845472684298,
-        0.25464341967549325,
-        0.9662091133454567
+        0,
+        0,
+        1
       ],
-      "faceIndex": 22724,
+      "faceIndex": 0,
       "vertexIndices": [
-        10771,
-        11505,
-        11508
+        0,
+        0,
+        0
       ],
       "barycentric": [
-        0.784831982035972,
-        0.17642345011247595,
-        0.03874456785155196
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "user-benchmark",
+      "status": "verified"
     },
     "CV16": {
       "position": [
-        -0.0006041583664434993,
-        1.2361040787423627,
-        0.1125171335962491
+        0,
+        1.24462,
+        0.11183363911736602
       ],
       "displayNormal": [
-        -0.004100130066303677,
-        0.15365683959482757,
-        0.9881157647660364
+        -0.02242752758796677,
+        -0.026805562549837278,
+        0.9993890472797257
       ],
-      "faceIndex": 21947,
+      "faceIndex": 21951,
       "vertexIndices": [
-        11508,
+        11132,
         11510,
-        10773
-      ],
-      "barycentric": [
-        0.5558732080246,
-        0.08299471606101418,
-        0.3611320759143858
-      ],
-      "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
-    },
-    "CV17": {
-      "position": [
-        0.0003329228088318108,
-        1.279451300964585,
-        0.11249750326742947
-      ],
-      "displayNormal": [
-        -0.08024662085900341,
-        0.0974350250774402,
-        0.9920014595396873
-      ],
-      "faceIndex": 21162,
-      "vertexIndices": [
-        11134,
-        11135,
         11130
       ],
       "barycentric": [
-        0.7111001096934275,
-        0.010681965717469957,
-        0.2782179245891026
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "CV17": {
+      "position": [
+        0.0003,
+        1.2795,
+        0.1125
+      ],
+      "displayNormal": [
+        0,
+        0,
+        1
+      ],
+      "faceIndex": 0,
+      "vertexIndices": [
+        0,
+        0,
+        0
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "user-benchmark",
+      "status": "verified"
     },
     "CV18": {
       "position": [
-        0.0009095881474627705,
-        1.309673523186807,
-        0.10662121402885194
+        0,
+        1.31438,
+        0.10449127178294054
       ],
       "displayNormal": [
-        -0.08845081256818442,
-        0.3734737344855098,
-        0.9234142209244315
+        -0.08573099479325784,
+        0.4606705299503529,
+        0.8834211110037042
       ],
-      "faceIndex": 21958,
+      "faceIndex": 21980,
       "vertexIndices": [
-        11515,
         11137,
-        10777
+        11529,
+        11151
       ],
       "barycentric": [
-        0.9074257135897464,
-        0.016592343805865814,
-        0.07598194260438777
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV19": {
       "position": [
-        0.0014862534860937303,
-        1.3398957454090294,
-        0.09211264098730809
+        0,
+        1.3492600000000001,
+        0.08953948459170412
       ],
       "displayNormal": [
-        -0.05058994650524766,
-        0.2595194408092957,
-        0.9644119022257175
+        0.017342986828429514,
+        0.23896136772952584,
+        0.9708741862572635
       ],
-      "faceIndex": 22078,
+      "faceIndex": 22113,
       "vertexIndices": [
         11202,
-        11578,
-        11580
+        11580,
+        11203
       ],
       "barycentric": [
-        0.16945539314499258,
-        0.5920341856392168,
-        0.23851042121579055
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV20": {
       "position": [
-        0.0020629188247246882,
-        1.3701179676312516,
-        0.07922092887266707
+        0,
+        1.3841400000000001,
+        0.06942184046942007
       ],
       "displayNormal": [
         -0.0668630410700353,
@@ -540,65 +540,65 @@ export const PROJECT_ACUPOINT_SEED = {
         10568
       ],
       "barycentric": [
-        0.6810601653242371,
-        0.07821417269316619,
-        0.2407256619825967
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV21": {
       "position": [
-        0.0024954178286979104,
-        1.3927846342979182,
-        0.06199267114609974
+        0,
+        1.40594,
+        0.04931558238940584
       ],
       "displayNormal": [
-        -0.1717897789935018,
-        0.6767328290930341,
-        0.7159056850319756
+        -0.06503043297749796,
+        0.6898633396974273,
+        0.7210129092660349
       ],
-      "faceIndex": 23082,
+      "faceIndex": 22315,
       "vertexIndices": [
-        11663,
-        12087,
+        11694,
+        11304,
         11675
       ],
       "barycentric": [
-        0.5566475872314087,
-        0.00905476584965949,
-        0.4342976469189318
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "CV22": {
       "position": [
-        0.002999999999999999,
-        1.4192290787423627,
-        0.03705961670086816
+        0.003,
+        1.4192,
+        0.0371
       ],
       "displayNormal": [
-        -0.1326181147778343,
-        0.629810146128458,
-        0.7653441157194739
+        0,
+        0,
+        1
       ],
-      "faceIndex": 23115,
+      "faceIndex": 0,
       "vertexIndices": [
-        11694,
-        12106,
-        11312
+        0,
+        0,
+        0
       ],
       "barycentric": [
-        0.013248870843470213,
-        0.03573086828532295,
-        0.9510202608712068
+        0.33,
+        0.33,
+        0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "user-benchmark",
+      "status": "verified"
     },
     "GV1": {
       "position": [
@@ -2109,22 +2109,21 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "BL11": {
-      "name": "大杼",
       "position": [
         0.039,
         1.425,
-        -0.122881
+        -0.1228813898118438
       ],
       "displayNormal": [
-        0.130565,
-        0.659636,
-        0.740158
+        -0.22003208501645885,
+        0.34843473804578246,
+        -0.9111416546763058
       ],
-      "faceIndex": 27065,
+      "faceIndex": 26198,
       "vertexIndices": [
-        13877,
-        13868,
-        13524
+        13001,
+        12630,
+        13368
       ],
       "barycentric": [
         0.33,
@@ -2132,26 +2131,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T1棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL12": {
-      "name": "风门",
       "position": [
         0.039,
         1.405,
-        -0.128251
+        -0.128250831367956
       ],
       "displayNormal": [
-        0.014724,
-        0.667884,
-        0.744119
+        -0.1982960095471158,
+        0.2470667812163472,
+        -0.9484918018713099
       ],
-      "faceIndex": 26390,
+      "faceIndex": 28254,
       "vertexIndices": [
-        13524,
-        13103,
-        13814
+        14836,
+        13377,
+        13368
       ],
       "barycentric": [
         0.33,
@@ -2159,26 +2157,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T2棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL13": {
-      "name": "肺俞",
       "position": [
         0.039,
         1.38,
-        -0.131986
+        -0.13198620381841214
       ],
       "displayNormal": [
-        -0.024958,
-        0.582738,
-        0.812276
+        -0.39067341849172116,
+        0.11901238185646774,
+        -0.9128035566587386
       ],
-      "faceIndex": 26302,
+      "faceIndex": 28269,
       "vertexIndices": [
-        13423,
-        12422,
-        13407
+        14063,
+        13377,
+        14845
       ],
       "barycentric": [
         0.33,
@@ -2186,26 +2183,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T3棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL14": {
-      "name": "厥阴俞",
       "position": [
         0.039,
         1.356,
-        -0.135146
+        -0.13514642164752683
       ],
       "displayNormal": [
-        -0.013157,
-        0.501598,
-        0.865001
+        -0.4435911441914087,
+        0.12087144947076454,
+        -0.8880410967392183
       ],
-      "faceIndex": 26925,
+      "faceIndex": 27561,
       "vertexIndices": [
-        14094,
-        13400,
-        13772
+        14063,
+        14451,
+        12643
       ],
       "barycentric": [
         0.33,
@@ -2213,26 +2209,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T4棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL15": {
-      "name": "心俞",
       "position": [
         0.039,
         1.318,
-        -0.138308
+        -0.13830812316030358
       ],
       "displayNormal": [
-        -0.083032,
-        0.42091,
-        0.903294
+        -0.3447122372158876,
+        -0.044502763310631695,
+        -0.9376529089014418
       ],
-      "faceIndex": 26272,
+      "faceIndex": 28282,
       "vertexIndices": [
-        13763,
-        13764,
-        13395
+        14068,
+        13740,
+        13007
       ],
       "barycentric": [
         0.33,
@@ -2240,26 +2235,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T5棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL16": {
-      "name": "督俞",
       "position": [
         0.039,
         1.287,
-        -0.133476
+        -0.1334759574562141
       ],
       "displayNormal": [
-        -0.040142,
-        0.161343,
-        0.986082
+        -0.3098423277212916,
+        -0.16145013002401412,
+        -0.9369800357891735
       ],
-      "faceIndex": 27572,
+      "faceIndex": 26861,
       "vertexIndices": [
-        13390,
-        13752,
-        14082
+        14055,
+        12272,
+        13740
       ],
       "barycentric": [
         0.33,
@@ -2267,26 +2261,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T6棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL17": {
-      "name": "膈俞",
       "position": [
         0.039,
         1.257,
-        -0.129345
+        -0.129345435717799
       ],
       "displayNormal": [
-        -0.120795,
-        -0.27772,
-        0.953037
+        -0.37127361472241516,
+        -0.06222600098270095,
+        -0.9264360894377185
       ],
-      "faceIndex": 27568,
+      "faceIndex": 27543,
       "vertexIndices": [
-        14073,
-        13387,
-        14079
+        12998,
+        14055,
+        14440
       ],
       "barycentric": [
         0.33,
@@ -2294,26 +2287,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T7棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL18": {
-      "name": "肝俞",
       "position": [
         0.039,
         1.205,
-        -0.122722
+        -0.12272207864839935
       ],
       "displayNormal": [
-        -0.018511,
-        -0.039955,
-        0.99903
+        -0.23999627909135837,
+        -0.1973146474559562,
+        -0.9505097137439651
       ],
-      "faceIndex": 26242,
+      "faceIndex": 27531,
       "vertexIndices": [
-        13747,
-        13024,
-        12296
+        14436,
+        14437,
+        13720
       ],
       "barycentric": [
         0.33,
@@ -2321,26 +2313,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T9棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL19": {
-      "name": "胆俞",
       "position": [
         0.039,
         1.178,
-        -0.116207
+        -0.11620695757424813
       ],
       "displayNormal": [
-        -0.041081,
-        0.04066,
-        0.998328
+        -0.26972863395191854,
+        -0.2561213438978648,
+        -0.9282501393624369
       ],
-      "faceIndex": 26890,
+      "faceIndex": 27495,
       "vertexIndices": [
-        13746,
-        12660,
-        12295
+        14415,
+        14044,
+        13720
       ],
       "barycentric": [
         0.33,
@@ -2348,26 +2339,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T10棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL20": {
-      "name": "脾俞",
       "position": [
         0.039,
         1.154,
-        -0.110561
+        -0.11056115069890224
       ],
       "displayNormal": [
-        0.060783,
-        -0.040591,
-        0.997325
+        -0.1854264968568826,
+        -0.20984134896965675,
+        -0.9599914700277181
       ],
-      "faceIndex": 26888,
+      "faceIndex": 27484,
       "vertexIndices": [
-        13392,
-        14075,
-        12295
+        13360,
+        14415,
+        14414
       ],
       "barycentric": [
         0.33,
@@ -2375,26 +2365,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T11棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL21": {
-      "name": "胃俞",
       "position": [
         0.039,
         1.128,
-        -0.106781
+        -0.10678095075777791
       ],
       "displayNormal": [
-        0.099131,
-        -0.217087,
-        0.971106
+        -0.03882090737683094,
+        -0.1281662872065372,
+        -0.9909926033902225
       ],
-      "faceIndex": 26259,
+      "faceIndex": 26171,
       "vertexIndices": [
-        13755,
-        13757,
-        13029
+        12233,
+        12620,
+        13356
       ],
       "barycentric": [
         0.33,
@@ -2402,26 +2391,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，T12棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL22": {
-      "name": "三焦俞",
       "position": [
         0.039,
         1.093,
-        -0.101105
+        -0.1011050132461941
       ],
       "displayNormal": [
-        0.040133,
-        -0.003501,
-        0.999188
+        0.09267774424646126,
+        -0.19572339793980037,
+        -0.9762700380633866
       ],
-      "faceIndex": 26914,
+      "faceIndex": 29977,
       "vertexIndices": [
-        14088,
-        13754,
-        12305
+        14813,
+        14033,
+        15129
       ],
       "barycentric": [
         0.33,
@@ -2429,26 +2417,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，L1棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL23": {
-      "name": "肾俞",
       "position": [
         0.039,
         1.07,
-        -0.09728
+        -0.0972801465293021
       ],
       "displayNormal": [
-        0.124189,
-        -0.127536,
-        0.984028
+        0.10921580236461131,
+        -0.09818141838036845,
+        -0.9891573775687433
       ],
-      "faceIndex": 26912,
+      "faceIndex": 26802,
       "vertexIndices": [
-        14087,
-        12305,
-        13768
+        14032,
+        13350,
+        13355
       ],
       "barycentric": [
         0.33,
@@ -2456,26 +2443,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉1.5寸，L2棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL41": {
-      "name": "附分",
       "position": [
         0.078,
         1.405,
-        -0.13296
+        -0.13296004181538473
       ],
       "displayNormal": [
-        0.317869,
-        0.709625,
-        0.628802
+        0.061100363207332614,
+        0.3176153804349467,
+        -0.946249024161767
       ],
-      "faceIndex": 32366,
+      "faceIndex": 31851,
       "vertexIndices": [
-        15759,
-        16640,
-        16457
+        15146,
+        16580,
+        15955
       ],
       "barycentric": [
         0.33,
@@ -2483,26 +2469,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T2棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL42": {
-      "name": "魄户",
       "position": [
         0.078,
         1.38,
-        -0.138252
+        -0.13825196334824597
       ],
       "displayNormal": [
-        0.24616,
-        0.666852,
-        0.703359
+        0.04391248893860904,
+        0.17505240433125835,
+        -0.9835793557477008
       ],
-      "faceIndex": 30110,
+      "faceIndex": 31475,
       "vertexIndices": [
-        15178,
-        15179,
-        15751
+        15957,
+        15956,
+        16387
       ],
       "barycentric": [
         0.33,
@@ -2510,26 +2495,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T3棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL43": {
-      "name": "膏肓",
       "position": [
         0.078,
         1.356,
-        -0.142523
+        -0.1425233601393635
       ],
       "displayNormal": [
-        0.221783,
-        0.576611,
-        0.786341
+        0.04391248893860904,
+        0.17505240433125835,
+        -0.9835793557477008
       ],
-      "faceIndex": 30603,
+      "faceIndex": 31475,
       "vertexIndices": [
-        15460,
-        15986,
-        15463
+        15957,
+        15956,
+        16387
       ],
       "barycentric": [
         0.33,
@@ -2537,26 +2521,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T4棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL44": {
-      "name": "神堂",
       "position": [
         0.078,
         1.318,
-        -0.143733
+        -0.14373259409488834
       ],
       "displayNormal": [
-        0.297042,
-        0.301967,
-        0.90586
+        0.07527159274527223,
+        -0.077101449621405,
+        -0.9941778280528427
       ],
-      "faceIndex": 31880,
+      "faceIndex": 31472,
       "vertexIndices": [
-        16402,
-        15449,
-        15444
+        16388,
+        15728,
+        16191
       ],
       "barycentric": [
         0.33,
@@ -2564,26 +2547,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T5棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL45": {
-      "name": "譩譆",
       "position": [
         0.078,
         1.287,
-        -0.139911
+        -0.13991102808213327
       ],
       "displayNormal": [
-        0.191075,
-        0.225074,
-        0.955423
+        -0.056887765270361726,
+        -0.1651976577827603,
+        -0.9846184621596501
       ],
-      "faceIndex": 31484,
+      "faceIndex": 31034,
       "vertexIndices": [
-        16392,
-        16393,
-        15444
+        16188,
+        15425,
+        15433
       ],
       "barycentric": [
         0.33,
@@ -2591,26 +2573,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T6棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL46": {
-      "name": "膈关",
       "position": [
         0.078,
         1.257,
-        -0.133691
+        -0.13369120462571366
       ],
       "displayNormal": [
-        0.173883,
-        -0.403036,
-        0.898514
+        0.06382038077986843,
+        -0.2529441110135503,
+        -0.9653736249249185
       ],
-      "faceIndex": 31041,
+      "faceIndex": 31848,
       "vertexIndices": [
-        14456,
-        15439,
-        16192
+        15716,
+        16583,
+        15418
       ],
       "barycentric": [
         0.33,
@@ -2618,26 +2599,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T7棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL47": {
-      "name": "魂门",
       "position": [
         0.078,
         1.205,
-        -0.119303
+        -0.11930283439139797
       ],
       "displayNormal": [
-        0.287253,
-        -0.059146,
-        0.956027
+        0.27879614475033115,
+        -0.23926197127752974,
+        -0.9300679645986862
       ],
-      "faceIndex": 31048,
+      "faceIndex": 31010,
       "vertexIndices": [
-        15732,
-        15731,
-        16197
+        15417,
+        16174,
+        15411
       ],
       "barycentric": [
         0.33,
@@ -2645,26 +2625,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T9棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL48": {
-      "name": "阳纲",
       "position": [
         0.078,
         1.178,
-        -0.112382
+        -0.11238181852430097
       ],
       "displayNormal": [
-        0.390627,
-        -0.144644,
-        0.909114
+        0.3297761515517326,
+        -0.2213832218858998,
+        -0.9177347977139949
       ],
-      "faceIndex": 31486,
+      "faceIndex": 31444,
       "vertexIndices": [
-        16395,
-        15731,
-        15959
+        16169,
+        15705,
+        16375
       ],
       "barycentric": [
         0.33,
@@ -2672,26 +2651,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T10棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL49": {
-      "name": "意舍",
       "position": [
         0.078,
         1.154,
-        -0.106982
+        -0.10698154757904388
       ],
       "displayNormal": [
-        0.441421,
-        -0.216257,
-        0.87085
+        0.40145248952490764,
+        -0.1905892828714069,
+        -0.8958301311681903
       ],
-      "faceIndex": 31056,
+      "faceIndex": 31439,
       "vertexIndices": [
-        16202,
-        15959,
-        15737
+        16368,
+        16161,
+        16169
       ],
       "barycentric": [
         0.33,
@@ -2699,26 +2677,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T11棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL50": {
-      "name": "胃仓",
       "position": [
         0.078,
         1.128,
-        -0.100094
+        -0.10009398085978802
       ],
       "displayNormal": [
-        0.502056,
-        -0.243559,
-        0.829831
+        0.4503072314872519,
+        -0.24124979882644954,
+        -0.8596638481618756
       ],
-      "faceIndex": 32273,
+      "faceIndex": 31424,
       "vertexIndices": [
-        16202,
-        15737,
-        15970
+        15930,
+        16161,
+        16367
       ],
       "barycentric": [
         0.33,
@@ -2726,26 +2703,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，T12棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL51": {
-      "name": "肓门",
       "position": [
         0.078,
         1.093,
-        -0.091848
+        -0.09184815787813824
       ],
       "displayNormal": [
-        0.664524,
-        -0.183027,
-        0.724506
+        0.5730861791855257,
+        -0.17571745491311144,
+        -0.8004346364728318
       ],
-      "faceIndex": 30594,
+      "faceIndex": 31760,
       "vertexIndices": [
-        15969,
-        15451,
-        15976
+        16153,
+        15930,
+        16538
       ],
       "barycentric": [
         0.33,
@@ -2753,26 +2729,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，L1棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL52": {
-      "name": "志室",
       "position": [
         0.078,
         1.07,
-        -0.087707
+        -0.08770730163989542
       ],
       "displayNormal": [
-        0.666066,
-        -0.075363,
-        0.742076
+        0.4660458270951999,
+        -0.1138454973890996,
+        -0.8774055446436269
       ],
-      "faceIndex": 31071,
+      "faceIndex": 31402,
       "vertexIndices": [
-        15968,
-        15976,
-        15451
+        15922,
+        16153,
+        16352
       ],
       "barycentric": [
         0.33,
@@ -2780,8 +2755,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "旁开督脉3寸，L2棘突下"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "ST12": {
       "name": "缺盆",
@@ -6213,22 +6188,21 @@ export const PROJECT_ACUPOINT_SEED = {
       "note": "膝后区，腘横纹上，半腱肌肌腱与半膜肌肌腱之间"
     },
     "CV23": {
-      "name": "廉泉",
       "position": [
         0,
-        1.51,
-        0.082196
+        1.48,
+        0.03355617344125411
       ],
       "displayNormal": [
-        0.011606,
-        -0.201451,
-        -0.97943
+        0.06903531443926574,
+        -0.5790739445009808,
+        0.8123469038288669
       ],
-      "faceIndex": 22171,
+      "faceIndex": 22349,
       "vertexIndices": [
-        11237,
-        11240,
-        11620
+        11701,
+        11324,
+        11325
       ],
       "barycentric": [
         0.33,
@@ -6236,8 +6210,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "颈前区，喉结上方，舌骨上缘凹陷中，前正中线上"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "ST9": {
       "name": "人迎",
@@ -6294,22 +6268,21 @@ export const PROJECT_ACUPOINT_SEED = {
       "note": "胸锁乳突肌区，锁骨上小窝，锁骨胸骨端上缘"
     },
     "BL3": {
-      "name": "眉冲",
       "position": [
-        0.02,
-        1.63,
-        0.080151
+        0.028810899704694748,
+        1.6476812362670898,
+        0.07523699849843979
       ],
       "displayNormal": [
-        -0.171582,
-        -0.128304,
-        -0.976779
+        0.42774742881557665,
+        0.2977996154667806,
+        0.8534501174962614
       ],
-      "faceIndex": 25627,
+      "faceIndex": 0,
       "vertexIndices": [
-        12402,
-        12403,
-        12404
+        13071,
+        13071,
+        13071
       ],
       "barycentric": [
         0.33,
@@ -6317,26 +6290,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，额切迹直上入发际0.5寸"
+      "method": "vertex-snap",
+      "status": "auto-verified"
     },
     "BL4": {
-      "name": "曲差",
       "position": [
-        0.03,
-        1.64,
-        0.074871
+        0.04809439927339554,
+        1.650611162185669,
+        0.059532999992370605
       ],
       "displayNormal": [
-        -0.396504,
-        -0.278894,
-        -0.874644
+        0.6960661641285439,
+        0.2562334055604724,
+        0.6707052827539903
       ],
-      "faceIndex": 26330,
+      "faceIndex": 0,
       "vertexIndices": [
-        13434,
-        13421,
-        12731
+        14486,
+        14486,
+        14486
       ],
       "barycentric": [
         0.33,
@@ -6344,26 +6316,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，前发际正中直上0.5寸，旁开1.5寸"
+      "method": "vertex-snap",
+      "status": "auto-verified"
     },
     "BL5": {
-      "name": "五处",
       "position": [
-        0.03,
-        1.65,
-        0.071325
+        0.05540439859032631,
+        1.6524312496185303,
+        0.04936299845576286
       ],
       "displayNormal": [
-        -0.493681,
-        -0.299629,
-        -0.816396
+        0.8512222663045137,
+        0.20896023438215278,
+        0.4814294869838557
       ],
-      "faceIndex": 25679,
+      "faceIndex": 0,
       "vertexIndices": [
-        13435,
-        13434,
-        13089
+        14900,
+        14900,
+        14900
       ],
       "barycentric": [
         0.33,
@@ -6371,26 +6342,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，前发际正中直上1寸，旁开1.5寸"
+      "method": "vertex-snap",
+      "status": "auto-verified"
     },
     "BL6": {
-      "name": "承光",
       "position": [
-        0.03,
-        1.66,
-        0.067294
+        0.06,
+        1.64,
+        0.04248032764179774
       ],
       "displayNormal": [
-        -0.552783,
-        -0.369476,
-        -0.74694
+        0.9484274821359427,
+        0.07891918248324832,
+        0.3070131491735361
       ],
-      "faceIndex": 26996,
+      "faceIndex": 29597,
       "vertexIndices": [
-        14116,
-        13089,
-        13845
+        15195,
+        15492,
+        15214
       ],
       "barycentric": [
         0.33,
@@ -6398,26 +6368,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，前发际正中直上2.5寸，旁开1.5寸"
+      "method": "regional-projection",
+      "status": "pending-review"
     },
     "BL7": {
-      "name": "通天",
       "position": [
-        0.03,
-        1.67,
-        0.062157
+        0.06,
+        1.625,
+        0.043554801376185684
       ],
       "displayNormal": [
-        -0.481181,
-        -0.410238,
-        -0.774706
+        0.9569805275569198,
+        0.0008008760371091176,
+        0.29015104424153404
       ],
-      "faceIndex": 26437,
+      "faceIndex": 29595,
       "vertexIndices": [
-        13516,
-        13089,
-        13088
+        15192,
+        15484,
+        15492
       ],
       "barycentric": [
         0.33,
@@ -6425,26 +6394,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，前发际正中直上4寸，旁开1.5寸"
+      "method": "regional-projection",
+      "status": "pending-review"
     },
     "BL8": {
-      "name": "络却",
       "position": [
-        0.03,
-        1.68,
-        0.056194
+        0.055,
+        1.61,
+        -0.09783490895226538
       ],
       "displayNormal": [
-        -0.496954,
-        -0.511767,
-        -0.700807
+        0.7460969335289729,
+        -0.2669648018797778,
+        -0.609974721063057
       ],
-      "faceIndex": 26457,
+      "faceIndex": 29958,
       "vertexIndices": [
-        13170,
-        13854,
-        13516
+        14819,
+        15133,
+        15378
       ],
       "barycentric": [
         0.33,
@@ -6452,26 +6420,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，前发际正中直上5.5寸，旁开1.5寸"
+      "method": "regional-projection",
+      "status": "pending-review"
     },
     "BL9": {
-      "name": "玉枕",
       "position": [
-        0.03,
-        1.64,
-        0.074871
+        0.045,
+        1.58,
+        -0.08687729462034477
       ],
       "displayNormal": [
-        -0.396504,
-        -0.278894,
-        -0.874644
+        0.6086384717111709,
+        -0.4865421550957506,
+        -0.6267662579206646
       ],
-      "faceIndex": 26330,
+      "faceIndex": 28162,
       "vertexIndices": [
-        13434,
-        13421,
-        12731
+        14028,
+        14396,
+        14351
       ],
       "barycentric": [
         0.33,
@@ -6479,26 +6446,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "头部，横平枕外隆凸上缘，后发际正中旁开1.3寸"
+      "method": "regional-projection",
+      "status": "pending-review"
     },
     "BL10": {
-      "name": "天柱",
       "position": [
-        0.03,
-        1.55,
-        0.074562
+        0.04,
+        1.52,
+        -0.06189573589353975
       ],
       "displayNormal": [
-        -0.370053,
-        0.089882,
-        -0.924653
+        0.8599922000547766,
+        -0.0021308127021146725,
+        -0.5103027292521309
       ],
-      "faceIndex": 25638,
+      "faceIndex": 27305,
       "vertexIndices": [
-        13415,
-        12370,
-        13064
+        13990,
+        14316,
+        13989
       ],
       "barycentric": [
         0.33,
@@ -6506,8 +6472,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "颈后区，横平第2颈椎棘突上际，斜方肌外缘凹陷中"
+      "method": "regional-projection",
+      "status": "pending-review"
     },
     "GB8": {
       "name": "率谷",
@@ -7104,22 +7070,21 @@ export const PROJECT_ACUPOINT_SEED = {
       "note": "颈部，下颌角后方，胸锁乳突肌的前缘凹陷中"
     },
     "BL11-R": {
-      "name": "大杼(右)",
       "position": [
         -0.039,
         1.425,
-        -0.120227
+        -0.12251356104373189
       ],
       "displayNormal": [
-        -0.207779,
-        -0.32395,
-        0.922976
+        0.17101319906465431,
+        0.35614938466028906,
+        -0.9186468862145946
       ],
-      "faceIndex": 18316,
+      "faceIndex": 17062,
       "vertexIndices": [
-        9290,
-        9283,
-        7928
+        8559,
+        8947,
+        7664
       ],
       "barycentric": [
         0.33,
@@ -7127,26 +7092,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL11"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL12-R": {
-      "name": "风门(右)",
       "position": [
         -0.039,
         1.405,
-        -0.125835
+        -0.12773778257658427
       ],
       "displayNormal": [
-        -0.290504,
-        -0.145563,
-        0.945737
+        0.27369928163025364,
+        0.18187966533451597,
+        -0.9444620111856736
       ],
-      "faceIndex": 17718,
+      "faceIndex": 17728,
       "vertexIndices": [
-        8946,
-        7940,
-        9288
+        8953,
+        7936,
+        8562
       ],
       "barycentric": [
         0.33,
@@ -7154,26 +7118,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL12"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL13-R": {
-      "name": "肺俞(右)",
       "position": [
         -0.039,
         1.38,
-        -0.129381
+        -0.13164059283991447
       ],
       "displayNormal": [
-        -0.469419,
-        -0.096316,
-        0.877707
+        0.32024165357043655,
+        0.12013326123883379,
+        -0.9396878645925969
       ],
-      "faceIndex": 18343,
+      "faceIndex": 17071,
       "vertexIndices": [
-        8952,
-        8572,
-        9627
+        8953,
+        8565,
+        7936
       ],
       "barycentric": [
         0.33,
@@ -7181,26 +7144,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL13"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL14-R": {
-      "name": "厥阴俞(右)",
       "position": [
         -0.039,
         1.356,
-        -0.132014
+        -0.13442819329328093
       ],
       "displayNormal": [
-        -0.469419,
-        -0.096316,
-        0.877707
+        0.49070457029787373,
+        0.1261860038492285,
+        -0.8621404277270273
       ],
-      "faceIndex": 18343,
+      "faceIndex": 19055,
       "vertexIndices": [
-        8952,
-        8572,
-        9627
+        10018,
+        8958,
+        8565
       ],
       "barycentric": [
         0.33,
@@ -7208,26 +7170,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL14"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL15-R": {
-      "name": "心俞(右)",
       "position": [
         -0.039,
         1.318,
-        -0.135766
+        -0.137480686060593
       ],
       "displayNormal": [
-        -0.362789,
-        0.114596,
-        0.924798
+        0.38670721273483166,
+        -0.06522423896883568,
+        -0.9198931080673416
       ],
-      "faceIndex": 18351,
+      "faceIndex": 18352,
       "vertexIndices": [
-        9300,
-        8957,
-        8254
+        8569,
+        8961,
+        9630
       ],
       "barycentric": [
         0.33,
@@ -7235,26 +7196,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL15"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL16-R": {
-      "name": "督俞(右)",
       "position": [
         -0.039,
         1.287,
-        -0.130981
+        -0.13306539358603348
       ],
       "displayNormal": [
-        -0.305835,
-        0.171939,
-        0.93643
+        0.2923846433913706,
+        -0.1745063909569809,
+        -0.9402439788821146
       ],
-      "faceIndex": 19039,
+      "faceIndex": 19051,
       "vertexIndices": [
-        7935,
-        10016,
-        9300
+        10015,
+        8248,
+        8569
       ],
       "barycentric": [
         0.33,
@@ -7262,26 +7222,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL16"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL17-R": {
-      "name": "膈俞(右)",
       "position": [
         -0.039,
         1.257,
-        -0.126335
+        -0.12852880468381278
       ],
       "displayNormal": [
-        -0.315511,
-        0.131388,
-        0.939782
+        0.3574961920584556,
+        -0.06999791158440888,
+        -0.9312876918748176
       ],
-      "faceIndex": 17069,
+      "faceIndex": 18334,
       "vertexIndices": [
-        7935,
-        8244,
-        8951
+        8561,
+        8564,
+        9622
       ],
       "barycentric": [
         0.33,
@@ -7289,26 +7248,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL17"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL18-R": {
-      "name": "肝俞(右)",
       "position": [
         -0.039,
         1.205,
-        -0.120199
+        -0.12216898081187876
       ],
       "displayNormal": [
-        -0.208003,
-        0.181848,
-        0.961075
+        0.316505453620091,
+        -0.20835986332452094,
+        -0.925424478379585
       ],
-      "faceIndex": 17716,
+      "faceIndex": 17701,
       "vertexIndices": [
-        8552,
-        9281,
-        8944
+        9282,
+        8942,
+        8945
       ],
       "barycentric": [
         0.33,
@@ -7316,26 +7274,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL18"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL19-R": {
-      "name": "胆俞(右)",
       "position": [
         -0.039,
         1.178,
-        -0.114018
+        -0.11584503469818956
       ],
       "displayNormal": [
-        -0.225683,
-        0.264049,
-        0.937734
+        0.3209513360779438,
+        -0.22223870835842424,
+        -0.9206520495697395
       ],
-      "faceIndex": 17037,
+      "faceIndex": 18312,
       "vertexIndices": [
-        8930,
-        8932,
-        8235
+        9282,
+        9280,
+        8942
       ],
       "barycentric": [
         0.33,
@@ -7343,26 +7300,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL19"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL20-R": {
-      "name": "脾俞(右)",
       "position": [
         -0.039,
         1.154,
-        -0.108452
+        -0.11044818530047071
       ],
       "displayNormal": [
-        -0.19513,
-        0.123399,
-        0.972984
+        0.1504973419795384,
+        -0.19173360323299546,
+        -0.9698395617051235
       ],
-      "faceIndex": 17029,
+      "faceIndex": 17035,
       "vertexIndices": [
-        8235,
-        8546,
-        8930
+        8553,
+        8929,
+        8551
       ],
       "barycentric": [
         0.33,
@@ -7370,26 +7326,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL20"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL21-R": {
-      "name": "胃俞(右)",
       "position": [
         -0.039,
         1.128,
-        -0.104688
+        -0.1067152117849286
       ],
       "displayNormal": [
-        -0.036651,
-        0.126295,
-        0.991315
+        0.038855429215457725,
+        -0.12084122943906328,
+        -0.9919111113845527
       ],
-      "faceIndex": 19007,
+      "faceIndex": 17680,
       "vertexIndices": [
-        9265,
-        9266,
-        8231
+        8923,
+        8234,
+        9269
       ],
       "barycentric": [
         0.33,
@@ -7397,26 +7352,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL21"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL22-R": {
-      "name": "三焦俞(右)",
       "position": [
         -0.039,
         1.093,
-        -0.099273
+        -0.10121905510157253
       ],
       "displayNormal": [
-        0.038754,
-        0.175817,
-        0.98366
+        -0.08481291808013526,
+        -0.19268612539500363,
+        -0.9775882701868885
       ],
-      "faceIndex": 17674,
+      "faceIndex": 16322,
       "vertexIndices": [
-        9265,
-        8231,
-        8217
+        7907,
+        8230,
+        8541
       ],
       "barycentric": [
         0.33,
@@ -7424,26 +7378,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL22"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL23-R": {
-      "name": "肾俞(右)",
       "position": [
         -0.039,
         1.07,
-        -0.095471
+        -0.09775081792009224
       ],
       "displayNormal": [
-        0.105476,
-        0.101084,
-        0.989271
+        -0.11824994502332484,
+        -0.14348487934557883,
+        -0.9825624865122652
       ],
-      "faceIndex": 19001,
+      "faceIndex": 17005,
       "vertexIndices": [
-        8525,
-        9265,
-        7894
+        7907,
+        8541,
+        8534
       ],
       "barycentric": [
         0.33,
@@ -7451,26 +7404,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL23"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL41-R": {
-      "name": "附分(右)",
       "position": [
         -0.078,
         1.405,
-        -0.131071
+        -0.1331335484388908
       ],
       "displayNormal": [
-        0.03056,
-        -0.432003,
-        0.901354
+        -0.00018656766361284028,
+        0.3342225714094301,
+        -0.9424941580471337
       ],
-      "faceIndex": 14058,
+      "faceIndex": 14069,
       "vertexIndices": [
-        7371,
-        5608,
-        6875
+        5861,
+        6704,
+        7378
       ],
       "barycentric": [
         0.33,
@@ -7478,26 +7430,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL41"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL42-R": {
-      "name": "魄户(右)",
       "position": [
         -0.078,
         1.38,
-        -0.136221
+        -0.13815903089213616
       ],
       "displayNormal": [
-        0.057102,
-        -0.190267,
-        0.98007
+        -0.05285650501169341,
+        0.18183702535730298,
+        -0.9819070659116148
       ],
-      "faceIndex": 13135,
+      "faceIndex": 13575,
       "vertexIndices": [
-        5357,
-        6344,
-        6879
+        4857,
+        7116,
+        6345
       ],
       "barycentric": [
         0.33,
@@ -7505,26 +7456,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL42"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL43-R": {
-      "name": "膏肓(右)",
       "position": [
         -0.078,
         1.356,
-        -0.14088
+        -0.1426035335951731
       ],
       "displayNormal": [
-        0.057102,
-        -0.190267,
-        0.98007
+        -0.05285650501169341,
+        0.18183702535730298,
+        -0.9819070659116148
       ],
-      "faceIndex": 13135,
+      "faceIndex": 13575,
       "vertexIndices": [
-        5357,
-        6344,
-        6879
+        4857,
+        7116,
+        6345
       ],
       "barycentric": [
         0.33,
@@ -7532,26 +7482,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL43"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL44-R": {
-      "name": "神堂(右)",
       "position": [
         -0.078,
         1.318,
-        -0.142009
+        -0.14394943181241296
       ],
       "displayNormal": [
-        0.034579,
-        0.111388,
-        0.993175
+        -0.05398329404973879,
+        -0.11506549504907393,
+        -0.9918899817079769
       ],
-      "faceIndex": 13137,
+      "faceIndex": 13574,
       "vertexIndices": [
-        6522,
-        6880,
-        6706
+        7115,
+        6342,
+        6705
       ],
       "barycentric": [
         0.33,
@@ -7559,26 +7508,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL44"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL45-R": {
-      "name": "譩譆(右)",
       "position": [
         -0.078,
         1.287,
-        -0.137751
+        -0.13993264641981917
       ],
       "displayNormal": [
-        -0.040105,
-        0.167022,
-        0.985137
+        -0.01157341502142715,
+        -0.13995991133311173,
+        -0.9900895309437269
       ],
-      "faceIndex": 14066,
+      "faceIndex": 13572,
       "vertexIndices": [
-        7377,
-        7379,
-        6521
+        6878,
+        6342,
+        7115
       ],
       "barycentric": [
         0.33,
@@ -7586,26 +7534,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL45"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL46-R": {
-      "name": "膈关(右)",
       "position": [
         -0.078,
         1.257,
-        -0.131976
+        -0.13373395877183925
       ],
       "displayNormal": [
-        0.09898,
-        0.252804,
-        0.962441
+        -0.11051834461029497,
+        -0.23256797090503833,
+        -0.9662804118959016
       ],
-      "faceIndex": 12770,
+      "faceIndex": 14055,
       "vertexIndices": [
-        6115,
-        6703,
-        6521
+        7370,
+        6874,
+        6878
       ],
       "barycentric": [
         0.33,
@@ -7613,26 +7560,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL46"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL47-R": {
-      "name": "魂门(右)",
       "position": [
         -0.078,
         1.205,
-        -0.11749
+        -0.12008059664164382
       ],
       "displayNormal": [
-        0.258231,
-        0.223068,
-        0.939977
+        -0.23389402639492962,
+        -0.23237516023062152,
+        -0.9440844079448409
       ],
-      "faceIndex": 14042,
+      "faceIndex": 15109,
       "vertexIndices": [
-        6693,
-        6689,
-        6863
+        7366,
+        6691,
+        7652
       ],
       "barycentric": [
         0.33,
@@ -7640,26 +7586,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL47"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL48-R": {
-      "name": "阳纲(右)",
       "position": [
         -0.078,
         1.178,
-        -0.111034
+        -0.11285904452403193
       ],
       "displayNormal": [
-        0.407522,
-        0.235989,
-        0.882176
+        -0.3367751945172112,
+        -0.24860710469246305,
+        -0.9081723271793328
       ],
-      "faceIndex": 13097,
+      "faceIndex": 14039,
       "vertexIndices": [
-        6318,
-        6863,
-        6689
+        7366,
+        6511,
+        6691
       ],
       "barycentric": [
         0.33,
@@ -7667,26 +7612,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL48"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL49-R": {
-      "name": "意舍(右)",
       "position": [
         -0.078,
         1.154,
-        -0.105238
+        -0.10740084959560896
       ],
       "displayNormal": [
-        0.404253,
-        0.185254,
-        0.89569
+        -0.27488962466938643,
+        -0.11677068501310942,
+        -0.954358581126975
       ],
-      "faceIndex": 13543,
+      "faceIndex": 14033,
       "vertexIndices": [
-        7100,
-        6863,
-        6676
+        7361,
+        6511,
+        7363
       ],
       "barycentric": [
         0.33,
@@ -7694,26 +7638,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL49"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL50-R": {
-      "name": "胃仓(右)",
       "position": [
         -0.078,
         1.128,
-        -0.098721
+        -0.10072009542227403
       ],
       "displayNormal": [
-        0.44565,
-        0.237656,
-        0.863085
+        -0.41965918303848526,
+        -0.25083879438175183,
+        -0.8723336914991765
       ],
-      "faceIndex": 14011,
+      "faceIndex": 13525,
       "vertexIndices": [
-        6843,
-        7100,
-        6676
+        6681,
+        7078,
+        6841
       ],
       "barycentric": [
         0.33,
@@ -7721,26 +7664,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL50"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL51-R": {
-      "name": "肓门(右)",
       "position": [
         -0.078,
         1.093,
-        -0.090013
+        -0.09269044551115323
       ],
       "displayNormal": [
-        0.458798,
-        0.167458,
-        0.872618
+        -0.4233773094379359,
+        -0.19725875457517142,
+        -0.8842175284377407
       ],
-      "faceIndex": 13501,
+      "faceIndex": 13502,
       "vertexIndices": [
-        6844,
-        7070,
-        6842
+        6836,
+        6841,
+        7078
       ],
       "barycentric": [
         0.33,
@@ -7748,26 +7690,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL51"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL52-R": {
-      "name": "志室(右)",
       "position": [
         -0.078,
         1.07,
-        -0.086046
+        -0.08839844746305937
       ],
       "displayNormal": [
-        0.486488,
-        0.122796,
-        0.865015
+        -0.5780788223730641,
+        -0.10642942424029603,
+        -0.8090102921345625
       ],
-      "faceIndex": 13484,
+      "faceIndex": 13483,
       "vertexIndices": [
-        7070,
-        6826,
-        7071
+        6827,
+        6661,
+        6836
       ],
       "barycentric": [
         0.33,
@@ -7775,8 +7716,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "status": "pending-review",
-      "note": "右侧对称穴位，镜像自BL52"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "ST12-R": {
       "name": "缺盆(右)",
@@ -10534,20 +10475,20 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "BL1": {
       "position": [
-        0.014460873783849294,
-        1.585,
-        0.08194495144181267
+        0.01958860084414482,
+        1.580321192741394,
+        0.07974500209093094
       ],
       "displayNormal": [
-        0.695780355754989,
-        0.3710065082486056,
-        0.6150153391441859
+        0.6001464888454848,
+        0.4518570513016144,
+        0.6600543229468673
       ],
-      "faceIndex": 24322,
+      "faceIndex": 0,
       "vertexIndices": [
-        12701,
-        11999,
-        12348
+        12717,
+        12717,
+        12717
       ],
       "barycentric": [
         0.33,
@@ -10555,25 +10496,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "vertex-snap",
+      "status": "auto-verified"
     },
     "BL2": {
       "position": [
-        0.02128639807781326,
-        1.605,
-        0.06811647384900243
+        0.03170369938015938,
+        1.6162612438201904,
+        0.0744289979338646
       ],
       "displayNormal": [
-        0.3051403844019695,
-        -0.6148206422543718,
-        0.727244748117812
+        -0.12839136936552017,
+        0.6224555192724387,
+        -0.772057252723777
       ],
-      "faceIndex": 25091,
+      "faceIndex": 0,
       "vertexIndices": [
-        12751,
-        13119,
-        12729
+        13068,
+        13068,
+        13068
       ],
       "barycentric": [
         0.33,
@@ -10581,8 +10522,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "vertex-snap",
+      "status": "auto-verified"
     },
     "ST1": {
       "position": [
@@ -11107,19 +11048,19 @@ export const PROJECT_ACUPOINT_SEED = {
     "CV24": {
       "position": [
         0,
-        1.525,
-        0.08578082413678512
+        1.56,
+        0.10163089128701085
       ],
       "displayNormal": [
-        -0.049177235496073224,
-        -0.5186586482853757,
-        0.8535659353955913
+        -0.2593177119374128,
+        -0.4876443496147632,
+        0.8336409974109598
       ],
-      "faceIndex": 22176,
+      "faceIndex": 21982,
       "vertexIndices": [
-        11623,
-        11600,
-        10882
+        11531,
+        11530,
+        11153
       ],
       "barycentric": [
         0.33,
@@ -11127,8 +11068,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
     },
     "ST10": {
       "position": [
@@ -12141,8 +12082,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL25": {
       "position": [
@@ -12167,8 +12108,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL26": {
       "position": [
@@ -12193,8 +12134,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL27": {
       "position": [
@@ -12219,8 +12160,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL28": {
       "position": [
@@ -12245,8 +12186,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL29": {
       "position": [
@@ -12271,8 +12212,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL30": {
       "position": [
@@ -12297,8 +12238,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL31": {
       "position": [
@@ -12453,25 +12394,25 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL54": {
       "position": [
         0.078,
-        1.07,
-        -0.08770730163989542
+        0.89,
+        -0.13571681743497943
       ],
       "displayNormal": [
-        0.4660458270951999,
-        -0.1138454973890996,
-        -0.8774055446436269
+        0.3073413082153946,
+        -0.052143806662228814,
+        -0.9501696394282559
       ],
-      "faceIndex": 31402,
+      "faceIndex": 31028,
       "vertexIndices": [
-        15922,
-        16153,
-        16352
+        16185,
+        15718,
+        16186
       ],
       "barycentric": [
         0.33,
@@ -12479,8 +12420,8 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     },
     "BL59": {
       "position": [
@@ -13031,19 +12972,19 @@ export const PROJECT_ACUPOINT_SEED = {
     "CV1": {
       "position": [
         0,
-        0.8309710029271914,
-        0.02
+        0.85,
+        0.08727210971165959
       ],
       "displayNormal": [
-        -0.02508586020423813,
-        0.9198537108093867,
-        -0.39145861892161077
+        -0.018589504338641618,
+        0.5684334419219735,
+        0.8225192109812282
       ],
-      "faceIndex": 22375,
+      "faceIndex": 22105,
       "vertexIndices": [
-        11715,
-        11722,
-        11333
+        11196,
+        11594,
+        10848
       ],
       "barycentric": [
         0.33,
@@ -13051,8 +12992,242 @@ export const PROJECT_ACUPOINT_SEED = {
         0.34
       ],
       "meshId": "FJ2810",
-      "method": "regional-projection",
-      "status": "pending-review"
+      "method": "bone-measurement-projection",
+      "status": "auto-verified"
+    },
+    "BL24-R": {
+      "position": [
+        -0.039,
+        1.046,
+        -0.09657511975620407
+      ],
+      "displayNormal": [
+        -0.15321997401339527,
+        0.17561209531153918,
+        -0.9724628689793895
+      ],
+      "faceIndex": 17015,
+      "vertexIndices": [
+        8922,
+        7624,
+        8533
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL25-R": {
+      "position": [
+        -0.039,
+        1.017,
+        -0.10174042438361729
+      ],
+      "displayNormal": [
+        0.023956651394516512,
+        0.17362789178547147,
+        -0.9845199002803825
+      ],
+      "faceIndex": 18283,
+      "vertexIndices": [
+        9600,
+        8922,
+        8533
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL26-R": {
+      "position": [
+        -0.039,
+        0.983,
+        -0.11299334081837803
+      ],
+      "displayNormal": [
+        0.1248853037264225,
+        0.4989704784745813,
+        -0.8575733919169873
+      ],
+      "faceIndex": 18300,
+      "vertexIndices": [
+        9277,
+        8927,
+        9268
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL27-R": {
+      "position": [
+        -0.039,
+        0.95,
+        -0.13117983667850908
+      ],
+      "displayNormal": [
+        0.1328806758421261,
+        0.3691588903453817,
+        -0.9198176121746671
+      ],
+      "faceIndex": 17727,
+      "vertexIndices": [
+        8943,
+        9293,
+        8950
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL28-R": {
+      "position": [
+        -0.039,
+        0.93,
+        -0.13776248949750258
+      ],
+      "displayNormal": [
+        0.06778385082391039,
+        0.25369813278328296,
+        -0.9649054912216831
+      ],
+      "faceIndex": 17736,
+      "vertexIndices": [
+        8955,
+        8568,
+        7934
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL29-R": {
+      "position": [
+        -0.039,
+        0.91,
+        -0.1412439997840193
+      ],
+      "displayNormal": [
+        0.19702031057496436,
+        0.08364831202443988,
+        -0.9768244249180128
+      ],
+      "faceIndex": 18361,
+      "vertexIndices": [
+        9303,
+        8567,
+        9299
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL30-R": {
+      "position": [
+        -0.039,
+        0.89,
+        -0.14094512372527415
+      ],
+      "displayNormal": [
+        0.08479745894680546,
+        -0.1018861819508287,
+        -0.9911753613178887
+      ],
+      "faceIndex": 17745,
+      "vertexIndices": [
+        8251,
+        9303,
+        9302
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL53-R": {
+      "position": [
+        -0.078,
+        0.93,
+        -0.13255007134119035
+      ],
+      "displayNormal": [
+        -0.3369060820677323,
+        0.1997947039647416,
+        -0.9200958472536499
+      ],
+      "faceIndex": 13570,
+      "vertexIndices": [
+        6701,
+        6872,
+        7114
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
+    },
+    "BL54-R": {
+      "position": [
+        -0.078,
+        0.89,
+        -0.1361441880758566
+      ],
+      "displayNormal": [
+        -0.3216606568290324,
+        -0.13824160298413496,
+        -0.9367089628335433
+      ],
+      "faceIndex": 14061,
+      "vertexIndices": [
+        7110,
+        6698,
+        7112
+      ],
+      "barycentric": [
+        0.33,
+        0.33,
+        0.34
+      ],
+      "meshId": "FJ2810",
+      "method": "bony-landmark-projection",
+      "status": "auto-verified"
     }
   }
 };
