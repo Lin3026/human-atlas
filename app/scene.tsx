@@ -122,12 +122,13 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const xMin=-0.4,xMax=0.4;
     const yMin=-0.1,yMax=1.8;
     const zMin=-0.2,zMax=0.2;
-    const step=0.0125; // 1.25cm间距（细分8次）
+    const stepXY=0.0125; // X/Y轴1.25cm间距
+    const stepZ=0.04; // Z轴4cm间距
     
     // X方向线（红色，平行于X轴）
     const xPoints=[];
-    for(let y=yMin;y<=yMax+0.001;y+=step){
-      for(let z=zMin;z<=zMax+0.001;z+=step){
+    for(let y=yMin;y<=yMax+0.001;y+=stepXY){
+      for(let z=zMin;z<=zMax+0.001;z+=stepZ){
         xPoints.push(new T.Vector3(xMin,y,z));
         xPoints.push(new T.Vector3(xMax,y,z));
       }
@@ -138,8 +139,8 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     
     // Y方向线（绿色，平行于Y轴）
     const yPoints=[];
-    for(let x=xMin;x<=xMax+0.001;x+=step){
-      for(let z=zMin;z<=zMax+0.001;z+=step){
+    for(let x=xMin;x<=xMax+0.001;x+=stepXY){
+      for(let z=zMin;z<=zMax+0.001;z+=stepZ){
         yPoints.push(new T.Vector3(x,yMin,z));
         yPoints.push(new T.Vector3(x,yMax,z));
       }
@@ -150,8 +151,8 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     
     // Z方向线（蓝色，平行于Z轴）
     const zPoints=[];
-    for(let x=xMin;x<=xMax+0.001;x+=step){
-      for(let y=yMin;y<=yMax+0.001;y+=step){
+    for(let x=xMin;x<=xMax+0.001;x+=stepXY){
+      for(let y=yMin;y<=yMax+0.001;y+=stepXY){
         zPoints.push(new T.Vector3(x,y,zMin));
         zPoints.push(new T.Vector3(x,y,zMax));
       }
@@ -245,11 +246,12 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const xMin=-0.4,xMax=0.4;
     const yMin=-0.1,yMax=1.8;
     const zMin=-0.2,zMax=0.2;
-    const step=0.0125;
+    const stepXY=0.0125;
+    const stepZ=0.04;
     return new T.Vector3(
-      Math.round((vec.x-xMin)/step)*step+xMin,
-      Math.round((vec.y-yMin)/step)*step+yMin,
-      Math.round((vec.z-zMin)/step)*step+zMin
+      Math.round((vec.x-xMin)/stepXY)*stepXY+xMin,
+      Math.round((vec.y-yMin)/stepXY)*stepXY+yMin,
+      Math.round((vec.z-zMin)/stepZ)*stepZ+zMin
     );
   };
   
