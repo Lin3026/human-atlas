@@ -122,7 +122,7 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const xMin=-0.4,xMax=0.4;
     const yMin=-0.1,yMax=1.8;
     const zMin=-0.2,zMax=0.2;
-    const step=0.1; // 10cm间距
+    const step=0.0125; // 1.25cm间距（细分8次）
     
     // X方向线（红色，平行于X轴）
     const xPoints=[];
@@ -211,6 +211,108 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
         }
       });
     }
+  };
+  
+  // 点击选择网格点功能
+  let selectedGridPoint=null;
+  let selectedGridMarker=null;
+  const gridRaycaster=new T.Raycaster();
+  const gridMouse=new T.Vector2();
+  
+  // 创建网格点选择标记
+  const createGridMarker=()=>{
+    const group=new T.Group();
+    // 十字标记
+    const crossMat=new T.LineBasicMaterial({color:0xffff00,opacity:1});
+    const crossSize=0.02;
+    const crossPoints=[
+      new T.Vector3(-crossSize,0,0),new T.Vector3(crossSize,0,0),
+      new T.Vector3(0,-crossSize,0),new T.Vector3(0,crossSize,0),
+      new T.Vector3(0,0,-crossSize),new T.Vector3(0,0,crossSize)
+    ];
+    const crossGeo=new T.BufferGeometry().setFromPoints(crossPoints);
+    group.add(new T.LineSegments(crossGeo,crossMat));
+    // 中心小球
+    const sphereGeo=new T.SphereGeometry(0.008,8,8);
+    const sphereMat=new T.MeshBasicMaterial({color:0xffff00});
+    group.add(new T.Mesh(sphereGeo,sphereMat));
+    group.visible=false;
+    return group;
+  };
+  
+  // 将坐标对齐到最近的网格点
+  const snapToGrid=(vec)=>{
+    const xMin=-0.4,xMax=0.4;
+    const yMin=-0.1,yMax=1.8;
+    const zMin=-0.2,zMax=0.2;
+    const step=0.0125;
+    return new T.Vector3(
+      Math.round((vec.x-xMin)/step)*step+xMin,
+      Math.round((vec.y-yMin)/step)*step+yMin,
+      Math.round((vec.z-zMin)/step)*step+zMin
+    );
+  };
+  
+  // 处理点击事件选择网格点
+  const handleGridClick=(event)=>{
+    if(!gridVisible||!gridGroup)return;
+    const rect=renderer.domElement.getBoundingClientRect();
+    gridMouse.x=((event.clientX-rect.left)/rect.width)*2-1;
+    gridMouse.y=-((event.clientY-rect.top)/rect.height)*2+1;
+    gridRaycaster.setFromCamera(gridMouse,camera);
+    
+    // 与皮肤模型求交
+    const skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
+    const skinMesh=pickers[skinIndex];
+    if(skinMesh){
+      const intersects=gridRaycaster.intersectObject(skinMesh,false);
+      if(intersects.length>0){
+        const point=intersects[0].point;
+        const snapped=snapToGrid(point);
+        
+        // 创建或更新标记
+        if(!selectedGridMarker){
+          selectedGridMarker=createGridMarker();
+          scene.add(selectedGridMarker);
+        }
+        selectedGridMarker.position.copy(snapped);
+        selectedGridMarker.visible=true;
+        selectedGridPoint=snapped;
+        
+        // 显示坐标
+        console.log('选中网格点:',{
+          x:Number(snapped.x.toFixed(4)),
+          y:Number(snapped.y.toFixed(4)),
+          z:Number(snapped.z.toFixed(4)),
+          x_cm:Number((snapped.x*100).toFixed(2)),
+          y_cm:Number((snapped.y*100).toFixed(2)),
+          z_cm:Number((snapped.z*100).toFixed(2))
+        });
+        
+        // 暴露到全局变量
+        (window as any).__selectedGridPoint={
+          x:Number(snapped.x.toFixed(4)),
+          y:Number(snapped.y.toFixed(4)),
+          z:Number(snapped.z.toFixed(4)),
+          x_cm:Number((snapped.x*100).toFixed(2)),
+          y_cm:Number((snapped.y*100).toFixed(2)),
+          z_cm:Number((snapped.z*100).toFixed(2))
+        };
+      }
+    }
+  };
+  
+  // 绑定点击事件（双击选择网格点，避免与普通点击冲突）
+  renderer.domElement.addEventListener('dblclick',handleGridClick);
+  
+  // 暴露清除选择的函数
+  (window as any).__clearGridSelection=()=>{
+    if(selectedGridMarker){
+      selectedGridMarker.visible=false;
+    }
+    selectedGridPoint=null;
+    (window as any).__selectedGridPoint=null;
+    console.log('已清除网格点选择');
   };
   const clock=new T.Clock();let lastExtent=-1;
   const animate=()=>{
