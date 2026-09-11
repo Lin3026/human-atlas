@@ -1,8 +1,4 @@
-// 用户导出的模型标注草稿；未经专业复核。
-// 导出时间: 2026-09-11T11:41:48.710Z
-// 穴位数量: 360
-// 标准: GB/T 12346—2021
-export const PROJECT_ACUPOINT_SEED = {
+{
   "schema": 1,
   "modelKey": "[\"BodyParts3D 4.0\",\"FJ2810\",22902,134232,[[-0.33411900000000005,1.3877787807814457e-17,-0.1452476],[0.332825,1.7194711999999999,0.146783]]]",
   "standard": "GB/T 12346—2021",
@@ -12272,4 +12268,4 @@ export const PROJECT_ACUPOINT_SEED = {
     }
   ],
   "clinicalValidation": "not-validated"
-};
+}
