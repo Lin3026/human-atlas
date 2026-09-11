@@ -357,8 +357,8 @@ export function createAcupointEditor(
     context.lineWidth = 3;
     context.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
 
-    context.fillStyle = '#263e37';
-    context.font = '600 28px "Microsoft YaHei", sans-serif';
+    context.fillStyle = '#1a2e28';
+    context.font = '700 36px "Microsoft YaHei", sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(
@@ -390,7 +390,7 @@ export function createAcupointEditor(
     const isHeadBack = position.y > 1.55 && position.z < -0.06;  // 头后面
     const isHeadSide = position.y > 1.50 && Math.abs(position.x) > 0.06;  // 头侧面
     const isFootBottom = position.y < 0.12;  // 脚底
-    const isFootTop = position.y >= 0.12 && position.y < 0.20;  // 脚背
+    const isFootTop = position.y >= 0.12 && position.y < 0.20 && position.z > 0;  // 脚背（前面）
     const isFront = position.z > 0.04;  // 身体前面
     const isBack = position.z < -0.04;  // 身体后面
     const isLeftSide = position.x > 0.10;  // 身体左侧
@@ -476,7 +476,7 @@ export function createAcupointEditor(
       sprite.position.z += position.z >= 0 ? 0.07 : -0.07;
     }
     
-    sprite.scale.set(.055, .01375, 1);
+    sprite.scale.set(.065, .01625, 1);
     sprite.visible = labelsVisible;
     sprite.renderOrder = 12;
 
