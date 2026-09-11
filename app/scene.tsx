@@ -71,7 +71,6 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
    atlas.parts.forEach((p,i)=>{
     if(p.chunk!==ci)return;
     const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(new Float32Array(buffer,p.positions,p.vertexCount*3),3));
-    // GPU normalized signed-short normals keep the complete atlas compact in memory.
     g.setAttribute('normal',new T.BufferAttribute(new Int16Array(buffer,p.normals,p.vertexCount*3),3,true));g.setIndex(new T.BufferAttribute(new Uint32Array(buffer,p.indices,p.indexCount),1));
     g.boundingBox=bounds[i].clone();g.computeBoundingSphere();const pick=new T.Mesh(g);pick.matrixAutoUpdate=false;pickers[i]=pick;geometries.push(g);
     g.setAttribute('partIndex',new T.BufferAttribute(new Float32Array(p.vertexCount).fill(i),1));
@@ -118,14 +117,13 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   let gridVisible=false;
   const create3DGrid=()=>{
     const group=new T.Group();
-    // 网格范围（略大于人体模型）
     const xMin=-0.4,xMax=0.4;
     const yMin=-0.1,yMax=1.8;
     const zMin=-0.2,zMax=0.2;
-    const stepXY=0.0125; // X/Y轴1.25cm间距
-    const stepZ=0.04; // Z轴4cm间距
+    const stepXY=0.0125;
+    const stepZ=0.04;
     
-    // X方向线（红色，平行于X轴）
+    // X方向线（红色）
     const xPoints=[];
     for(let y=yMin;y<=yMax+0.001;y+=stepXY){
       for(let z=zMin;z<=zMax+0.001;z+=stepZ){
@@ -137,7 +135,7 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const xMat=new T.LineBasicMaterial({color:0xff4444,opacity:0.3,transparent:true});
     group.add(new T.LineSegments(xGeo,xMat));
     
-    // Y方向线（绿色，平行于Y轴）
+    // Y方向线（绿色）
     const yPoints=[];
     for(let x=xMin;x<=xMax+0.001;x+=stepXY){
       for(let z=zMin;z<=zMax+0.001;z+=stepZ){
@@ -149,7 +147,7 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const yMat=new T.LineBasicMaterial({color:0x44ff44,opacity:0.3,transparent:true});
     group.add(new T.LineSegments(yGeo,yMat));
     
-    // Z方向线（蓝色，平行于Z轴）
+    // Z方向线（蓝色）
     const zPoints=[];
     for(let x=xMin;x<=xMax+0.001;x+=stepXY){
       for(let y=yMin;y<=yMax+0.001;y+=stepXY){
@@ -161,23 +159,69 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const zMat=new T.LineBasicMaterial({color:0x4488ff,opacity:0.3,transparent:true});
     group.add(new T.LineSegments(zGeo,zMat));
     
-    // 坐标轴（更亮更粗）
-    const axisPoints=[
-      // X轴
-      new T.Vector3(xMin,0,0),new T.Vector3(xMax,0,0),
-      // Y轴
-      new T.Vector3(0,yMin,0),new T.Vector3(0,yMax,0),
-      // Z轴
-      new T.Vector3(0,0,zMin),new T.Vector3(0,0,zMax)
-    ];
-    const axisGeo=new T.BufferGeometry().setFromPoints(axisPoints);
-    const axisMat=new T.LineBasicMaterial({color:0xffffff,opacity:0.8,transparent:true});
-    group.add(new T.LineSegments(axisGeo,axisMat));
+    // 坐标轴（带箭头和刻度，可交互）
+    const axisGroup=new T.Group();
+    
+    // X轴（红色）
+    const xAxisGeo=new T.BufferGeometry().setFromPoints([new T.Vector3(xMin,0,0),new T.Vector3(xMax,0,0)]);
+    const xAxisMat=new T.LineBasicMaterial({color:0xff4444,opacity:0.9,transparent:true});
+    axisGroup.add(new T.Line(xAxisGeo,xAxisMat));
+    const xArrowGeo=new T.ConeGeometry(0.015,0.04,8);
+    const xArrowMat=new T.MeshBasicMaterial({color:0xff4444});
+    const xArrow=new T.Mesh(xArrowGeo,xArrowMat);
+    xArrow.position.set(xMax,0,0);
+    xArrow.rotation.z=-Math.PI/2;
+    axisGroup.add(xArrow);
+    
+    // Y轴（绿色）
+    const yAxisGeo=new T.BufferGeometry().setFromPoints([new T.Vector3(0,yMin,0),new T.Vector3(0,yMax,0)]);
+    const yAxisMat=new T.LineBasicMaterial({color:0x44ff44,opacity:0.9,transparent:true});
+    axisGroup.add(new T.Line(yAxisGeo,yAxisMat));
+    const yArrowGeo=new T.ConeGeometry(0.015,0.04,8);
+    const yArrowMat=new T.MeshBasicMaterial({color:0x44ff44});
+    const yArrow=new T.Mesh(yArrowGeo,yArrowMat);
+    yArrow.position.set(0,yMax,0);
+    axisGroup.add(yArrow);
+    
+    // Z轴（蓝色）
+    const zAxisGeo=new T.BufferGeometry().setFromPoints([new T.Vector3(0,0,zMin),new T.Vector3(0,0,zMax)]);
+    const zAxisMat=new T.LineBasicMaterial({color:0x4488ff,opacity:0.9,transparent:true});
+    axisGroup.add(new T.Line(zAxisGeo,zAxisMat));
+    const zArrowGeo=new T.ConeGeometry(0.015,0.04,8);
+    const zArrowMat=new T.MeshBasicMaterial({color:0x4488ff});
+    const zArrow=new T.Mesh(zArrowGeo,zArrowMat);
+    zArrow.position.set(0,0,zMax);
+    zArrow.rotation.x=Math.PI/2;
+    axisGroup.add(zArrow);
+    
+    // 坐标轴刻度点（可点击）
+    const tickGeo=new T.SphereGeometry(0.006,6,6);
+    for(let x=Math.ceil(xMin*10)/10;x<=xMax;x+=0.1){
+      const tick=new T.Mesh(tickGeo,new T.MeshBasicMaterial({color:0xff4444}));
+      tick.position.set(x,0,0);
+      tick.userData={type:'axisTick',axis:'x',value:x};
+      axisGroup.add(tick);
+    }
+    for(let y=Math.ceil(yMin*10)/10;y<=yMax;y+=0.1){
+      const tick=new T.Mesh(tickGeo,new T.MeshBasicMaterial({color:0x44ff44}));
+      tick.position.set(0,y,0);
+      tick.userData={type:'axisTick',axis:'y',value:y};
+      axisGroup.add(tick);
+    }
+    for(let z=Math.ceil(zMin*10)/10;z<=zMax;z+=0.1){
+      const tick=new T.Mesh(tickGeo,new T.MeshBasicMaterial({color:0x4488ff}));
+      tick.position.set(0,0,z);
+      tick.userData={type:'axisTick',axis:'z',value:z};
+      axisGroup.add(tick);
+    }
+    
+    group.add(axisGroup);
     
     // 原点标记
-    const originGeo=new T.SphereGeometry(0.015,8,8);
+    const originGeo=new T.SphereGeometry(0.018,12,12);
     const originMat=new T.MeshBasicMaterial({color:0xffff00});
     const origin=new T.Mesh(originGeo,originMat);
+    origin.userData={type:'origin'};
     group.add(origin);
     
     group.visible=false;
@@ -220,10 +264,8 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   const gridRaycaster=new T.Raycaster();
   const gridMouse=new T.Vector2();
   
-  // 创建网格点选择标记
   const createGridMarker=()=>{
     const group=new T.Group();
-    // 十字标记
     const crossMat=new T.LineBasicMaterial({color:0xffff00,opacity:1});
     const crossSize=0.02;
     const crossPoints=[
@@ -233,7 +275,6 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     ];
     const crossGeo=new T.BufferGeometry().setFromPoints(crossPoints);
     group.add(new T.LineSegments(crossGeo,crossMat));
-    // 中心小球
     const sphereGeo=new T.SphereGeometry(0.008,8,8);
     const sphereMat=new T.MeshBasicMaterial({color:0xffff00});
     group.add(new T.Mesh(sphereGeo,sphereMat));
@@ -241,7 +282,6 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     return group;
   };
   
-  // 将坐标对齐到最近的网格点
   const snapToGrid=(vec)=>{
     const xMin=-0.4,xMax=0.4;
     const yMin=-0.1,yMax=1.8;
@@ -255,7 +295,6 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     );
   };
   
-  // 处理点击事件选择网格点
   const handleGridClick=(event)=>{
     if(!gridVisible||!gridGroup)return;
     const rect=renderer.domElement.getBoundingClientRect();
@@ -263,51 +302,65 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     gridMouse.y=-((event.clientY-rect.top)/rect.height)*2+1;
     gridRaycaster.setFromCamera(gridMouse,camera);
     
-    // 与皮肤模型求交
-    const skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
-    const skinMesh=pickers[skinIndex];
-    if(skinMesh){
-      const intersects=gridRaycaster.intersectObject(skinMesh,false);
-      if(intersects.length>0){
-        const point=intersects[0].point;
-        const snapped=snapToGrid(point);
-        
-        // 创建或更新标记
-        if(!selectedGridMarker){
-          selectedGridMarker=createGridMarker();
-          scene.add(selectedGridMarker);
-        }
-        selectedGridMarker.position.copy(snapped);
-        selectedGridMarker.visible=true;
-        selectedGridPoint=snapped;
-        
-        // 显示坐标
-        console.log('选中网格点:',{
-          x:Number(snapped.x.toFixed(4)),
-          y:Number(snapped.y.toFixed(4)),
-          z:Number(snapped.z.toFixed(4)),
-          x_cm:Number((snapped.x*100).toFixed(2)),
-          y_cm:Number((snapped.y*100).toFixed(2)),
-          z_cm:Number((snapped.z*100).toFixed(2))
-        });
-        
-        // 暴露到全局变量
-        (window as any).__selectedGridPoint={
-          x:Number(snapped.x.toFixed(4)),
-          y:Number(snapped.y.toFixed(4)),
-          z:Number(snapped.z.toFixed(4)),
-          x_cm:Number((snapped.x*100).toFixed(2)),
-          y_cm:Number((snapped.y*100).toFixed(2)),
-          z_cm:Number((snapped.z*100).toFixed(2))
-        };
+    let selectedPoint=null;
+    let selectedType='surface';
+    
+    // 先检查是否点击了坐标轴刻度或原点
+    const axisIntersects=gridRaycaster.intersectObjects(gridGroup.children,true);
+    for(const intersect of axisIntersects){
+      if(intersect.object.userData&&intersect.object.userData.type==='axisTick'){
+        selectedPoint=intersect.object.position.clone();
+        selectedType='axis_'+intersect.object.userData.axis;
+        break;
       }
+      if(intersect.object.userData&&intersect.object.userData.type==='origin'){
+        selectedPoint=new T.Vector3(0,0,0);
+        selectedType='origin';
+        break;
+      }
+    }
+    
+    // 如果没点中坐标轴，则与皮肤模型求交
+    if(!selectedPoint){
+      const skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
+      const skinMesh=pickers[skinIndex];
+      if(skinMesh){
+        const intersects=gridRaycaster.intersectObject(skinMesh,false);
+        if(intersects.length>0){
+          selectedPoint=snapToGrid(intersects[0].point);
+          selectedType='surface';
+        }
+      }
+    }
+    
+    // 如果选中了点，更新标记和显示
+    if(selectedPoint){
+      if(!selectedGridMarker){
+        selectedGridMarker=createGridMarker();
+        scene.add(selectedGridMarker);
+      }
+      selectedGridMarker.position.copy(selectedPoint);
+      selectedGridMarker.visible=true;
+      selectedGridPoint=selectedPoint;
+      
+      const pointData={
+        x:Number(selectedPoint.x.toFixed(4)),
+        y:Number(selectedPoint.y.toFixed(4)),
+        z:Number(selectedPoint.z.toFixed(4)),
+        x_cm:Number((selectedPoint.x*100).toFixed(2)),
+        y_cm:Number((selectedPoint.y*100).toFixed(2)),
+        z_cm:Number((selectedPoint.z*100).toFixed(2)),
+        type:selectedType
+      };
+      
+      console.log('选中坐标点:',pointData);
+      (window as any).__selectedGridPoint=pointData;
+      window.dispatchEvent(new CustomEvent('gridPointSelected',{detail:pointData}));
     }
   };
   
-  // 绑定点击事件（双击选择网格点，避免与普通点击冲突）
-  renderer.domElement.addEventListener('dblclick',handleGridClick);
+  renderer.domElement.addEventListener('click',handleGridClick);
   
-  // 暴露清除选择的函数
   (window as any).__clearGridSelection=()=>{
     if(selectedGridMarker){
       selectedGridMarker.visible=false;
