@@ -1,5 +1,7 @@
 
-import {useState} from 'react';
+import {useState, useMemo} from 'react';
+import {MERIDIAN_CATALOG} from './acupoint-catalog';
+import {ACUPOINT_LOCATIONS} from './acupoint-locations';
 
 const EXTRAORDINARY = [
   ['任脉', '主要体表路线沿人体前正中线。具有本经所属穴位。'],
@@ -12,30 +14,33 @@ const EXTRAORDINARY = [
   ['阳维脉', '循行涉及下肢外侧、躯干、肩颈及头部等。']
 ];
 
-const POINTS = [
-  ['LU9', '太渊', '手太阴肺经', '腕前区'],
-  ['LI4', '合谷', '手阳明大肠经', '手背'],
-  ['ST36', '足三里', '足阳明胃经', '小腿前外侧'],
-  ['SP6', '三阴交', '足太阴脾经', '小腿内侧'],
-  ['HT7', '神门', '手少阴心经', '腕前区'],
-  ['SI3', '后溪', '手太阳小肠经', '手尺侧'],
-  ['BL40', '委中', '足太阳膀胱经', '膝后区'],
-  ['KI3', '太溪', '足少阴肾经', '踝内侧'],
-  ['PC6', '内关', '手厥阴心包经', '前臂前区'],
-  ['TE5', '外关', '手少阳三焦经', '前臂后区'],
-  ['GB34', '阳陵泉', '足少阳胆经', '小腿外侧'],
-  ['LR3', '太冲', '足厥阴肝经', '足背'],
-  ['CV12', '中脘', '任脉', '上腹部'],
-  ['CV6', '气海', '任脉', '下腹部'],
-  ['GV20', '百会', '督脉', '头顶部'],
-  ['GV14', '大椎', '督脉', '后正中线第七颈椎棘突下方区域']
-];
+// 生成全部362个穴位的列表
+const ALL_POINTS = MERIDIAN_CATALOG.flatMap(meridian =>
+  meridian.names.map((name, index) => ({
+    code: `${meridian.id}${index + 1}`,
+    name,
+    meridian: meridian.name,
+    meridianId: meridian.id,
+    location: ACUPOINT_LOCATIONS[`${meridian.id}${index + 1}`] || ''
+  }))
+);
 
 export function StudyLibrary() {
   const [query, setQuery] = useState('');
-  const filtered = POINTS.filter(point =>
-    point.join(' ').toLowerCase().includes(query.trim().toLowerCase())
-  );
+  const [selectedMeridian, setSelectedMeridian] = useState('ALL');
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return ALL_POINTS.filter(point => {
+      const matchMeridian = selectedMeridian === 'ALL' || point.meridianId === selectedMeridian;
+      const matchQuery = !q || 
+        point.name.toLowerCase().includes(q) ||
+        point.code.toLowerCase().includes(q) ||
+        point.meridian.toLowerCase().includes(q) ||
+        point.location.toLowerCase().includes(q);
+      return matchMeridian && matchQuery;
+    });
+  }, [query, selectedMeridian]);
 
   return (
     <div style={{borderTop:'1px solid #dce3d8',marginTop:14,paddingTop:10}}>
@@ -59,30 +64,61 @@ export function StudyLibrary() {
         </p>
       </details>
 
-      <details style={{marginTop:12}}>
+      <details open style={{marginTop:12}}>
         <summary style={{cursor:'pointer',fontWeight:600}}>
-          穴位资料 · 16个学习示例
+          穴位资料 · 十四经362穴（国标定位）
         </summary>
         <p className="mp-note">
-          目前只有名称、归经与大致区域，尚未进行3D定位。
-          “区域”不等于标准取穴方法。
+          包含十四经全部362个穴位的名称、归经与国标标准定位描述。
+          标准定位依据：GB/T 12346-2021《腧穴名称与定位》。
         </p>
+        
+        {/* 经络筛选 */}
+        <div style={{marginBottom:10}}>
+          <select
+            value={selectedMeridian}
+            onChange={e => setSelectedMeridian(e.target.value)}
+            style={{width:'100%',padding:'8px',border:'1px solid #cddbcf',borderRadius:'7px',background:'white',marginBottom:'8px'}}
+          >
+            <option value="ALL">全部经络（362穴）</option>
+            {MERIDIAN_CATALOG.map(m => (
+              <option key={m.id} value={m.id}>{m.name}（{m.names.length}穴）</option>
+            ))}
+          </select>
+        </div>
+
+        {/* 搜索框 */}
         <input
           className="mp-search"
-          placeholder="搜索穴位、代码或经脉"
+          placeholder="搜索穴位名称、代码、经络或定位描述"
           aria-label="搜索穴位资料"
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
-        {filtered.map(([code, name, meridian, region]) => (
-          <div className="mp-info" key={code}>
-            <strong>{name} · {code}</strong>
-            <p>归经：{meridian}</p>
-            <p>大致区域：{region}</p>
-            <p className="mp-note">三维标注状态：未定位</p>
-          </div>
-        ))}
-        {filtered.length === 0 && <p>示例库中暂无匹配项。</p>}
+        
+        <p className="mp-small" style={{margin:'8px 0',color:'#747a6b'}}>
+          显示 {filtered.length} / 362 个穴位
+        </p>
+
+        {/* 穴位列表 */}
+        <div style={{maxHeight:'400px',overflowY:'auto',border:'1px solid #e4e3dd',borderRadius:'8px',padding:'8px'}}>
+          {filtered.map(point => (
+            <div className="mp-info" key={point.code} style={{marginBottom:'10px',padding:'10px',background:'#f9faf7',borderRadius:'8px'}}>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'4px'}}>
+                <strong style={{fontSize:'14px'}}>{point.name} · {point.code}</strong>
+                <span style={{fontSize:'11px',color:'#286c57',background:'#e8f0e8',padding:'2px 6px',borderRadius:'4px'}}>{point.meridian}</span>
+              </div>
+              {point.location ? (
+                <p style={{color:'#29483d',fontSize:'12px',lineHeight:'1.7',margin:'6px 0',padding:'8px',background:'#f1f4ed',borderRadius:'6px',borderLeft:'3px solid #286c57'}}>
+                  <strong style={{color:'#286c57'}}>标准定位：</strong>{point.location}
+                </p>
+              ) : (
+                <p className="mp-note" style={{fontSize:'11px'}}>定位描述待补充</p>
+              )}
+            </div>
+          ))}
+          {filtered.length === 0 && <p style={{textAlign:'center',color:'#747a6b',padding:'20px'}}>未找到匹配的穴位</p>}
+        </div>
       </details>
 
       <details style={{marginTop:12}}>
@@ -99,7 +135,7 @@ export function StudyLibrary() {
           <p>
             模型里的胆囊、心脏、肝脏等使用现代解剖名称。
             三焦不对应某一个独立的现代解剖器官，
-            因此不创建虚构的“三焦器官”模型。
+            因此不创建虚构的"三焦器官"模型。
           </p>
         </div>
       </details>
