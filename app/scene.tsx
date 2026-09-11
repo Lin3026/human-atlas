@@ -113,36 +113,103 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   (window as any).__camera=camera;
   (window as any).__skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
   
-  // 立体网格线显示功能（用于穴位定位校验）
-  let wireframeMesh=null;
-  let wireframeVisible=false;
-  (window as any).__toggleWireframe=()=>{
-    if(!wireframeMesh){
-      const skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
-      const skinMesh=pickers[skinIndex];
-      if(skinMesh){
-        const wireGeo=new T.WireframeGeometry(skinMesh.geometry);
-        const wireMat=new T.LineBasicMaterial({color:0x00ff00,opacity:0.4,transparent:true});
-        wireframeMesh=new T.LineSegments(wireGeo,wireMat);
-        wireframeMesh.visible=false;
-        scene.add(wireframeMesh);
+  // 三维空间坐标网格显示功能（用于穴位定位校验）
+  let gridGroup=null;
+  let gridVisible=false;
+  const create3DGrid=()=>{
+    const group=new T.Group();
+    // 网格范围（略大于人体模型）
+    const xMin=-0.4,xMax=0.4;
+    const yMin=-0.1,yMax=1.8;
+    const zMin=-0.2,zMax=0.2;
+    const step=0.1; // 10cm间距
+    
+    // X方向线（红色，平行于X轴）
+    const xPoints=[];
+    for(let y=yMin;y<=yMax+0.001;y+=step){
+      for(let z=zMin;z<=zMax+0.001;z+=step){
+        xPoints.push(new T.Vector3(xMin,y,z));
+        xPoints.push(new T.Vector3(xMax,y,z));
       }
     }
-    if(wireframeMesh){
-      wireframeVisible=!wireframeVisible;
-      wireframeMesh.visible=wireframeVisible;
-      console.log('网格线显示:',wireframeVisible);
+    const xGeo=new T.BufferGeometry().setFromPoints(xPoints);
+    const xMat=new T.LineBasicMaterial({color:0xff4444,opacity:0.3,transparent:true});
+    group.add(new T.LineSegments(xGeo,xMat));
+    
+    // Y方向线（绿色，平行于Y轴）
+    const yPoints=[];
+    for(let x=xMin;x<=xMax+0.001;x+=step){
+      for(let z=zMin;z<=zMax+0.001;z+=step){
+        yPoints.push(new T.Vector3(x,yMin,z));
+        yPoints.push(new T.Vector3(x,yMax,z));
+      }
     }
-    return wireframeVisible;
+    const yGeo=new T.BufferGeometry().setFromPoints(yPoints);
+    const yMat=new T.LineBasicMaterial({color:0x44ff44,opacity:0.3,transparent:true});
+    group.add(new T.LineSegments(yGeo,yMat));
+    
+    // Z方向线（蓝色，平行于Z轴）
+    const zPoints=[];
+    for(let x=xMin;x<=xMax+0.001;x+=step){
+      for(let y=yMin;y<=yMax+0.001;y+=step){
+        zPoints.push(new T.Vector3(x,y,zMin));
+        zPoints.push(new T.Vector3(x,y,zMax));
+      }
+    }
+    const zGeo=new T.BufferGeometry().setFromPoints(zPoints);
+    const zMat=new T.LineBasicMaterial({color:0x4488ff,opacity:0.3,transparent:true});
+    group.add(new T.LineSegments(zGeo,zMat));
+    
+    // 坐标轴（更亮更粗）
+    const axisPoints=[
+      // X轴
+      new T.Vector3(xMin,0,0),new T.Vector3(xMax,0,0),
+      // Y轴
+      new T.Vector3(0,yMin,0),new T.Vector3(0,yMax,0),
+      // Z轴
+      new T.Vector3(0,0,zMin),new T.Vector3(0,0,zMax)
+    ];
+    const axisGeo=new T.BufferGeometry().setFromPoints(axisPoints);
+    const axisMat=new T.LineBasicMaterial({color:0xffffff,opacity:0.8,transparent:true});
+    group.add(new T.LineSegments(axisGeo,axisMat));
+    
+    // 原点标记
+    const originGeo=new T.SphereGeometry(0.015,8,8);
+    const originMat=new T.MeshBasicMaterial({color:0xffff00});
+    const origin=new T.Mesh(originGeo,originMat);
+    group.add(origin);
+    
+    group.visible=false;
+    return group;
+  };
+  (window as any).__toggleWireframe=()=>{
+    if(!gridGroup){
+      gridGroup=create3DGrid();
+      scene.add(gridGroup);
+    }
+    if(gridGroup){
+      gridVisible=!gridVisible;
+      gridGroup.visible=gridVisible;
+      console.log('三维坐标网格显示:',gridVisible);
+    }
+    return gridVisible;
   };
   (window as any).__setWireframeColor=(color)=>{
-    if(wireframeMesh){
-      wireframeMesh.material.color.set(color);
+    if(gridGroup){
+      gridGroup.children.forEach(child=>{
+        if(child.material&&child.material.color){
+          child.material.color.set(color);
+        }
+      });
     }
   };
   (window as any).__setWireframeOpacity=(opacity)=>{
-    if(wireframeMesh){
-      wireframeMesh.material.opacity=opacity;
+    if(gridGroup){
+      gridGroup.children.forEach(child=>{
+        if(child.material&&child.material.opacity!==undefined){
+          child.material.opacity=opacity;
+        }
+      });
     }
   };
   const clock=new T.Clock();let lastExtent=-1;
