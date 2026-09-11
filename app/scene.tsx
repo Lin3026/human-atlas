@@ -106,6 +106,45 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     if(index<0||data[index*4+3]<.5)return undefined;
     return pickers[index];
   });
+  // 调试：暴露模型数据到全局变量，用于穴位精确定位
+  (window as any).__atlas=atlas;
+  (window as any).__pickers=pickers;
+  (window as any).__scene=scene;
+  (window as any).__camera=camera;
+  (window as any).__skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
+  
+  // 立体网格线显示功能（用于穴位定位校验）
+  let wireframeMesh=null;
+  let wireframeVisible=false;
+  (window as any).__toggleWireframe=()=>{
+    if(!wireframeMesh){
+      const skinIndex=atlas.parts.findIndex(p=>p.id==='FJ2810');
+      const skinMesh=pickers[skinIndex];
+      if(skinMesh){
+        const wireGeo=new T.WireframeGeometry(skinMesh.geometry);
+        const wireMat=new T.LineBasicMaterial({color:0x00ff00,opacity:0.4,transparent:true});
+        wireframeMesh=new T.LineSegments(wireGeo,wireMat);
+        wireframeMesh.visible=false;
+        scene.add(wireframeMesh);
+      }
+    }
+    if(wireframeMesh){
+      wireframeVisible=!wireframeVisible;
+      wireframeMesh.visible=wireframeVisible;
+      console.log('网格线显示:',wireframeVisible);
+    }
+    return wireframeVisible;
+  };
+  (window as any).__setWireframeColor=(color)=>{
+    if(wireframeMesh){
+      wireframeMesh.material.color.set(color);
+    }
+  };
+  (window as any).__setWireframeOpacity=(opacity)=>{
+    if(wireframeMesh){
+      wireframeMesh.material.opacity=opacity;
+    }
+  };
   const clock=new T.Clock();let lastExtent=-1;
   const animate=()=>{
    if(disposed)return;frame=requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.05),s=latest.current;

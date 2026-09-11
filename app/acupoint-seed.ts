@@ -1095,11 +1095,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV20": {
-      "position": [
-        0.009059440344572067,
-        1.719081163406372,
-        -0.017242100089788437
-      ],
+      "position": [0.000000, 1.729500, -0.020000],
       "displayNormal": [
         0.03594744017474518,
         0.9985046873573971,
@@ -1121,11 +1117,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV21": {
-      "position": [
-        -0.027404099702835083,
-        1.710406692311251,
-        0.01370800007134676
-      ],
+      "position": [0.000000, 1.696650, -0.010000],
       "displayNormal": [
         -0.4337061747080007,
         0.8794459799807124,
@@ -1147,11 +1139,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV22": {
-      "position": [
-        -0.029852600768208504,
-        1.693829509475145,
-        0.046007998287677765
-      ],
+      "position": [0.000000, 1.663800, 0.000000],
       "displayNormal": [
         -0.3745575423526941,
         0.729092076038778,
@@ -1173,11 +1161,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV23": {
-      "position": [
-        0.028349800035357475,
-        1.6638231525124916,
-        0.06904900074005127
-      ],
+      "position": [0.000000, 1.641900, 0.010000],
       "displayNormal": [
         0.3763891381546391,
         0.36171284674864557,
@@ -1199,11 +1183,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV24": {
-      "position": [
-        -0.019255299121141434,
-        1.645811543215816,
-        0.07975199818611145
-      ],
+      "position": [0.000000, 1.630950, 0.020000],
       "displayNormal": [
         -0.25222448671031034,
         0.21192942464327746,
@@ -1251,11 +1231,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV25": {
-      "position": [
-        0.001,
-        1.566,
-        0.10505836713775996
-      ],
+      "position": [0.000000, 1.546300, 0.105100],
       "displayNormal": [
         0.014667593712812756,
         0.07835527699499018,
@@ -1277,11 +1253,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV26": {
-      "position": [
-        0.001,
-        1.54,
-        0.09056049837388164
-      ],
+      "position": [0.000000, 1.455000, 0.070200],
       "displayNormal": [
         -0.004398343911368134,
         -0.5596875156734729,
@@ -1303,11 +1275,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GV27": {
-      "position": [
-        0.001,
-        1.52,
-        0.08298983640822188
-      ],
+      "position": [0.000000, 1.425000, 0.080200],
       "displayNormal": [
         -0.002043217854669758,
         -0.07879721736424496,
@@ -6268,11 +6236,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "note": "胸锁乳突肌区，锁骨上小窝，锁骨胸骨端上缘"
     },
     "BL3": {
-      "position": [
-        0.028810899704694748,
-        1.6476812362670898,
-        0.07523699849843979
-      ],
+      "position": [0.035100, 1.600950, 0.055700],
       "displayNormal": [
         0.42774742881557665,
         0.2977996154667806,
@@ -6294,11 +6258,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "auto-verified"
     },
     "BL4": {
-      "position": [
-        0.04809439927339554,
-        1.650611162185669,
-        0.059532999992370605
-      ],
+      "position": [0.032850, 1.630950, 0.050000],
       "displayNormal": [
         0.6960661641285439,
         0.2562334055604724,
@@ -6320,11 +6280,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "auto-verified"
     },
     "BL5": {
-      "position": [
-        0.05540439859032631,
-        1.6524312496185303,
-        0.04936299845576286
-      ],
+      "position": [0.032850, 1.641900, 0.040000],
       "displayNormal": [
         0.8512222663045137,
         0.20896023438215278,
@@ -6477,11 +6433,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB8": {
       "name": "率谷",
-      "position": [
-        0.07,
-        1.63,
-        -0.001934
-      ],
+      "position": [0.098550, 1.652850, -0.020000],
       "displayNormal": [
         -0.963382,
         0.015567,
@@ -6504,11 +6456,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB9": {
       "name": "天冲",
-      "position": [
-        0.06,
-        1.65,
-        0.033399
-      ],
+      "position": [0.105120, 1.663800, -0.030000],
       "displayNormal": [
         -0.938125,
         -0.127162,
@@ -6531,11 +6479,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB10": {
       "name": "浮白",
-      "position": [
-        0.05,
-        1.64,
-        0.058094
-      ],
+      "position": [0.109500, 1.652850, -0.050000],
       "displayNormal": [
         -0.699521,
         -0.242798,
@@ -6558,11 +6502,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB11": {
       "name": "头窍阴",
-      "position": [
-        0.05,
-        1.62,
-        0.062309
-      ],
+      "position": [0.109500, 1.637520, -0.060000],
       "displayNormal": [
         -0.865639,
         -0.03215,
@@ -6585,11 +6525,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB12": {
       "name": "完骨",
-      "position": [
-        0.04,
-        1.59,
-        0.060709
-      ],
+      "position": [0.105120, 1.626570, -0.070000],
       "displayNormal": [
         -0.563598,
         -0.158196,
@@ -6612,11 +6548,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB13": {
       "name": "本神",
-      "position": [
-        0.05,
-        1.65,
-        0.054482
-      ],
+      "position": [0.065700, 1.630950, 0.020000],
       "displayNormal": [
         -0.699521,
         -0.242798,
@@ -6639,11 +6571,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB16": {
       "name": "目窗",
-      "position": [
-        0.05,
-        1.65,
-        0.054482
-      ],
+      "position": [0.044500, 1.652850, 0.040700],
       "displayNormal": [
         -0.699521,
         -0.242798,
@@ -6666,11 +6594,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB17": {
       "name": "正营",
-      "position": [
-        0.05,
-        1.66,
-        0.05001
-      ],
+      "position": [0.044500, 1.674750, 0.030700],
       "displayNormal": [
         -0.777531,
         -0.284162,
@@ -6693,11 +6617,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB18": {
       "name": "承灵",
-      "position": [
-        0.05,
-        1.67,
-        0.044334
-      ],
+      "position": [0.044500, 1.707600, 0.020700],
       "displayNormal": [
         -0.784859,
         -0.319856,
@@ -6720,11 +6640,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB19": {
       "name": "脑空",
-      "position": [
-        0.05,
-        1.65,
-        0.054482
-      ],
+      "position": [0.049275, 1.680000, -0.050000],
       "displayNormal": [
         -0.699521,
         -0.242798,
@@ -6747,11 +6663,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "GB20": {
       "name": "风池",
-      "position": [
-        0.05,
-        1.56,
-        0.058652
-      ],
+      "position": [0.049275, 1.550000, -0.080000],
       "displayNormal": [
         -0.770422,
         0.070722,
@@ -6774,11 +6686,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "TE17": {
       "name": "翳风",
-      "position": [
-        0.06,
-        1.56,
-        0.037548
-      ],
+      "position": [0.149500, 1.512700, 0.012700],
       "displayNormal": [
         -0.940127,
         0.025884,
@@ -6801,11 +6709,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "TE18": {
       "name": "瘈脉",
-      "position": [
-        0.06,
-        1.58,
-        0.03881
-      ],
+      "position": [0.159500, 1.552700, 0.002700],
       "displayNormal": [
         -0.931279,
         0.015766,
@@ -6828,11 +6732,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "TE19": {
       "name": "颅息",
-      "position": [
-        0.06,
-        1.59,
-        0.038857
-      ],
+      "position": [0.159500, 1.592700, 0.002700],
       "displayNormal": [
         -0.916689,
         -0.050359,
@@ -6855,11 +6755,7 @@ export const PROJECT_ACUPOINT_SEED = {
     },
     "TE20": {
       "name": "角孙",
-      "position": [
-        0.06,
-        1.61,
-        0.037017
-      ],
+      "position": [0.149500, 1.632700, 0.012700],
       "displayNormal": [
         -0.956262,
         -0.000755,
@@ -10474,11 +10370,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "note": "右侧对称穴位，镜像自SI17"
     },
     "BL1": {
-      "position": [
-        0.01958860084414482,
-        1.580321192741394,
-        0.07974500209093094
-      ],
+      "position": [0.024600, 1.534800, 0.071600],
       "displayNormal": [
         0.6001464888454848,
         0.4518570513016144,
@@ -10500,11 +10392,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "auto-verified"
     },
     "BL2": {
-      "position": [
-        0.03170369938015938,
-        1.6162612438201904,
-        0.0744289979338646
-      ],
+      "position": [0.035100, 1.590000, 0.060700],
       "displayNormal": [
         -0.12839136936552017,
         0.6224555192724387,
@@ -10526,11 +10414,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "auto-verified"
     },
     "ST1": {
-      "position": [
-        0.028690332316330808,
-        1.578,
-        0.07541458780292667
-      ],
+      "position": [0.044500, 1.524700, 0.072700],
       "displayNormal": [
         0.3826540363360311,
         0.4816402803609785,
@@ -10552,11 +10436,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST2": {
-      "position": [
-        0.030245410086216208,
-        1.565,
-        0.07777391165027023
-      ],
+      "position": [0.044500, 1.507700, 0.077700],
       "displayNormal": [
         0.44427164105152767,
         0.10264673927629986,
@@ -10578,11 +10458,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST3": {
-      "position": [
-        0.03150772492606195,
-        1.552,
-        0.07651876053472188
-      ],
+      "position": [0.044500, 1.452700, 0.082700],
       "displayNormal": [
         0.5146679000290286,
         -0.036789711282139106,
@@ -10604,11 +10480,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST4": {
-      "position": [
-        0.038721082907190375,
-        1.535,
-        0.068837480723894
-      ],
+      "position": [0.085460, 1.405000, 0.050200],
       "displayNormal": [
         0.6337490716652393,
         -0.3167226025651573,
@@ -10630,11 +10502,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST5": {
-      "position": [
-        0.04781932424000859,
-        1.518,
-        0.044140914683084856
-      ],
+      "position": [0.096700, 1.365000, 0.040200],
       "displayNormal": [
         0.7984153845867612,
         -0.5555419976270409,
@@ -10656,11 +10524,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST6": {
-      "position": [
-        0.05166488481054271,
-        1.525,
-        0.04735947774299748
-      ],
+      "position": [0.116700, 1.345000, 0.030200],
       "displayNormal": [
         0.8031298992290684,
         -0.5345004028424526,
@@ -10682,11 +10546,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST7": {
-      "position": [
-        0.054452867247112784,
-        1.558,
-        0.054452867247112784
-      ],
+      "position": [0.136700, 1.485000, 0.020200],
       "displayNormal": [
         0.8769401158214907,
         -0.05250498219000876,
@@ -10708,11 +10568,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "ST8": {
-      "position": [
-        0.06160463012978133,
-        1.645,
-        0.03623801772340078
-      ],
+      "position": [0.098550, 1.630950, 0.030000],
       "displayNormal": [
         0.9484274821359427,
         0.07891918248324832,
@@ -10734,11 +10590,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB1": {
-      "position": [
-        0.04979305159254696,
-        1.588,
-        0.05690634467719652
-      ],
+      "position": [0.109500, 1.532700, 0.062700],
       "displayNormal": [
         0.6800016880943685,
         0.16860559035757597,
@@ -10760,11 +10612,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB2": {
-      "position": [
-        0.06331660254739277,
-        1.552,
-        0.028411296014855723
-      ],
+      "position": [0.129500, 1.532700, 0.032700],
       "displayNormal": [
         0.9906754074256692,
         -0.11387318735422904,
@@ -10786,11 +10634,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB3": {
-      "position": [
-        0.05634947877814108,
-        1.57,
-        0.05122679888921917
-      ],
+      "position": [0.109500, 1.592700, 0.042700],
       "displayNormal": [
         0.9028442005192899,
         0.0034657555928775817,
@@ -10812,11 +10656,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB4": {
-      "position": [
-        0.06407784470699159,
-        1.63,
-        0.028034057059308823
-      ],
+      "position": [0.076650, 1.626570, 0.020000],
       "displayNormal": [
         0.9654750693578925,
         -0.02847603815584825,
@@ -10838,11 +10678,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB5": {
-      "position": [
-        0.0665647585542539,
-        1.615,
-        0.017750602281134373
-      ],
+      "position": [0.087600, 1.624380, 0.010000],
       "displayNormal": [
         0.9709625975534917,
         0.0005028521360463988,
@@ -10864,11 +10700,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB6": {
-      "position": [
-        0.06852604167157023,
-        1.6,
-        0.009789434524510032
-      ],
+      "position": [0.091980, 1.622190, 0.000000],
       "displayNormal": [
         0.9938749133950007,
         0.039020851703539194,
@@ -10890,11 +10722,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB7": {
-      "position": [
-        0.06848624741728224,
-        1.585,
-        0
-      ],
+      "position": [0.098550, 1.620000, -0.010000],
       "displayNormal": [
         0.9960065583368336,
         -0.08706203256364943,
@@ -10916,11 +10744,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "TE21": {
-      "position": [
-        0.06501250612658288,
-        1.565,
-        0.025004810048685724
-      ],
+      "position": [0.129500, 1.572700, 0.032700],
       "displayNormal": [
         0.9910039629134217,
         -0.09838292681028737,
@@ -10942,11 +10766,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "TE22": {
-      "position": [
-        0.06657084334846146,
-        1.575,
-        0.019020240956703276
-      ],
+      "position": [0.139500, 1.612700, 0.022700],
       "displayNormal": [
         0.9891638788929272,
         -0.1012745987362254,
@@ -10968,11 +10788,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "TE23": {
-      "position": [
-        0.04959072708436771,
-        1.6,
-        0.057220069712731955
-      ],
+      "position": [0.115100, 1.590000, 0.040700],
       "displayNormal": [
         0.6216469416610256,
         -0.38751656890303415,
@@ -10994,11 +10810,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "LI19": {
-      "position": [
-        0.02305800937214994,
-        1.55,
-        0.08116419298996777
-      ],
+      "position": [0.039500, 1.465000, 0.070200],
       "displayNormal": [
         0.5517421341858346,
         0.091308072857655,
@@ -11020,11 +10832,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "LI20": {
-      "position": [
-        0.027650050323023576,
-        1.555,
-        0.07834180924856679
-      ],
+      "position": [0.049500, 1.485000, 0.075200],
       "displayNormal": [
         0.4282709962676062,
         0.022782399691625512,
@@ -11046,11 +10854,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "CV24": {
-      "position": [
-        0,
-        1.56,
-        0.10163089128701085
-      ],
+      "position": [0.000000, 1.385000, 0.070200],
       "displayNormal": [
         -0.2593177119374128,
         -0.4876443496147632,
@@ -11176,11 +10980,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "SI18": {
-      "position": [
-        0.052958290775426416,
-        1.565,
-        0.05777268084591972
-      ],
+      "position": [0.079500, 1.492700, 0.062700],
       "displayNormal": [
         0.8371312743920613,
         -0.054886647003647045,
@@ -11202,11 +11002,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "SI19": {
-      "position": [
-        0.06416389952743022,
-        1.558,
-        0.026323651088176497
-      ],
+      "position": [0.129500, 1.552700, 0.032700],
       "displayNormal": [
         0.9906754074256692,
         -0.11387318735422904,
@@ -11228,11 +11024,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB14": {
-      "position": [
-        0.03497717833266876,
-        1.615,
-        0.07495109642714733
-      ],
+      "position": [0.044500, 1.611900, 0.060700],
       "displayNormal": [
         0.1311506598568327,
         -0.6238003218315665,
@@ -11254,11 +11046,7 @@ export const PROJECT_ACUPOINT_SEED = {
       "status": "pending-review"
     },
     "GB15": {
-      "position": [
-        0.04436623981020819,
-        1.655,
-        0.06100357973903625
-      ],
+      "position": [0.044500, 1.630950, 0.050700],
       "displayNormal": [
         0.6440907306046876,
         0.313302844450591,
