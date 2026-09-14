@@ -34,9 +34,17 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   const platform=new T.Mesh(new T.CylinderGeometry(.68,.7,.028,100),new T.MeshStandardMaterial({color:0xeeeeec,metalness:.12,roughness:.67}));platform.position.y=-.016;platform.visible=false;scene.add(platform);
   const ring=new T.Mesh(new T.RingGeometry(.63,.632,128),new T.MeshBasicMaterial({color:0x8c969f,transparent:true,opacity:.4,side:T.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.001;ring.visible=false;scene.add(ring);
   const innerRing=new T.Mesh(new T.RingGeometry(.55,.551,128),new T.MeshBasicMaterial({color:0xa4aeb8,transparent:true,opacity:.16,side:T.DoubleSide}));innerRing.rotation.x=-Math.PI/2;innerRing.position.y=.001;innerRing.visible=false;scene.add(innerRing);
+  // 三维坐标网格
+  const gridGroup=new T.Group();gridGroup.visible=false;scene.add(gridGroup);
+  const gridXStep=0.0125,gridYStep=0.0125,gridZStep=0.04;
+  const gridXMin=-0.4,gridXMax=0.4,gridYMin=0,gridYMax=1.8,gridZMin=-0.2,gridZMax=0.2;
+  for(let y=gridYMin;y<=gridYMax+0.001;y+=gridYStep){for(let z=gridZMin;z<=gridZMax+0.001;z+=gridZStep){const g=new T.BufferGeometry().setFromPoints([new T.Vector3(gridXMin,y,z),new T.Vector3(gridXMax,y,z)]);gridGroup.add(new T.Line(g,new T.LineBasicMaterial({color:0xff4444,transparent:true,opacity:.35})));}}
+  for(let x=gridXMin;x<=gridXMax+0.001;x+=gridXStep){for(let z=gridZMin;z<=gridZMax+0.001;z+=gridZStep){const g=new T.BufferGeometry().setFromPoints([new T.Vector3(x,gridYMin,z),new T.Vector3(x,gridYMax,z)]);gridGroup.add(new T.Line(g,new T.LineBasicMaterial({color:0x44aa44,transparent:true,opacity:.35})));}}
+  for(let x=gridXMin;x<=gridXMax+0.001;x+=gridXStep){for(let y=gridYMin;y<=gridYMax+0.001;y+=gridYStep){const g=new T.BufferGeometry().setFromPoints([new T.Vector3(x,y,gridZMin),new T.Vector3(x,y,gridZMax)]);gridGroup.add(new T.Line(g,new T.LineBasicMaterial({color:0x4466ff,transparent:true,opacity:.35})));}}
   const width=T.MathUtils.ceilPowerOfTwo(atlas.parts.length),data=new Float32Array(width*4),partTexture=new T.DataTexture(data,width,1,T.RGBAFormat,T.FloatType);partTexture.needsUpdate=true;
   const selectedData=new Uint8Array(width*4),selectionTexture=new T.DataTexture(selectedData,width,1);selectionTexture.needsUpdate=true;
   const materials:T.Material[]=[],geometries:T.BufferGeometry[]=[],pickers:(T.Mesh|undefined)[]=[],centers=atlas.parts.map(p=>new T.Vector3().fromArray(p.bounds[0]).add(new T.Vector3().fromArray(p.bounds[1])).multiplyScalar(.5));
+  const systemGeometries=new Map<string,T.BufferGeometry[]>(),systemMeshes=new Map<string,T.Mesh>();
   const offsets:T.Vector3[]=[],bounds=atlas.parts.map(p=>new T.Box3(new T.Vector3().fromArray(p.bounds[0]),new T.Vector3().fromArray(p.bounds[1])));
   let packingWidth=1,packingHeight=1;
   const markerPositions=new Float32Array(atlas.parts.length*3),markerGeometry=new T.BufferGeometry();markerGeometry.setAttribute('position',new T.BufferAttribute(markerPositions,3));
@@ -53,13 +61,18 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   };
   const materialFor=(system:string)=>{
    const isSkin=system==='integumentary';
-   const m=new T.MeshStandardMaterial({color:SYSTEMS.find(s=>s.id===system)?.color??'#aebbb8',metalness:.08,roughness:.53,side:T.DoubleSide,transparent:false,opacity:1,depthWrite:true});
+   const isSkinMat=system==='integumentary';
+   const m=new T.MeshStandardMaterial({color:SYSTEMS.find(s=>s.id===system)?.color??'#aebbb8',metalness:isSkinMat?0:.08,roughness:isSkinMat?.35:.53,side:T.DoubleSide,transparent:false,opacity:1,depthWrite:true});
    m.onBeforeCompile=shader=>{
     shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.stateWidth={value:width};
     shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform float stateWidth; varying float partVisible; varying float partSelected;\n'+shader.vertexShader;
     shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r;');
     shader.fragmentShader='varying float partVisible; varying float partSelected;\n'+shader.fragmentShader;
-    shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
+    if(isSkin){
+      shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible <= 0.01) discard;\nfloat _dither = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453);\nif (partVisible < _dither) discard;');
+    }else{
+      shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
+    }
     shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);');
    };materials.push(m);return m;
   };
@@ -67,7 +80,6 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   let loaded=0;
   const loadChunk=async(ci:number)=>{
    const chunk=atlas.chunks[ci],compressed=!!chunk.gzip&&typeof DecompressionStream!=='undefined';const response=await fetch(assetURL(compressed?chunk.gzip!:chunk.url),{signal:abort.signal});const buffer=await decodeModelResponse(response,chunk.bytes,compressed);if(disposed)return;
-   const groups=new Map<string,T.BufferGeometry[]>();
    atlas.parts.forEach((p,i)=>{
     if(p.chunk!==ci)return;
     const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(new Float32Array(buffer,p.positions,p.vertexCount*3),3));
@@ -75,12 +87,111 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     g.setAttribute('normal',new T.BufferAttribute(new Int16Array(buffer,p.normals,p.vertexCount*3),3,true));g.setIndex(new T.BufferAttribute(new Uint32Array(buffer,p.indices,p.indexCount),1));
     g.boundingBox=bounds[i].clone();g.computeBoundingSphere();const pick=new T.Mesh(g);pick.matrixAutoUpdate=false;pickers[i]=pick;geometries.push(g);
     g.setAttribute('partIndex',new T.BufferAttribute(new Float32Array(p.vertexCount).fill(i),1));
-    const list=groups.get(p.system)??[];list.push(g);groups.set(p.system,list);
+    const list=systemGeometries.get(p.system)??[];list.push(g);systemGeometries.set(p.system,list);
    });
-   groups.forEach((gs,system)=>{const geometry=mergeGeometries(gs,false);if(!geometry)throw new Error('Could not assemble anatomy geometry.');geometries.push(geometry);const mesh=new T.Mesh(geometry,mats.get(system as never));mesh.frustumCulled=false;scene.add(mesh);});
-   lastState=null;loaded++;onProgress(Math.round(loaded/atlas.chunks.length*100));dirty=true;
+   lastState=null;loaded++;onProgress(Math.min(100,Math.round(loaded/autoLoadCount*100)));dirty=true;
   };
-  (async()=>{try{let cursor=0;await Promise.all(Array.from({length:3},async()=>{while(cursor<atlas.chunks.length){const i=cursor++;await loadChunk(i);}}));if(!disposed){ready=true;dirty=true;}}catch(e){if(!disposed)onError(e instanceof Error?e.message:'Could not load the anatomy.');}})();
+  // 懒加载：创建某个系统的合并mesh（同步，假设chunk已下载）
+  const createSystemMesh=(system:string)=>{
+   if(systemMeshes.has(system))return;
+   const gs=systemGeometries.get(system);
+   if(!gs||gs.length===0)return;
+   const geometry=mergeGeometries(gs,false);
+   if(!geometry)return;
+   geometries.push(geometry);
+   const mesh=new T.Mesh(geometry,mats.get(system as never));mesh.frustumCulled=false;scene.add(mesh);
+   systemMeshes.set(system,mesh);dirty=true;
+  };
+  // 异步版本：确保chunk下载完再创建mesh
+  const ensureSystemMesh=async(system:string)=>{
+   if(systemMeshes.has(system))return;
+   await ensureSystemChunks(system);
+   createSystemMesh(system);
+  };
+  // 数据懒加载：记录已下载的chunk
+  const loadedChunks=new Set<number>();
+  const pendingDownloads=new Set<number>();
+  // 找出包含体表的chunk（优先下载）
+  const skinChunks=new Set<number>();
+  atlas.parts.forEach(p=>{if(p.system==='integumentary')skinChunks.add(p.chunk);});
+  // 找出每个系统需要哪些chunk
+  const systemChunks=new Map<string,Set<number>>();
+  atlas.parts.forEach(p=>{
+    if(!systemChunks.has(p.system))systemChunks.set(p.system,new Set());
+    systemChunks.get(p.system)!.add(p.chunk);
+  });
+  // 自动加载的chunk总数（体表+骨骼），用于进度计算
+  const autoLoadChunks=new Set([...skinChunks,...(systemChunks.get('skeletal')||[])]);
+  const autoLoadCount=autoLoadChunks.size;
+  // 后台下载队列
+  let backgroundDownloading=false;
+  const startBackgroundDownload=()=>{
+    if(backgroundDownloading||disposed)return;
+    backgroundDownloading=true;
+    const remaining=[];
+    for(let i=0;i<atlas.chunks.length;i++){
+      if(!loadedChunks.has(i)&&!pendingDownloads.has(i))remaining.push(i);
+    }
+    if(remaining.length===0){backgroundDownloading=false;return;}
+    // 后台用1个并发慢慢下载，不影响用户操作
+    (async()=>{
+      for(const ci of remaining){
+        if(disposed)break;
+        if(loadedChunks.has(ci))continue;
+        pendingDownloads.add(ci);
+        try{await loadChunk(ci);loadedChunks.add(ci);}catch(e){}
+        pendingDownloads.delete(ci);
+      }
+      backgroundDownloading=false;
+    })();
+  };
+  // 优先下载指定系统的所有chunk
+  const ensureSystemChunks=async(system:string)=>{
+    const chunks=systemChunks.get(system);
+    if(!chunks)return;
+    const needed=[...chunks].filter(c=>!loadedChunks.has(c)&&!pendingDownloads.has(c));
+    if(needed.length===0)return;
+    // 用2个并发优先下载
+    await Promise.all(needed.map(async(ci)=>{
+      if(loadedChunks.has(ci))return;
+      pendingDownloads.add(ci);
+      try{await loadChunk(ci);loadedChunks.add(ci);}catch(e){}
+      pendingDownloads.delete(ci);
+    }));
+  };
+  (async()=>{try{
+    // 第一步：只下载体表chunk，用户立即可见、可操作穴位（初始只下约4MB）
+    const skinChunkList=[...skinChunks];
+    await Promise.all(skinChunkList.map(async(ci)=>{
+      pendingDownloads.add(ci);
+      try{await loadChunk(ci);loadedChunks.add(ci);}catch(e){}
+      pendingDownloads.delete(ci);
+    }));
+    if(!disposed){
+      // 创建体表mesh
+      createSystemMesh('integumentary');
+      ready=true;dirty=true;
+      // 第二步：立即下载骨骼chunk（用户后续可能需要查看骨骼）
+      const skeletalChunks=systemChunks.get('skeletal')||new Set();
+      const skeletalNeeded=[...skeletalChunks].filter(c=>!loadedChunks.has(c)&&!pendingDownloads.has(c));
+      if(skeletalNeeded.length>0){
+        (async()=>{
+          await Promise.all(skeletalNeeded.map(async(ci)=>{
+            if(loadedChunks.has(ci))return;
+            pendingDownloads.add(ci);
+            try{await loadChunk(ci);loadedChunks.add(ci);}catch(e){}
+            pendingDownloads.delete(ci);
+          }));
+          // 骨骼下载完成后创建mesh（默认不显示，用户点开时才显示）
+          if(!disposed)createSystemMesh('skeletal');
+        })();
+      }else{
+        // 骨骼已经在体表chunk中了，直接创建
+        createSystemMesh('skeletal');
+      }
+      // 其他系统不自动下载，只有用户点击时才下载（见ensureSystemMesh）
+    }
+  }catch(e){if(!disposed)onError(e instanceof Error?e.message:'Could not load the anatomy.');}})();
   const fit=(view:string,extent=0)=>{
    const aspect=camera.aspect,mobile=el.clientWidth<768,normalDistance=mobile?Math.max(4.5,1.8*el.clientHeight/Math.max(160,el.clientHeight-350)/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))):4;
    const reservedHeight=mobile?350:270;const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
@@ -103,9 +214,11 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerup',up);renderer.domElement.addEventListener('pointercancel',cancel);
   const acupointEditor=createAcupointEditor(el,scene,atlas,()=>{
     const index=atlas.parts.findIndex(p=>p.id==='FJ2810');
-    if(index<0||data[index*4+3]<.5)return undefined;
+    if(index<0)return undefined;
     return pickers[index];
   });
+  // 暴露到window，供外部控制尺子功能
+  (window as any).__acupointEditor = acupointEditor;
   const clock=new T.Clock();let lastExtent=-1;
   const animate=()=>{
    if(disposed)return;frame=requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.05),s=latest.current;
@@ -114,7 +227,7 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
    if(moving){amount=T.MathUtils.damp(amount,s.explode,8,dt);dirty=true;}
    if(changed||moving||lastExtent<0){
     const visible=new Set(s.visible),selection=new Set(s.selected);
-    const HIDDEN_BY_DEFAULT=new Set(['FJ2813','FJ2815']);
+    const HIDDEN_BY_DEFAULT=new Set(['FJ2812','FJ2813','FJ2814','FJ2815']);
     const visibleParts=atlas.parts.filter(p=>{
       if(s.isolate)return selection.has(p.id);
       if(HIDDEN_BY_DEFAULT.has(p.id))return selection.has(p.id);
@@ -127,11 +240,17 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
      const c=centers[i],destination=offsets[i];let dx=0,dy=0,dz=0;
      if(amount<=.45){const t=amount/.45;const group=SYSTEMS.findIndex(sys=>sys.id===p.system);const angle=group/SYSTEMS.length*Math.PI*2;dx=Math.sin(angle)*t*.48;dy=(c.y-.85)*t*.28;dz=Math.cos(angle)*t*.48;}
      else {const t=(amount-.45)/.55,group=SYSTEMS.findIndex(sys=>sys.id===p.system),angle=group/SYSTEMS.length*Math.PI*2;dx=T.MathUtils.lerp(Math.sin(angle)*.48,destination.x-c.x,t);dy=T.MathUtils.lerp((c.y-.85)*.28,destination.y-c.y,t);dz=T.MathUtils.lerp(Math.cos(angle)*.48,-c.z,t);}
-     const selected=selection.has(p.id);const partVisible=s.isolate?selected:(HIDDEN_BY_DEFAULT.has(p.id)?selected:visible.has(p.system)||selected);data.set([dx,dy,dz,partVisible?1:0],i*4);selectedData[i*4]=selected?255:0;
+     const selected=selection.has(p.id);const partVisible=s.isolate?selected:(HIDDEN_BY_DEFAULT.has(p.id)?selected:visible.has(p.system)||selected);const skinOpacity=s.skinOpacity??1;const skinDim=p.system==='integumentary'&&!partVisible?0:0;const skinVal=p.system==='integumentary'&&partVisible?skinOpacity:1;data.set([dx,dy,dz,partVisible?skinVal:skinDim],i*4);selectedData[i*4]=selected?255:0;
      markerPositions.set(data[i*4+3]>.5?[c.x+dx,c.y+dy,c.z+dz]:[10000,10000,10000],i*3);const mesh=pickers[i];if(mesh){mesh.position.set(dx,dy,dz);mesh.updateMatrix();mesh.updateMatrixWorld(true);}
     });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
    }
    if(s.view!==lastView||s.reset!==lastReset){fit(s.view,amount);lastView=s.view;lastReset=s.reset;}
+   // 皮肤线框模式和透明度控制
+   const skinMat=mats.get('integumentary' as never);
+   if(skinMat){
+    const targetOpacity=s.skinOpacity??1;
+    if(Math.abs((skinMat as any).opacity-targetOpacity)>0.01){(skinMat as any).opacity=targetOpacity;}
+   }
    if(moving&&!s.isolate)fit(amount>.5?'front':s.view,Math.max(0,(amount-.3)/.7));
    const isolateKey=s.isolate?s.selected.join(',')+':'+s.reset+':'+s.inspectorOpen+':'+camera.aspect:'';
    if(isolateKey!==lastIsolate||(s.isolate&&moving)){
@@ -140,7 +259,7 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     }else if(lastIsolate){camera.clearViewOffset();fit(s.view,amount);}
     lastIsolate=isolateKey;
    }
-   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=false;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
+   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=false;gridGroup.visible=!!s.gridVisible&&amount<.01;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
    if(meridianLayer.update(s.study,ready&&amount<.001&&s.explode<.001&&!s.isolate,dt))dirty=true;
    if(acupointEditor.update(
       ready&&amount<.001&&s.explode<.001&&!s.isolate

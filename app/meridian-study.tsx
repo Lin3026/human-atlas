@@ -210,9 +210,9 @@ export function createMeridianLayer(scene: T.Scene, atlas: Atlas) {
   root.scale.setScalar(height > 0 ? height / 1.75 : 1);
 
   const geometries: T.BufferGeometry[] = [];
-  const materials: T.MeshBasicMaterial[] = [];
-  const coneGeometry = new T.ConeGeometry(.006, .019, 8);
-  const beadGeometry = new T.SphereGeometry(.005, 10, 8);
+  const materials: T.MeshStandardMaterial[] = [];
+  const coneGeometry = new T.ConeGeometry(.012, .03, 8);
+  const beadGeometry = new T.SphereGeometry(.009, 12, 10);
   geometries.push(coneGeometry, beadGeometry);
 
   interface Route {
@@ -233,18 +233,26 @@ export function createMeridianLayer(scene: T.Scene, atlas: Atlas) {
       'centripetal'
     );
 
-    const tube = new T.TubeGeometry(curve, 100, .0027, 6, false);
+    const tube = new T.TubeGeometry(curve, 150, .012, 12, false);
     geometries.push(tube);
 
-    const material = new T.MeshBasicMaterial({
+    const material = new T.MeshStandardMaterial({
       color: meridian.color,
+      emissive: meridian.color,
+      emissiveIntensity: 0.8,
+      metalness: 0.1,
+      roughness: 0.3,
       transparent: true,
       opacity: .95,
-      depthWrite: false
+      depthWrite: false,
+      depthTest: false
     });
-    const beadMaterial = new T.MeshBasicMaterial({
+    const beadMaterial = new T.MeshStandardMaterial({
       color: '#ffffff',
-      depthWrite: false
+      emissive: '#ffffff',
+      emissiveIntensity: 0.6,
+      depthWrite: false,
+      depthTest: false
     });
     materials.push(material, beadMaterial);
 

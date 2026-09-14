@@ -13,7 +13,7 @@ import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sh
 import {Combobox,ComboboxInput,ComboboxContent,ComboboxList,ComboboxItem,ComboboxEmpty} from '@/components/ui/combobox';
 import AnatomyScene from './scene';
 import {DEFAULT_VISIBLE,SYSTEMS,EXPLANATIONS,explanation,type Atlas,type Concept,type SceneState,type SystemId,type View} from './anatomy';
-const initial:SceneState={explode:0,visible:DEFAULT_VISIBLE,selected:[],isolate:false,view:'three-quarter',rotate:false,reset:0};
+const initial:SceneState={explode:0,visible:DEFAULT_VISIBLE,selected:[],isolate:false,view:'three-quarter',rotate:false,reset:0,gridVisible:false,skinOpacity:1,skinWireframe:false};
 export default function Home(){
  const [study,setStudy]=useState(DEFAULT_STUDY);
  const detailTitle=useRef<HTMLHeadingElement>(null);
@@ -35,25 +35,6 @@ export default function Home(){
  return <main className="studio">
   {atlas&&<AnatomyScene atlas={atlas} state={{...state,study,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
-  {!details&&!about&&panel===null&&<MeridianPanel
-    settings={study}
-    onChange={setStudy}
-    suspended={state.explode>.001||state.isolate}
-    onReference={()=>{
-      setDetails(false);
-      setChosen(null);
-      setState(s=>({
-        ...s,
-        visible:['integumentary','skeletal'],
-        selected:[],
-        isolate:false,
-        explode:0,
-        view:'front',
-        rotate:false,
-        reset:s.reset+1
-      }));
-    }}
-  />}
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> 三维解剖 · 经络研习</div><h1>经络研习<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'2,234'} 个模型部件 <span>·</span> BodyParts3D</div></header>
   <nav className="top-actions" aria-label="Explorer panels"><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search anatomy"><Search size={18}/><span>查找解剖结构</span><kbd>/</kbd></Button><Button variant="ghost" className="icon-button" aria-label="About this atlas" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
   <section className={`layers-panel glass ${panel==='layers'?'mobile-open':''}`} aria-label="Anatomical layers">
@@ -65,7 +46,14 @@ export default function Home(){
   {panel==='search'&&<section className="search-panel glass" aria-label="Find anatomy"><div className="panel-heading"><span>查找解剖结构</span><Button variant="ghost" className="icon-button" onClick={()=>setPanel(null)} aria-label="Close search"><X size={18}/></Button></div><Combobox<Concept> items={results} value={null} onValueChange={value=>{if(value)choose(value);}} inputValue={query} onInputValueChange={setQuery} itemToStringLabel={c=>c.name} filter={null} open onOpenChange={open=>{if(!open)setPanel(null);}}><ComboboxInput autoFocus placeholder="搜索：心脏、股骨、肝脏…" aria-label="Search named anatomical structures" showTrigger={false}/><ComboboxContent className="anatomy-search-results"><ComboboxEmpty>没有找到匹配的结构。</ComboboxEmpty><ComboboxList>{(c:Concept)=><ComboboxItem key={c.id} value={c}><span className="search-result-name">{anatomyLabel(c.name)}</span><span className="small-number">{c.elements.length} {c.elements.length===1?'部件':'部件'}</span></ComboboxItem>}</ComboboxList></ComboboxContent></Combobox><p className="search-note">{query?'最多显示80项结果，可输入更具体的名称。':'可搜索已收录的中文名称、原始英文名称或模型编号。'}</p></section>}
   <nav className="view-controls glass" aria-label="Camera controls">{(['three-quarter','front','side','back'] as View[]).map((v,i)=><Button variant="ghost" key={v} className={state.view===v?'active':''} aria-pressed={state.view===v} disabled={state.explode>.8&&v!=='front'} onClick={()=>setState(s=>({...s,view:v,reset:s.reset+1,rotate:false}))} title={`${v} view`} aria-label={`${v} view`}><span>{['斜','前','侧','后'][i]}</span></Button>)}<i/><Button variant="ghost" disabled={state.explode>=.4} aria-label={state.rotate?'Pause rotation':'Rotate body'} title="Auto rotate" className={state.rotate?'active':''} onClick={()=>setState(s=>({...s,rotate:!s.rotate}))}>{state.rotate?<Pause size={17}/>:<RotateCw size={18}/>}</Button><Button variant="ghost" aria-label="Reset view and layers" title="Reset" onClick={reset}><RotateCcw size={17}/></Button></nav>
   <div className="scene-caption"><span className="caption-line"/><span>{state.isolate?(chosen?.name??'已选结构'):state.explode>.95?'解剖部件总览':state.explode>.05?'已展开的结构':'成年男性参考人体'}</span><span className="caption-line"/></div>
-  <div className="bottom-dock glass"><Button variant="ghost" className="mobile-only dock-layers" onClick={()=>openPanel('layers')} aria-label="Open system layers"><Layers3 size={20}/><span>人体系统</span></Button><div className="explode-control"><div className="explode-label"><label id="explode-label">展开解剖结构</label><output>{Math.round(state.explode*100)}<span>%</span></output></div><Slider aria-labelledby="explode-label" min={0} max={100} step={1} value={[state.explode*100]} onValueChange={v=>setState(s=>({...s,explode:(Array.isArray(v)?v[0]:v)/100,view:(Array.isArray(v)?v[0]:v)>80?'front':s.view,rotate:false}))}/><div className="slider-endpoints"><span>合拢</span><span>全部展开</span></div></div><Button variant="ghost" className="dock-reset" onClick={reset} aria-label="Assemble and reset"><RotateCcw size={18}/><span>重置</span></Button></div>
+  <div className="bottom-dock glass"><Button variant="ghost" className="mobile-only dock-layers" onClick={()=>openPanel('layers')} aria-label="Open system layers"><Layers3 size={20}/><span>人体系统</span></Button><div className="explode-control"><div className="explode-label"><label id="explode-label">展开解剖结构</label><output>{Math.round(state.explode*100)}<span>%</span></output></div><Slider aria-labelledby="explode-label" min={0} max={100} step={1} value={[state.explode*100]} onValueChange={v=>setState(s=>({...s,explode:(Array.isArray(v)?v[0]:v)/100,view:(Array.isArray(v)?v[0]:v)>80?'front':s.view,rotate:false}))}/><div className="slider-endpoints"><span>合拢</span><span>全部展开</span></div></div><Button variant="ghost" className={`dock-grid ${state.gridVisible?'active':''}`} onClick={()=>setState(s=>({...s,gridVisible:!s.gridVisible}))} aria-label="Toggle grid">网格线</Button><Button variant="ghost" className="dock-ruler" onClick={(e)=>{
+  if(window.__acupointEditor){
+    const enabled=window.__acupointEditor.toggleRuler();
+    e.currentTarget.classList.toggle('active',enabled);
+    const label=e.currentTarget.querySelector('.ruler-label');
+    if(label) label.textContent=enabled?'尺子测量：开':'尺子测量：关';
+  }
+}} aria-label="Toggle ruler"><span className="ruler-label">尺子测量：关</span></Button><Button variant="ghost" className="dock-reset" onClick={reset} aria-label="Assemble and reset"><RotateCcw size={18}/><span>重置</span></Button></div>
   <footer className="studio-footer"><span>{state.explode>.8?'拖动平移':'拖动旋转'} <b>·</b> 双指或滚轮缩放 <b>·</b> 点击查看结构</span><Button variant="ghost" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}>来源与署名 <ArrowUpRight size={12}/></Button></footer>
   {progress<100&&!error&&<div className="loading glass" role="status"><Activity size={18}/><div><strong>正在加载人体模型</strong><span>{progress}% · 正在加载 {atlas?.parts.length.toLocaleString()??'2,234'} pieces</span><div className="loading-track"><i style={{width:`${progress}%`}}/></div></div></div>}
   {error&&<div className="loading glass error" role="alert"><p>{error}</p><Button variant="ghost" onClick={()=>location.reload()}>重新加载</Button></div>}

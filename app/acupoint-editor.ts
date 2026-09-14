@@ -120,11 +120,20 @@ export function createAcupointEditor(
 
   const markerGroup = new T.Group();
   markerGroup.name = 'acupoint-drafts-pending-review';
-  markerGroup.visible = false;
+  markerGroup.visible = true;
+  // 尺子测量功能（变量必须在使用前定义）
+  let rulerEnabled = false;
+  let rulerPoint1: T.Vector3 | null = null;
+  let rulerPoint2: T.Vector3 | null = null;
+  const rulerGroup = new T.Group();
+  const rulerLineMaterial = new T.LineBasicMaterial({ color: 0xff6b35, linewidth: 2, depthTest: false });
+  const rulerPointMaterial = new T.MeshBasicMaterial({ color: 0xff6b35, depthTest: false });
+  const rulerPointGeometry = new T.SphereGeometry(.006, 12, 8);
+  scene.add(rulerGroup);
   scene.add(markerGroup);
 
-  const pointGeometry = new T.SphereGeometry(.004, 14, 10);
-  const anchorGeometry = new T.SphereGeometry(.004, 14, 10);
+  const pointGeometry = new T.SphereGeometry(.005, 14, 10);
+  const anchorGeometry = new T.SphereGeometry(.005, 14, 10);
 
   const pointMaterial = new T.MeshBasicMaterial({
     color: '#d04435',
@@ -168,6 +177,110 @@ export function createAcupointEditor(
     depthWrite:false
   });
 
+  function clearRuler() {
+    while (rulerGroup.children.length > 0) {
+      const child = rulerGroup.children[0];
+      rulerGroup.remove(child);
+      if (child instanceof T.Mesh) {
+        child.geometry.dispose();
+      } else if (child instanceof T.Line) {
+        child.geometry.dispose();
+      }
+    }
+  }
+  function updateRuler() {
+    clearRuler();
+    if (!rulerEnabled) return;
+    const CM_PER_CUN = 2.19; // 1寸 = 2.19cm（基于身高171.9cm）
+    if (rulerPoint1) {
+      const p1 = new T.Mesh(rulerPointGeometry, rulerPointMaterial);
+      p1.position.copy(rulerPoint1);
+      p1.renderOrder = 100;
+      rulerGroup.add(p1);
+    }
+    if (rulerPoint1 && rulerPoint2) {
+      const p2 = new T.Mesh(rulerPointGeometry, rulerPointMaterial);
+      p2.position.copy(rulerPoint2);
+      p2.renderOrder = 100;
+      rulerGroup.add(p2);
+      // 连线
+      const lineGeometry = new T.BufferGeometry().setFromPoints([rulerPoint1, rulerPoint2]);
+      const line = new T.Line(lineGeometry, rulerLineMaterial);
+      line.renderOrder = 99;
+      rulerGroup.add(line);
+      // 计算距离
+      const distM = rulerPoint1.distanceTo(rulerPoint2);
+      const distCm = distM * 100;
+      const distCun = distCm / CM_PER_CUN;
+      const direction = rulerPoint2.clone().sub(rulerPoint1).normalize();
+      // 计算垂直于测量线的方向（用于数字标签错开）
+      const up = new T.Vector3(0, 1, 0);
+      const perpendicular = new T.Vector3().crossVectors(direction, up).normalize();
+      // 添加1寸刻度标记（小球 + 数字标注，无背景方块）
+      // 从起点开始，1寸位置是第一个刻度球（第二个球）
+      const tickGeometry = new T.SphereGeometry(.004, 8, 6);
+      const tickMaterial = new T.MeshBasicMaterial({ color: 0xffaa00, depthTest: false });
+      const fullCun = Math.floor(distCun);
+      for (let i = 1; i <= fullCun; i++) {
+        const tickDist = (i * CM_PER_CUN) / 100; // 转换为米
+        const tickPos = rulerPoint1.clone().add(direction.clone().multiplyScalar(tickDist));
+        const tick = new T.Mesh(tickGeometry, tickMaterial);
+        tick.position.copy(tickPos);
+        tick.renderOrder = 100;
+        rulerGroup.add(tick);
+        // 刻度数字标签（无背景，黑色文字带白色描边）
+        // 数字标签交替上下排列，避免重叠
+        const labelOffset = (i % 2 === 0) ? 0.025 : -0.025;
+        const labelPos = tickPos.clone().add(perpendicular.clone().multiplyScalar(labelOffset));
+        const labelCanvas = document.createElement('canvas');
+        labelCanvas.width = 64; labelCanvas.height = 32;
+        const labelCtx = labelCanvas.getContext('2d')!;
+        labelCtx.clearRect(0, 0, 64, 32);
+        labelCtx.font = 'bold 18px "Microsoft YaHei", sans-serif';
+        labelCtx.textAlign = 'center';
+        labelCtx.textBaseline = 'middle';
+        // 黑色描边
+        labelCtx.strokeStyle = '#000';
+        labelCtx.lineWidth = 3;
+        labelCtx.strokeText(i + '寸', 32, 16);
+        // 白色文字
+        labelCtx.fillStyle = '#fff';
+        labelCtx.fillText(i + '寸', 32, 16);
+        const labelTexture = new T.CanvasTexture(labelCanvas);
+        const labelSpriteMaterial = new T.SpriteMaterial({ map: labelTexture, depthTest: false, transparent: true });
+        const labelSprite = new T.Sprite(labelSpriteMaterial);
+        labelSprite.position.copy(labelPos);
+        labelSprite.scale.set(0.04, 0.02, 1);
+        labelSprite.renderOrder = 101;
+        rulerGroup.add(labelSprite);
+      }
+      // 在第一个球（起点）旁边显示总距离（无背景，白色文字带黑色描边）
+      const canvas = document.createElement('canvas');
+      canvas.width = 220; canvas.height = 48;
+      const ctx = canvas.getContext('2d')!;
+      ctx.clearRect(0, 0, 220, 48);
+      ctx.font = 'bold 16px "Microsoft YaHei", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // 黑色描边
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 3;
+      ctx.strokeText('总距离：' + distCun.toFixed(2) + '寸 (' + distCm.toFixed(1) + 'cm)', 110, 24);
+      // 白色文字
+      ctx.fillStyle = '#fff';
+      ctx.fillText('总距离：' + distCun.toFixed(2) + '寸 (' + distCm.toFixed(1) + 'cm)', 110, 24);
+      const texture = new T.CanvasTexture(canvas);
+      const spriteMaterial = new T.SpriteMaterial({ map: texture, depthTest: false, transparent: true });
+      const sprite = new T.Sprite(spriteMaterial);
+      // 放在第一个球（起点）的上方，稍微偏移一点避免重叠
+      sprite.position.copy(rulerPoint1);
+      sprite.position.y += 0.06;
+      sprite.position.z += 0.02;
+      sprite.scale.set(0.14, 0.03, 1);
+      sprite.renderOrder = 102;
+      rulerGroup.add(sprite);
+    }
+  }
   function clearSurfaceLine() {
     for (const child of [...surfaceLineGroup.children]) {
       if (child instanceof T.Line) child.geometry.dispose();
@@ -278,29 +391,32 @@ export function createAcupointEditor(
       });
 
       const color = MERIDIAN_COLORS[meridian] || '#888888';
-      const material = new T.LineDashedMaterial({
+      const material = new T.MeshStandardMaterial({
         color: new T.Color(color),
+        emissive: new T.Color(color),
+        emissiveIntensity: 0.7,
+        metalness: 0.1,
+        roughness: 0.35,
         transparent: true,
-        opacity: 0.9,
-        dashSize: 0.015,
-        gapSize: 0.008,
-        linewidth: 2
+        opacity: 0.95,
+        depthWrite: false,
+        depthTest: false
       });
 
-      const positions: number[] = [];
+      const pts: T.Vector3[] = [];
       for (const code of codes) {
         const p = points[code];
         if (p) {
-          positions.push(p.position[0], p.position[1], p.position[2]);
+          pts.push(new T.Vector3(p.position[0], p.position[1], p.position[2]));
         }
       }
-      if (positions.length >= 6) {
-        const geometry = new T.BufferGeometry();
-        geometry.setAttribute('position', new T.Float32BufferAttribute(positions, 3));
-        const line = new T.Line(geometry, material);
-        line.computeLineDistances();
-        line.userData.meridian = meridian;
-        meridianLineGroup.add(line);
+      if (pts.length >= 2) {
+        const curve = new T.CatmullRomCurve3(pts, false, 'centripetal');
+        const tube = new T.TubeGeometry(curve, Math.max(40, pts.length * 8), 0.0012, 10, false);
+        const mesh = new T.Mesh(tube, material);
+        mesh.renderOrder = 8;
+        mesh.userData.meridian = meridian;
+        meridianLineGroup.add(mesh);
       }
     }
     meridianLineGroup.updateMatrixWorld(true);
@@ -336,12 +452,8 @@ export function createAcupointEditor(
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    context.fillStyle = 'rgba(255,254,247,0.96)';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    context.strokeStyle = code === selected ? '#cf861c' : '#b84b3a';
-    context.lineWidth = 5;
-    context.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
+    // 透明背景，无方框
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     context.fillStyle = '#263e37';
     context.font = '600 42px "Microsoft YaHei", sans-serif';
@@ -376,7 +488,9 @@ export function createAcupointEditor(
     const isHeadBack = position.y > 1.55 && position.z < -0.06;  // 头后面
     const isHeadSide = position.y > 1.50 && Math.abs(position.x) > 0.06;  // 头侧面
     const isFootBottom = position.y < 0.12;  // 脚底
-    const isFootTop = position.y >= 0.12 && position.y < 0.20;  // 脚背
+    const isFootTop = position.y >= 0.12 && position.y < 0.20 && position.z > 0;  // 脚背（前面）
+    const isKneeBack = position.y >= 0.18 && position.y < 0.45 && position.z < -0.02;  // 膝盖后面（腘窝）
+    const isLungMeridian = code.startsWith('LU');  // 手太阴肺经
     const isFront = position.z > 0.04;  // 身体前面
     const isBack = position.z < -0.04;  // 身体后面
     const isLeftSide = position.x > 0.10;  // 身体左侧
@@ -412,6 +526,16 @@ export function createAcupointEditor(
       // 脚背：标签向前
       sprite.position.z += 0.07;
       sprite.position.x += position.x > 0 ? 0.02 : -0.02;
+    } else if (isKneeBack) {
+      // 膝盖后面（腘窝）：标签向后更多，避免穿插
+      sprite.position.z -= 0.16;
+      sprite.position.x += position.x > 0 ? 0.04 : -0.04;
+      sprite.position.y += 0.01;
+    } else if (isLungMeridian) {
+      // 手太阴肺经：全部在身体前面/手臂内侧，标签向前偏移更多避免穿插
+      sprite.position.z += 0.14;
+      sprite.position.x += position.x > 0 ? 0.06 : -0.06;
+      sprite.position.y += 0.01;
     } else if (isFront && !isLeftSide && !isRightSide) {
       // 身体前面正中线：标签向前
       sprite.position.z += 0.09;
@@ -424,12 +548,12 @@ export function createAcupointEditor(
       // 身体左侧：标签向左
       sprite.position.x += 0.09;
       if (isFront) sprite.position.z += 0.02;
-      if (isBack) sprite.position.z -= 0.02;
+      if (isBack) sprite.position.z -= 0.08;
     } else if (isRightSide) {
       // 身体右侧：标签向右
       sprite.position.x -= 0.09;
       if (isFront) sprite.position.z += 0.02;
-      if (isBack) sprite.position.z -= 0.02;
+      if (isBack) sprite.position.z -= 0.08;
     } else {
       // 默认：根据前后决定Z方向，X轻微偏移
       sprite.position.x += 0.05;
@@ -463,8 +587,8 @@ export function createAcupointEditor(
 
   const style = document.createElement('style');
   style.textContent = [
-    '.ae-panel{position:absolute;left:350px;top:160px;z-index:26;',
-    'width:292px;max-height:calc(100dvh - 330px);overflow:auto;',
+    '.ae-panel{position:absolute;right:88px;top:106px;z-index:26;',
+    'width:292px;max-height:calc(100dvh - 275px);overflow:auto;',
     'padding:14px;border:1px solid #d6e0d7;border-radius:12px;',
     'background:#fffefaF5;box-shadow:0 12px 36px #203e3018;',
     'color:#29483d;font:13px/1.65 system-ui,"Microsoft YaHei",sans-serif;}',
@@ -482,9 +606,15 @@ export function createAcupointEditor(
     '.ae-panel h3{font-size:13px;margin:12px 0 5px;}',
     '.ae-panel .ae-list{display:grid;grid-template-columns:1fr 1fr;gap:3px;}',
     '.ae-panel .ae-list button{text-align:left;}',
-    '@media(max-width:1100px){.ae-panel{left:300px;top:150px;width:260px;}}',
-    '@media(max-width:767px){.ae-panel{left:10px;top:110px;',
-    'width:min(290px,calc(100vw - 65px));max-height:43dvh;}}'
+    '.ae-panel .ae-study-library{border-top:1px solid #dce3d8;margin-top:14px;padding-top:10px;}',
+    '.ae-panel .ae-study-summary{cursor:pointer;font-weight:600;font-size:14px;margin:8px 0;}',
+    '.ae-panel .ae-study-item{padding:8px;background:#f1f4ed;border-radius:7px;margin:6px 0;}',
+    '.ae-panel .ae-study-item p{margin:4px 0;}',
+    '.ae-panel .ae-study-search{width:100%;padding:7px;border:1px solid #cddbcf;border-radius:7px;margin:6px 0;font-size:12px;}',
+    '.ae-panel .ae-study-points-list{max-height:200px;overflow:auto;}',
+    '@media(max-width:1100px){.ae-panel{right:20px;top:100px;width:260px;}}',
+    '@media(max-width:767px){.ae-panel{right:10px;left:10px;top:110px;',
+    'width:auto;max-height:43dvh;}}'
   ].join('');
   host.appendChild(style);
 
@@ -529,12 +659,77 @@ export function createAcupointEditor(
     '<p class="ae-small">自动生成采用基准间的纵向折量和局部皮肤投影。',
     '正中线暂按两基准的X/Y连线处理，需要检查模型的实际正中线。',
     '七穴连线仅为贴肤辅助线，不是完整任脉循行；其他经脉未自动连线。</p>',
+    '<div class="ae-study-library">',
+    '<details><summary class="ae-study-summary">奇经八脉 · 文字资料</summary>',
+    '<p class="ae-small">本区尚未关联三维路线。以下为概要，不是完整循行原文。</p>',
+    '<div class="ae-study-item"><strong>任脉</strong><p>主要体表路线沿人体前正中线。具有本经所属穴位。</p></div>',
+    '<div class="ae-study-item"><strong>督脉</strong><p>主要体表路线沿背部正中线，经头部至面部。具有本经所属穴位。</p></div>',
+    '<div class="ae-study-item"><strong>冲脉</strong><p>循行涉及腹部、胸部及下肢等，存在分支与体内路线，不能只用一条前腹直线表示。</p></div>',
+    '<div class="ae-study-item"><strong>带脉</strong><p>循行具有环绕腰腹部的特点，不能简单等同于任意水平腰围线。</p></div>',
+    '<div class="ae-study-item"><strong>阴跷脉</strong><p>循行涉及内踝、下肢内侧及头面部等。</p></div>',
+    '<div class="ae-study-item"><strong>阳跷脉</strong><p>循行涉及外踝、下肢外侧、躯干及头面部等。</p></div>',
+    '<div class="ae-study-item"><strong>阴维脉</strong><p>循行涉及下肢内侧、腹胸及咽喉等。</p></div>',
+    '<div class="ae-study-item"><strong>阳维脉</strong><p>循行涉及下肢外侧、躯干、肩颈及头部等。</p></div>',
+    '<p class="ae-small">十二正经加任脉、督脉，通常合称十四经。奇经八脉中，除任督二脉外，其余六脉没有本经专属穴位，而与其他经脉的穴位发生交会关系。</p>',
+    '</details>',
+    '<details class="ae-study-points"><summary class="ae-study-summary">穴位资料 · 16个学习示例</summary>',
+    '<p class="ae-small">目前只有名称、归经与大致区域，尚未进行3D定位。"区域"不等于标准取穴方法。</p>',
+    '<input class="ae-study-search" type="text" placeholder="搜索穴位、代码或经脉" aria-label="搜索穴位资料"/>',
+    '<div class="ae-study-points-list"></div>',
+    '</details>',
+    '<details><summary class="ae-study-summary">五脏六腑与解剖模型</summary>',
+    '<div class="ae-study-item"><p>五脏：心、肝、脾、肺、肾。</p><p>六腑：胆、胃、小肠、大肠、膀胱、三焦。</p>',
+    '<p>中医脏腑是传统医学的功能理论概念，与现代解剖器官有联系，但不能完全等同。</p>',
+    '<p>模型里的胆囊、心脏、肝脏等使用现代解剖名称。三焦不对应某一个独立的现代解剖器官，因此不创建虚构的"三焦器官"模型。</p></div>',
+    '</details>',
+    '</div>',
     '</details>'
   ].join('');
   host.appendChild(panel);
 
   function element(role: string) {
     return panel.querySelector<HTMLElement>('[data-role="' + role + '"]')!;
+  }
+
+  // 穴位资料 · 16个学习示例
+  const STUDY_POINTS: [string, string, string, string][] = [
+    ['LU9', '太渊', '手太阴肺经', '腕前区'],
+    ['LI4', '合谷', '手阳明大肠经', '手背'],
+    ['ST36', '足三里', '足阳明胃经', '小腿前外侧'],
+    ['SP6', '三阴交', '足太阴脾经', '小腿内侧'],
+    ['HT7', '神门', '手少阴心经', '腕前区'],
+    ['SI3', '后溪', '手太阳小肠经', '手尺侧'],
+    ['BL40', '委中', '足太阳膀胱经', '膝后区'],
+    ['KI3', '太溪', '足少阴肾经', '踝内侧'],
+    ['PC6', '内关', '手厥阴心包经', '前臂前区'],
+    ['TE5', '外关', '手少阳三焦经', '前臂后区'],
+    ['GB34', '阳陵泉', '足少阳胆经', '小腿外侧'],
+    ['LR3', '太冲', '足厥阴肝经', '足背'],
+    ['CV12', '中脘', '任脉', '上腹部'],
+    ['CV6', '气海', '任脉', '下腹部'],
+    ['GV20', '百会', '督脉', '头顶部'],
+    ['GV14', '大椎', '督脉', '后正中线第七颈椎棘突下方区域']
+  ];
+
+  function renderStudyPoints(query: string) {
+    const list = panel.querySelector<HTMLElement>('.ae-study-points-list')!;
+    const q = query.trim().toLowerCase();
+    const filtered = STUDY_POINTS.filter(p => p.join(' ').toLowerCase().includes(q));
+    if (filtered.length === 0) {
+      list.innerHTML = '<p class="ae-small">示例库中暂无匹配项。</p>';
+      return;
+    }
+    list.innerHTML = filtered.map(([code, name, meridian, region]) =>
+      `<div class="ae-study-item"><strong>${name} · ${code}</strong>` +
+      `<p>归经：${meridian}</p><p>大致区域：${region}</p>` +
+      `<p class="ae-small">三维标注状态：未定位</p></div>`
+    ).join('');
+  }
+
+  const studySearch = panel.querySelector<HTMLInputElement>('.ae-study-search');
+  if (studySearch) {
+    studySearch.addEventListener('input', () => renderStudyPoints(studySearch.value));
+    renderStudyPoints('');
   }
 
   function message(text: string) {
@@ -1003,6 +1198,27 @@ export function createAcupointEditor(
         dirty = true;
         return;
       }
+      if (action === 'ruler') {
+        rulerEnabled = !rulerEnabled;
+        if (!rulerEnabled) {
+          rulerPoint1 = null;
+          rulerPoint2 = null;
+          clearRuler();
+        }
+        button.textContent = rulerEnabled ? '尺子测量：开（点击2点）' : '尺子测量：关';
+        button.setAttribute('aria-pressed', String(rulerEnabled));
+        message(rulerEnabled ? '尺子模式已开启：点击皮肤表面2个点，测量距离（cm和寸）。' : '尺子模式已关闭。');
+        dirty = true;
+        return;
+      }
+      if (action === 'ruler-clear') {
+        rulerPoint1 = null;
+        rulerPoint2 = null;
+        clearRuler();
+        message('尺子测量已清除。');
+        dirty = true;
+        return;
+      }
 
       if (action === 'delete-point') {
         if (!points[selected]) {
@@ -1114,6 +1330,26 @@ export function createAcupointEditor(
   rebuildMarkers();
 
   return {
+    toggleRuler(): boolean {
+      rulerEnabled = !rulerEnabled;
+      if (!rulerEnabled) {
+        rulerPoint1 = null;
+        rulerPoint2 = null;
+        clearRuler();
+      }
+      updateRuler();
+      dirty = true;
+      return rulerEnabled;
+    },
+    isRulerEnabled(): boolean {
+      return rulerEnabled;
+    },
+    clearRulerPoints() {
+      rulerPoint1 = null;
+      rulerPoint2 = null;
+      clearRuler();
+      dirty = true;
+    },
     pick(raycaster: T.Raycaster): boolean {
       if (!available || disposed) return false;
 
@@ -1164,6 +1400,29 @@ export function createAcupointEditor(
         return true;
       }
 
+      // 尺子测量模式
+      if (rulerEnabled) {
+        const skin = getSkin();
+        if (!skin) return false;
+        const skinHit = raycaster.intersectObject(skin, false)[0];
+        if (!skinHit) return false;
+        const point = skinHit.point.clone();
+        if (!rulerPoint1 || (rulerPoint1 && rulerPoint2)) {
+          // 开始新的测量
+          rulerPoint1 = point;
+          rulerPoint2 = null;
+          message('尺子：已记录第1点，再点击第2点测量距离。');
+        } else {
+          rulerPoint2 = point;
+          const distM = rulerPoint1.distanceTo(rulerPoint2);
+          const distCm = distM * 100;
+          const distCun = distCm / 2.19;
+          message('尺子：距离 = ' + distCm.toFixed(1) + 'cm = ' + distCun.toFixed(2) + '寸。再点击开始新测量。');
+        }
+        updateRuler();
+        dirty = true;
+        return true;
+      }
       markerGroup.updateMatrixWorld(true);
       const markerHit = raycaster.intersectObjects(pickable, false)[0];
       if (!markerHit) return false;
@@ -1206,6 +1465,11 @@ export function createAcupointEditor(
 
     dispose() {
       disposed = true;
+      clearRuler();
+      scene.remove(rulerGroup);
+      rulerLineMaterial.dispose();
+      rulerPointMaterial.dispose();
+      rulerPointGeometry.dispose();
       panel.removeEventListener('click', onPanelClick);
       meridianSelect.removeEventListener('change',onMeridianChange);
       clearSurfaceLine();
