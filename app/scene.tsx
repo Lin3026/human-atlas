@@ -216,7 +216,7 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     const index=atlas.parts.findIndex(p=>p.id==='FJ2810');
     if(index<0)return undefined;
     return pickers[index];
-  });
+  },()=>({camera,controls}));
   // 暴露到window，供外部控制尺子功能
   (window as any).__acupointEditor = acupointEditor;
   const clock=new T.Clock();let lastExtent=-1;

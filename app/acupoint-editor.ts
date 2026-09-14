@@ -97,7 +97,8 @@ export function createAcupointEditor(
   host: HTMLElement,
   scene: T.Scene,
   atlas: Atlas,
-  getSkin: () => T.Mesh | undefined
+  getSkin: () => T.Mesh | undefined,
+  getCameraControls?: () => {camera: T.PerspectiveCamera, controls: any} | null
 ) {
   const skinPart = atlas.parts.find(p => p.id === 'FJ2810');
   if (!skinPart) throw new Error('缺少皮肤部件 FJ2810，不能启动皮肤标注。');
@@ -113,8 +114,10 @@ export function createAcupointEditor(
   let points: Record<string, StoredPoint> = {};
   let armed: string | null = null;
   let selected = 'CV8';
-  let activeMeridian = 'CV';
+  let activeMeridians: string[] = ['CV'];
   let available = false;
+  let cameraRef: T.PerspectiveCamera | null = null;
+  let controlsRef: any = null;
   let dirty = true;
   let disposed = false;
 
@@ -291,7 +294,7 @@ export function createAcupointEditor(
   function rebuildSurfaceLine() {
     clearSurfaceLine();
     surfaceLineGroup.visible =
-      available && surfaceLineVisible && activeMeridian === 'CV';
+      available && surfaceLineVisible && activeMeridians.includes('CV');
 
     const skin = getSkin();
     if (!skin || !surfaceLineGroup.visible) return;
@@ -381,7 +384,7 @@ export function createAcupointEditor(
 
         // 只显示当前选中经脉的连线
     for (const [meridian, codes] of Object.entries(byMeridian)) {
-      if (meridian !== activeMeridian) continue;
+      if (!activeMeridians.includes(meridian)) continue;
       if (codes.length < 2) continue;
       // 按数字排序
       codes.sort((a, b) => {
@@ -625,9 +628,14 @@ export function createAcupointEditor(
     '<details open>',
     '<summary>十四经穴位 · 标注与学习</summary>',
     '<h3>经脉目录</h3>',
-    '<select data-role="meridian-select" aria-label="选择经脉"',
-    ' style="width:100%;padding:8px;border:1px solid #cddbcf;border-radius:7px;background:white"></select>',
+    '<div data-role="meridian-checkboxes" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:8px;"></div>',
+    '<div style="display:flex;gap:6px;margin-bottom:8px;">',
+    '<button data-action="select-all-meridians" style="flex:1;padding:4px;font-size:11px;">全选</button>',
+    '<button data-action="clear-meridians" style="flex:1;padding:4px;font-size:11px;">清空</button>',
+    '</div>',
     '<p class="ae-small" data-role="catalog-count"></p>',
+    '<h3>选中经脉穴位列表</h3>',
+    '<div data-role="acupoint-list-panel" style="max-height:300px;overflow-y:auto;border:1px solid #cddbcf;border-radius:6px;padding:6px;background:white;"></div>',
     '<p class="ae-small">GB/T 12346—2021 · 362个名称条目<br>',
     '362穴目录已收录；已有坐标才显示三维标记。空目录不代表已完成定位。</p>',
     '<div class="ae-status" data-role="status"></div>',
@@ -858,27 +866,128 @@ export function createAcupointEditor(
     message('旧保存记录无法读取，未载入。');
   }
 
-  const meridianSelect =
-    element('meridian-select') as HTMLSelectElement;
+    const meridianCheckboxes = element('meridian-checkboxes');
+  const acupointListPanel = element('acupoint-list-panel');
 
+  // 创建经络checkbox列表
   for (const meridian of MERIDIAN_CATALOG) {
-    const option = document.createElement('option');
-    option.value = meridian.id;
-    option.textContent = meridian.name + ' · ' + meridian.names.length + '穴';
-    meridianSelect.appendChild(option);
-  }
-  meridianSelect.value = activeMeridian;
+    const label = document.createElement('label');
+    label.style.cssText = 'display:flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;padding:2px 4px;border-radius:4px;';
+    label.onmouseover = () => label.style.background = '#e8f0e8';
+    label.onmouseout = () => label.style.background = 'transparent';
 
-  function onMeridianChange() {
-    activeMeridian = meridianSelect.value;
-    const first = ACUPOINT_CATALOG.find(p => p.meridian === activeMeridian);
-    if (first) selected = first.code;
-    armed = null;
-    rebuildMarkers();
-    message('已切换经脉。空心圆表示尚无三维位置，不会自动猜测坐标。');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = meridian.id;
+    checkbox.checked = activeMeridians.includes(meridian.id);
+    checkbox.style.cssText = 'margin:0;cursor:pointer;';
+
+    const text = document.createElement('span');
+    text.textContent = meridian.name;
+    text.style.cssText = 'flex:1;';
+
+    const countSpan = document.createElement('span');
+    countSpan.textContent = meridian.names.length;
+    countSpan.style.cssText = 'color:#888;font-size:10px;';
+
+    label.appendChild(checkbox);
+    label.appendChild(text);
+    label.appendChild(countSpan);
+    meridianCheckboxes.appendChild(label);
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        if (!activeMeridians.includes(meridian.id)) {
+          activeMeridians.push(meridian.id);
+        }
+      } else {
+        activeMeridians = activeMeridians.filter(m => m !== meridian.id);
+      }
+      if (activeMeridians.length === 0) {
+        activeMeridians = ['CV'];
+        const firstCheckbox = meridianCheckboxes.querySelector('input[value="CV"]') as HTMLInputElement;
+        if (firstCheckbox) firstCheckbox.checked = true;
+      }
+      const first = ACUPOINT_CATALOG.find(p => activeMeridians.includes(p.meridian));
+      if (first) selected = first.code;
+      armed = null;
+      rebuildMarkers();
+      updateAcupointListPanel();
+      message('已更新经脉选择。当前选中 ' + activeMeridians.length + ' 条经脉。');
+    });
   }
 
-  meridianSelect.addEventListener('change', onMeridianChange);
+  // 更新穴位名称列表面板
+  function updateAcupointListPanel() {
+    acupointListPanel.replaceChildren();
+    for (const meridianId of activeMeridians) {
+      const meridian = MERIDIAN_CATALOG.find(m => m.id === meridianId);
+      if (!meridian) continue;
+
+      const meridianTitle = document.createElement('div');
+      meridianTitle.style.cssText = 'font-weight:bold;font-size:12px;margin:6px 0 4px;color:#286c57;border-bottom:1px solid #cddbcf;padding-bottom:2px;';
+      meridianTitle.textContent = meridian.name;
+      acupointListPanel.appendChild(meridianTitle);
+
+      const pointsContainer = document.createElement('div');
+      pointsContainer.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:2px;';
+
+      for (let i = 0; i < meridian.names.length; i++) {
+        const code = meridianId + (i + 1);
+        const name = meridian.names[i];
+        const hasPoint = !!points[code];
+
+        const pointBtn = document.createElement('button');
+        pointBtn.type = 'button';
+        pointBtn.style.cssText = 'text-align:left;padding:2px 4px;font-size:10px;border:1px solid #ddd;border-radius:3px;background:' + (hasPoint ? '#e8f5e9' : '#f5f5f5') + ';cursor:pointer;color:' + (hasPoint ? '#286c57' : '#999') + ';';
+        pointBtn.textContent = (hasPoint ? '● ' : '○ ') + name;
+        pointBtn.title = code + (hasPoint ? '（已标注）' : '（未标注）');
+
+        pointBtn.addEventListener('click', () => {
+          selected = code;
+          refreshInfo();
+          if (hasPoint && points[code]) {
+            focusOnPoint(points[code]);
+          }
+          message('已选中 ' + name + '（' + code + '）' + (hasPoint ? '' : ' - 尚未标注'));
+        });
+
+        pointsContainer.appendChild(pointBtn);
+      }
+      acupointListPanel.appendChild(pointsContainer);
+    }
+  }
+
+  // 全选/清空按钮
+  const selectAllBtn = panel.querySelector('[data-action="select-all-meridians"]') as HTMLButtonElement;
+  const clearBtn = panel.querySelector('[data-action="clear-meridians"]') as HTMLButtonElement;
+
+  if (selectAllBtn) {
+    selectAllBtn.addEventListener('click', () => {
+      activeMeridians = MERIDIAN_CATALOG.map(m => m.id);
+      meridianCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        (cb as HTMLInputElement).checked = true;
+      });
+      rebuildMarkers();
+      updateAcupointListPanel();
+      message('已全选所有经脉。');
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeMeridians = ['CV'];
+      meridianCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        (cb as HTMLInputElement).checked = (cb as HTMLInputElement).value === 'CV';
+      });
+      rebuildMarkers();
+      updateAcupointListPanel();
+      message('已清空，仅保留任脉。');
+    });
+  }
+
+  // 初始化穴位列表
+  updateAcupointListPanel();
 
   const pointButtons = new Map<string, HTMLButtonElement>();
 
@@ -921,14 +1030,14 @@ export function createAcupointEditor(
     for (const [code, button] of pointButtons) {
       button.setAttribute('aria-pressed', String(code === selected));
       const meridian = ACUPOINT_CATALOG.find(p => p.code === code)?.meridian;
-      button.hidden = meridian !== activeMeridian;
+      button.hidden = !activeMeridians.includes(meridian || '');
       const definition = DEFINITIONS.find(item => item.code === code)!;
       button.textContent =
         (points[code] ? '● ' : '○ ') + definition.name + ' ' + code;
     }
 
     const group = ACUPOINT_CATALOG.filter(
-      item => item.meridian === activeMeridian
+      item => activeMeridians.includes(item.meridian)
     );
     const placed = group.filter(item => !!points[item.code]).length;
     element('catalog-count').textContent =
@@ -974,13 +1083,12 @@ export function createAcupointEditor(
       const point = points[definition.code];
       if (
         point &&
-        ACUPOINT_CATALOG.find(p => p.code === definition.code)?.meridian
-          === activeMeridian
+        activeMeridians.includes(ACUPOINT_CATALOG.find(p => p.code === definition.code)?.meridian || '')
       ) addMarker(point, definition.code);
     }
 
-    if (activeMeridian === 'CV' && anchors.navel && !points.CV8) addMarker(anchors.navel, null);
-    if (activeMeridian === 'CV' && anchors.pubic && !points.CV2) addMarker(anchors.pubic, null);
+    if (activeMeridians.includes('CV') && anchors.navel && !points.CV8) addMarker(anchors.navel, null);
+    if (activeMeridians.includes('CV') && anchors.pubic && !points.CV2) addMarker(anchors.pubic, null);
 
     markerGroup.updateMatrixWorld(true);
     rebuildSurfaceLine();
@@ -1329,7 +1437,52 @@ export function createAcupointEditor(
   panel.addEventListener('click', onPanelClick);
   rebuildMarkers();
 
+  // 相机对准穴位
+  function focusOnPoint(point: StoredPoint) {
+    if (!getCameraControls) return;
+    const cc = getCameraControls();
+    if (!cc) return;
+    const {camera, controls} = cc;
+    cameraRef = camera;
+    controlsRef = controls;
+
+    const pos = vector(point.position);
+    const normal = vector(point.displayNormal || [0, 0, 1]);
+
+    // 计算相机位置：穴位位置 + 法线方向 * 距离
+    const distance = 0.35;
+    const targetPos = pos.clone().add(normal.clone().multiplyScalar(distance));
+
+    // 平滑过渡
+    const startTarget = controls.target.clone();
+    const startPos = camera.position.clone();
+    const duration = 500; // ms
+    const startTime = performance.now();
+
+    function animate() {
+      const elapsed = performance.now() - startTime;
+      const t = Math.min(elapsed / duration, 1);
+      // easeInOutCubic
+      const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      controls.target.lerpVectors(startTarget, pos, ease);
+      camera.position.lerpVectors(startPos, targetPos, ease);
+      controls.update();
+
+      if (t < 1) {
+        requestAnimationFrame(animate);
+      }
+    }
+    animate();
+  }
+
   return {
+    focusOnAcupoint(code: string) {
+      const point = points[code];
+      if (point) {
+        focusOnPoint(point);
+      }
+    },
     toggleRuler(): boolean {
       rulerEnabled = !rulerEnabled;
       if (!rulerEnabled) {
