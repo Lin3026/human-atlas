@@ -1908,7 +1908,7 @@ export const PROJECT_ACUPOINT_SEED = {
     "ST41": {
       "position": [
         0.08610698527437965,
-        0.11783203669969841,
+        0.1,
         0.012895116254058703
       ],
       "displayNormal": [
@@ -1934,7 +1934,7 @@ export const PROJECT_ACUPOINT_SEED = {
     "ST42": {
       "position": [
         0.09965570253441283,
-        0.09314307494101134,
+        0.1,
         0.045002890427147
       ],
       "displayNormal": [
@@ -1960,7 +1960,7 @@ export const PROJECT_ACUPOINT_SEED = {
     "ST43": {
       "position": [
         0.11540529204616776,
-        0.07392340709886827,
+        0.1,
         0.06621174601361435
       ],
       "displayNormal": [
@@ -1986,7 +1986,7 @@ export const PROJECT_ACUPOINT_SEED = {
     "ST44": {
       "position": [
         0.12701431480057268,
-        0.05394662196333997,
+        0.1,
         0.09160778519165547
       ],
       "displayNormal": [
@@ -2012,7 +2012,7 @@ export const PROJECT_ACUPOINT_SEED = {
     "ST45": {
       "position": [
         0.14378574209743059,
-        0.04300929886597069,
+        0.1,
         0.13022945575775957
       ],
       "displayNormal": [
