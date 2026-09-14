@@ -7844,12 +7844,12 @@ export const PROJECT_ACUPOINT_SEED = {
       "position": [
         0.1,
         0.031,
-        -0.064349
+        0.064349
       ],
       "displayNormal": [
         0.725679,
         0.321635,
-        -0.608228
+        0.608228
       ],
       "faceIndex": 32489,
       "vertexIndices": [
@@ -7872,12 +7872,12 @@ export const PROJECT_ACUPOINT_SEED = {
       "position": [
         0.09,
         0.018,
-        -0.076588
+        0.076588
       ],
       "displayNormal": [
         0.716395,
         -0.313174,
-        -0.623458
+        0.623458
       ],
       "faceIndex": 32111,
       "vertexIndices": [
@@ -7900,12 +7900,12 @@ export const PROJECT_ACUPOINT_SEED = {
       "position": [
         0.08,
         0.005,
-        -0.071007
+        0.071007
       ],
       "displayNormal": [
         0.390775,
         -0.874986,
-        -0.285822
+        0.285822
       ],
       "faceIndex": 32459,
       "vertexIndices": [
