@@ -490,8 +490,8 @@ export function createAcupointEditor(
     const isHeadFront = position.y > 1.55 && position.z > 0.06;  // 头前面
     const isHeadBack = position.y > 1.55 && position.z < -0.06;  // 头后面
     const isHeadSide = position.y > 1.50 && Math.abs(position.x) > 0.06;  // 头侧面
-    const isFootBottom = position.y < 0.12;  // 脚底
-    const isFootTop = position.y >= 0.12 && position.y < 0.20 && position.z > 0;  // 脚背（前面）
+    const isFootBottom = position.y < 0.12 && position.z <= 0.01;  // 脚底（下方且不在前面）
+    const isFootTop = (position.y >= 0.12 && position.y < 0.20 && position.z > 0) || (position.y < 0.15 && position.z > 0.01);  // 脚背（前面，包括脚面低处）
     const isKneeBack = position.y >= 0.18 && position.y < 0.45 && position.z < -0.02;  // 膝盖后面（腘窝）
     const isLungMeridian = code.startsWith('LU');  // 手太阴肺经
     const isFront = position.z > 0.04;  // 身体前面
@@ -526,9 +526,10 @@ export function createAcupointEditor(
       sprite.position.y -= 0.07;
       sprite.position.x += position.x > 0 ? 0.02 : -0.02;
     } else if (isFootTop) {
-      // 脚背：标签向前
-      sprite.position.z += 0.07;
-      sprite.position.x += position.x > 0 ? 0.02 : -0.02;
+      // 脚背：标签向前上方，避免被脚挡住
+      sprite.position.z += 0.06;
+      sprite.position.y += 0.05;
+      sprite.position.x += position.x > 0 ? 0.03 : -0.03;
     } else if (isKneeBack) {
       // 膝盖后面（腘窝）：标签向后更多，避免穿插
       sprite.position.z -= 0.16;
